@@ -2,7 +2,7 @@
 	"cli": true,
 	"target": "directory",
 	"adapterName": "echarge_cpu2",
-	"title": "Hardy Barth eCharger cPµ2",
+	"title": "Hardy Barth eCharge cPµ2",
 	"expert": "no",
 	"features": [
 		"adapter"

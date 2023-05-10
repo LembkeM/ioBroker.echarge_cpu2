@@ -18,17 +18,17 @@
 			}
 		},
 		"titleLang": {
-			"en": "Hardy Barth eCharger cPµ2",
-			"de": "Hardy Barth eCharger CPµ2",
-			"ru": "Hardy Barth eCharger cPµ2",
-			"pt": "Hardy Barth eCharger cPµ2",
-			"nl": "Hardy Barth eCharger cPµ2",
+			"en": "Hardy Barth eCharge cPµ2",
+			"de": "Hardy Barth eCharge CPµ2",
+			"ru": "Hardy Barth eCharge cPµ2",
+			"pt": "Hardy Barth eCharge cPµ2",
+			"nl": "Hardy Barth eCharge cPµ2",
 			"fr": "Chargeur Hardy Barth cPµ2",
 			"it": "Caricabatterie Hardy Barth cPµ2",
-			"es": "eCharger Hardy Barth cPµ2",
-			"pl": "Hardy Barth eCharger cPµ2",
-			"uk": "Зарядний пристрій Hardy Barth eCharger cPµ2",
-			"zh-cn": "Hardy Barth eCharger cPµ2"
+			"es": "eCharge Hardy Barth cPµ2",
+			"pl": "Hardy Barth eCharge cPµ2",
+			"uk": "Зарядний пристрій Hardy Barth eCharge cPµ2",
+			"zh-cn": "Hardy Barth eCharge cPµ2"
 		},
 		"desc": {
 			"en": "echarge_cpu2",
