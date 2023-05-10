@@ -1,0 +1,90 @@
+{
+	"common": {
+		"name": "echarger_cpu2",
+		"version": "0.0.1",
+		"news": {
+			"0.0.1": {
+				"en": "initial release",
+				"de": "Erstveröffentlichung",
+				"ru": "Начальная версия",
+				"pt": "lançamento inicial",
+				"nl": "Eerste uitgave",
+				"fr": "Première version",
+				"it": "Versione iniziale",
+				"es": "Versión inicial",
+				"pl": "Pierwsze wydanie",
+				"uk": "Початкова версія",
+				"zh-cn": "首次出版"
+			}
+		},
+		"title": "Hardy Barth eCharger cPµ2",
+		"titleLang": {
+			"en": "Hardy Barth eCharger cPµ2",
+			"de": "Hardy Barth eCharger CPµ2",
+			"ru": "Hardy Barth eCharger cPµ2",
+			"pt": "Hardy Barth eCharger cPµ2",
+			"nl": "Hardy Barth eCharger cPµ2",
+			"fr": "Chargeur Hardy Barth cPµ2",
+			"it": "Caricabatterie Hardy Barth cPµ2",
+			"es": "eCharger Hardy Barth cPµ2",
+			"pl": "Hardy Barth eCharger cPµ2",
+			"uk": "Зарядний пристрій Hardy Barth eCharger cPµ2",
+			"zh-cn": "Hardy Barth eCharger cPµ2"
+		},
+		"desc": {
+			"en": "echarger_cpu2",
+			"de": "echarger_cpu2",
+			"ru": "echarger_cpu2",
+			"pt": "echarger_cpu2",
+			"nl": "echarger_cpu2",
+			"fr": "echarger_cpu2",
+			"it": "echarger_cpu2",
+			"es": "echarger_cpu2",
+			"pl": "echarger_cpu2",
+			"uk": "echarger_cpu2",
+			"zh-cn": "echarger_cpu2"
+		},
+		"authors": [
+			"MLembke <m.lembke@lembke-it-service.de>"
+		],
+		"keywords": [
+			"ioBroker",
+			"template",
+			"Smart Home",
+			"home automation"
+		],
+		"license": "MIT",
+		"platform": "Javascript/Node.js",
+		"main": "build/main.js",
+		"icon": "echarger_cpu2.png",
+		"enabled": true,
+		"extIcon": "https://raw.githubusercontent.com/LembkeM/ioBroker.echarger_cpu2/main/admin/echarger_cpu2.png",
+		"readme": "https://github.com/LembkeM/ioBroker.echarger_cpu2/blob/main/README.md",
+		"loglevel": "info",
+		"mode": "daemon",
+		"type": "vehicle",
+		"compact": true,
+		"connectionType": "local",
+		"dataSource": "push",
+		"adminUI": {
+			"config": "materialize"
+		},
+		"eraseOnUpload": true,
+		"dependencies": [
+			{
+				"js-controller": ">=3.3.22"
+			}
+		],
+		"globalDependencies": [
+			{
+				"admin": ">=5.0.0"
+			}
+		]
+	},
+	"native": {
+		"option1": true,
+		"option2": "42"
+	},
+	"objects": [],
+	"instanceObjects": []
+}
