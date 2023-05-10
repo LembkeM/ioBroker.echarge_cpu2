@@ -1,12 +1,12 @@
 {
-  "name": "iobroker.echarger_cpu2",
+  "name": "iobroker.echarge_cpu2",
   "version": "0.0.1",
-  "description": "echarger_cpu2",
+  "description": "echarge_cpu2",
   "author": {
     "name": "MLembke",
     "email": "m.lembke@lembke-it-service.de"
   },
-  "homepage": "https://github.com/LembkeM/ioBroker.echarger_cpu2",
+  "homepage": "https://github.com/LembkeM/ioBroker.echarge_cpu2",
   "license": "MIT",
   "keywords": [
     "ioBroker",
@@ -16,7 +16,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/LembkeM/ioBroker.echarger_cpu2.git"
+    "url": "https://github.com/LembkeM/ioBroker.echarge_cpu2.git"
   },
   "engines": {
     "node": ">= 14"
@@ -90,7 +90,7 @@
     "release": "release-script"
   },
   "bugs": {
-    "url": "https://github.com/LembkeM/ioBroker.echarger_cpu2/issues"
+    "url": "https://github.com/LembkeM/ioBroker.echarge_cpu2/issues"
   },
   "readmeFilename": "README.md"
 }
