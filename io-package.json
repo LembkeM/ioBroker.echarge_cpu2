@@ -1,6 +1,6 @@
 {
 	"common": {
-		"name": "echarger_cpu2",
+		"name": "echarge_cpu2",
 		"version": "0.0.1",
 		"news": {
 			"0.0.1": {
@@ -32,17 +32,17 @@
 			"zh-cn": "Hardy Barth eCharger cPµ2"
 		},
 		"desc": {
-			"en": "echarger_cpu2",
-			"de": "echarger_cpu2",
-			"ru": "echarger_cpu2",
-			"pt": "echarger_cpu2",
-			"nl": "echarger_cpu2",
-			"fr": "echarger_cpu2",
-			"it": "echarger_cpu2",
-			"es": "echarger_cpu2",
-			"pl": "echarger_cpu2",
-			"uk": "echarger_cpu2",
-			"zh-cn": "echarger_cpu2"
+			"en": "echarge_cpu2",
+			"de": "echarge_cpu2",
+			"ru": "echarge_cpu2",
+			"pt": "echarge_cpu2",
+			"nl": "echarge_cpu2",
+			"fr": "echarge_cpu2",
+			"it": "echarge_cpu2",
+			"es": "echarge_cpu2",
+			"pl": "echarge_cpu2",
+			"uk": "echarge_cpu2",
+			"zh-cn": "echarge_cpu2"
 		},
 		"authors": [
 			"MLembke <m.lembke@lembke-it-service.de>"
@@ -56,10 +56,10 @@
 		"license": "MIT",
 		"platform": "Javascript/Node.js",
 		"main": "build/main.js",
-		"icon": "echarger_cpu2.png",
+		"icon": "echarge_cpu2.png",
 		"enabled": true,
-		"extIcon": "https://raw.githubusercontent.com/LembkeM/ioBroker.echarger_cpu2/main/admin/echarger_cpu2.png",
-		"readme": "https://github.com/LembkeM/ioBroker.echarger_cpu2/blob/main/README.md",
+		"extIcon": "https://raw.githubusercontent.com/LembkeM/ioBroker.echarge_cpu2/main/admin/echarge_cpu2.png",
+		"readme": "https://github.com/LembkeM/ioBroker.echarge_cpu2/blob/main/README.md",
 		"loglevel": "info",
 		"mode": "daemon",
 		"type": "vehicle",
