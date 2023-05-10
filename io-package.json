@@ -1,89 +1,102 @@
 {
-    "common": {
-        "name": "echarge_cpu2",
-        "version": "0.0.1",
-        "news": {
-            "0.0.1": {
-                "en": "initial release",
-                "de": "Erstveröffentlichung",
-                "ru": "Начальная версия",
-                "pt": "lançamento inicial",
-                "nl": "Eerste uitgave",
-                "fr": "Première version",
-                "it": "Versione iniziale",
-                "es": "Versión inicial",
-                "pl": "Pierwsze wydanie",
-                "uk": "Початкова версія",
-                "zh-cn": "首次出版"
-            }
-        },
-        "titleLang": {
-            "en": "Hardy Barth eCharge cPµ2",
-            "de": "Hardy Barth eCharge CPµ2",
-            "ru": "Hardy Barth eCharge cPµ2",
-            "pt": "Hardy Barth eCharge cPµ2",
-            "nl": "Hardy Barth eCharge cPµ2",
-            "fr": "Chargeur Hardy Barth cPµ2",
-            "it": "Caricabatterie Hardy Barth cPµ2",
-            "es": "eCharge Hardy Barth cPµ2",
-            "pl": "Hardy Barth eCharge cPµ2",
-            "uk": "Зарядний пристрій Hardy Barth eCharge cPµ2",
-            "zh-cn": "Hardy Barth eCharge cPµ2"
-        },
-        "desc": {
-            "en": "echarge_cpu2",
-            "de": "echarge_cpu2",
-            "ru": "echarge_cpu2",
-            "pt": "echarge_cpu2",
-            "nl": "echarge_cpu2",
-            "fr": "echarge_cpu2",
-            "it": "echarge_cpu2",
-            "es": "echarge_cpu2",
-            "pl": "echarge_cpu2",
-            "uk": "echarge_cpu2",
-            "zh-cn": "echarge_cpu2"
-        },
-        "authors": [
-            "MLembke <m.lembke@lembke-it-service.de>"
-        ],
-        "keywords": [
-            "Hardy Barth",
-            "eCharge",
-            "template",
-            "home automation"
-        ],
-        "license": "MIT",
-        "platform": "Javascript/Node.js",
-        "main": "build/main.js",
-        "icon": "echarge_cpu2.png",
-        "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/LembkeM/ioBroker.echarge_cpu2/main/admin/echarge_cpu2.png",
-        "readme": "https://github.com/LembkeM/ioBroker.echarge_cpu2/blob/main/README.md",
-        "loglevel": "info",
-        "mode": "daemon",
-        "type": "vehicle",
-        "compact": true,
-        "connectionType": "local",
-        "dataSource": "push",
-        "adminUI": {
-            "config": "json"
-        },
-        "eraseOnUpload": true,
-        "dependencies": [
-            {
-                "js-controller": ">=3.3.22"
-            }
-        ],
-        "globalDependencies": [
-            {
-                "admin": ">=6.0.0"
-            }
-        ]
+  "common": {
+    "name": "echarge_cpu2",
+    "version": "0.0.2",
+    "news": {
+      "0.0.2": {
+        "en": "initial release",
+        "de": "erstausstrahlung",
+        "ru": "начальный выпуск",
+        "pt": "lançamento inicial",
+        "nl": "niet",
+        "fr": "initial release",
+        "it": "rilascio iniziale",
+        "es": "liberación inicial",
+        "pl": "pierwsze wydanie",
+        "uk": "початковий реліз",
+        "zh-cn": "初步释放"
+      },
+      "0.0.1": {
+        "en": "initial release",
+        "de": "Erstveröffentlichung",
+        "ru": "Начальная версия",
+        "pt": "lançamento inicial",
+        "nl": "Eerste uitgave",
+        "fr": "Première version",
+        "it": "Versione iniziale",
+        "es": "Versión inicial",
+        "pl": "Pierwsze wydanie",
+        "uk": "Початкова версія",
+        "zh-cn": "首次出版"
+      }
     },
-    "native": {
-        "option1": true,
-        "option2": "42"
+    "titleLang": {
+      "en": "Hardy Barth eCharge cPµ2",
+      "de": "Hardy Barth eCharge CPµ2",
+      "ru": "Hardy Barth eCharge cPµ2",
+      "pt": "Hardy Barth eCharge cPµ2",
+      "nl": "Hardy Barth eCharge cPµ2",
+      "fr": "Chargeur Hardy Barth cPµ2",
+      "it": "Caricabatterie Hardy Barth cPµ2",
+      "es": "eCharge Hardy Barth cPµ2",
+      "pl": "Hardy Barth eCharge cPµ2",
+      "uk": "Зарядний пристрій Hardy Barth eCharge cPµ2",
+      "zh-cn": "Hardy Barth eCharge cPµ2"
     },
-    "objects": [],
-    "instanceObjects": []
+    "desc": {
+      "en": "echarge_cpu2",
+      "de": "echarge_cpu2",
+      "ru": "echarge_cpu2",
+      "pt": "echarge_cpu2",
+      "nl": "echarge_cpu2",
+      "fr": "echarge_cpu2",
+      "it": "echarge_cpu2",
+      "es": "echarge_cpu2",
+      "pl": "echarge_cpu2",
+      "uk": "echarge_cpu2",
+      "zh-cn": "echarge_cpu2"
+    },
+    "authors": [
+      "MLembke <m.lembke@lembke-it-service.de>"
+    ],
+    "keywords": [
+      "Hardy Barth",
+      "eCharge",
+      "template",
+      "home automation"
+    ],
+    "license": "MIT",
+    "platform": "Javascript/Node.js",
+    "main": "build/main.js",
+    "icon": "echarge_cpu2.png",
+    "enabled": true,
+    "extIcon": "https://raw.githubusercontent.com/LembkeM/ioBroker.echarge_cpu2/main/admin/echarge_cpu2.png",
+    "readme": "https://github.com/LembkeM/ioBroker.echarge_cpu2/blob/main/README.md",
+    "loglevel": "info",
+    "mode": "daemon",
+    "type": "vehicle",
+    "compact": true,
+    "connectionType": "local",
+    "dataSource": "push",
+    "adminUI": {
+      "config": "json"
+    },
+    "eraseOnUpload": true,
+    "dependencies": [
+      {
+        "js-controller": ">=3.3.22"
+      }
+    ],
+    "globalDependencies": [
+      {
+        "admin": ">=6.0.0"
+      }
+    ]
+  },
+  "native": {
+    "option1": true,
+    "option2": "42"
+  },
+  "objects": [],
+  "instanceObjects": []
 }
