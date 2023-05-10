@@ -9,12 +9,12 @@ import * as utils from "@iobroker/adapter-core";
 // Load your modules here, e.g.:
 // import * as fs from "fs";
 
-class EchargerCpu2 extends utils.Adapter {
+class EchargeCpu2 extends utils.Adapter {
 
 	public constructor(options: Partial<utils.AdapterOptions> = {}) {
 		super({
 			...options,
-			name: "echarger_cpu2",
+			name: "echarge_cpu2",
 		});
 		this.on("ready", this.onReady.bind(this));
 		this.on("stateChange", this.onStateChange.bind(this));
@@ -146,8 +146,8 @@ class EchargerCpu2 extends utils.Adapter {
 
 if (require.main !== module) {
 	// Export the constructor in compact mode
-	module.exports = (options: Partial<utils.AdapterOptions> | undefined) => new EchargerCpu2(options);
+	module.exports = (options: Partial<utils.AdapterOptions> | undefined) => new EchargeCpu2(options);
 } else {
 	// otherwise start the instance directly
-	(() => new EchargerCpu2())();
+	(() => new EchargeCpu2())();
 }

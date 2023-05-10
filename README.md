@@ -1,16 +1,16 @@
-![Logo](admin/echarger_cpu2.png)
-# ioBroker.echarger_cpu2
+![Logo](admin/echarge_cpu2.png)
+# ioBroker.echarge_cpu2
 
-[![NPM version](https://img.shields.io/npm/v/iobroker.echarger_cpu2.svg)](https://www.npmjs.com/package/iobroker.echarger_cpu2)
-[![Downloads](https://img.shields.io/npm/dm/iobroker.echarger_cpu2.svg)](https://www.npmjs.com/package/iobroker.echarger_cpu2)
-![Number of Installations](https://iobroker.live/badges/echarger_cpu2-installed.svg)
-![Current version in stable repository](https://iobroker.live/badges/echarger_cpu2-stable.svg)
+[![NPM version](https://img.shields.io/npm/v/iobroker.echarge_cpu2.svg)](https://www.npmjs.com/package/iobroker.echarge_cpu2)
+[![Downloads](https://img.shields.io/npm/dm/iobroker.echarge_cpu2.svg)](https://www.npmjs.com/package/iobroker.echarge_cpu2)
+![Number of Installations](https://iobroker.live/badges/echarge_cpu2-installed.svg)
+![Current version in stable repository](https://iobroker.live/badges/echarge_cpu2-stable.svg)
 
-[![NPM](https://nodei.co/npm/iobroker.echarger_cpu2.png?downloads=true)](https://nodei.co/npm/iobroker.echarger_cpu2/)
+[![NPM](https://nodei.co/npm/iobroker.echarge_cpu2.png?downloads=true)](https://nodei.co/npm/iobroker.echarge_cpu2/)
 
-**Tests:** ![Test and Release](https://github.com/LembkeM/ioBroker.echarger_cpu2/workflows/Test%20and%20Release/badge.svg)
+**Tests:** ![Test and Release](https://github.com/LembkeM/ioBroker.echarge_cpu2/workflows/Test%20and%20Release/badge.svg)
 
-## echarger_cpu2 adapter for ioBroker
+## echarge_cpu2 adapter for ioBroker
 
 Describe your project here
 

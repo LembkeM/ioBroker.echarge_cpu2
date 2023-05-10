@@ -18,11 +18,11 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 var utils = __toESM(require("@iobroker/adapter-core"));
-class EchargerCpu2 extends utils.Adapter {
+class EchargeCpu2 extends utils.Adapter {
   constructor(options = {}) {
     super({
       ...options,
-      name: "echarger_cpu2"
+      name: "echarge_cpu2"
     });
     this.on("ready", this.onReady.bind(this));
     this.on("stateChange", this.onStateChange.bind(this));
@@ -67,8 +67,8 @@ class EchargerCpu2 extends utils.Adapter {
   }
 }
 if (require.main !== module) {
-  module.exports = (options) => new EchargerCpu2(options);
+  module.exports = (options) => new EchargeCpu2(options);
 } else {
-  (() => new EchargerCpu2())();
+  (() => new EchargeCpu2())();
 }
 //# sourceMappingURL=main.js.map
