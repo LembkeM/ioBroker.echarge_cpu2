@@ -87,7 +87,9 @@
     "check": "tsc --noEmit && tsc --noEmit -p admin/tsconfig.json",
     "lint": "eslint --ext .ts,.tsx src/ admin/src/",
     "translate": "translate-adapter",
-    "release": "release-script"
+    "release": "release-script patch --yes",
+    "release-minor": "release-script minor --yes",
+    "release-major": "release-script major --yes"
   },
   "bugs": {
     "url": "https://github.com/LembkeM/ioBroker.echarge_cpu2/issues"
