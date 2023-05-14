@@ -8,6 +8,7 @@ import * as utils from "@iobroker/adapter-core";
 import { HttpClient } from "./types";
 import { ApiError } from "./types/ApiError";
 import { DeviceInformationResponse } from "./types/DeviceInformationResponse";
+import { DeviceInformation } from "./types/DeviceInformation";
 
 // Load your modules here, e.g.:
 // import * as fs from "fs";
@@ -44,12 +45,21 @@ class EchargeCpu2 extends utils.Adapter {
 		try {
 			const deviceInfoResponse = await eChargeClient.getDeviceInfos();
 
-			if ((deviceInfoResponse as DeviceInformationResponse) == null) {
+			if ((deviceInfoResponse as DeviceInformation) != null) {
 
-				const response = deviceInfoResponse as DeviceInformationResponse
-				this.log.debug("deviceInfoResponse: " + JSON.stringify(response.data.hardware_version));
+				const response = deviceInfoResponse as DeviceInformation;
+				this.log.debug("deviceInfoResponse: " + response.hardware_version);
 
 				await this.setStateAsync("info.connection", true, true);
+
+				await this.setStateAsync("deviceInfo.hardware_version", response.hardware_version, true);
+				await this.setStateAsync("deviceInfo.hostname", response.hostname, true);
+				await this.setStateAsync("deviceInfo.internal_id", response.internal_id, true);
+				await this.setStateAsync("deviceInfo.mac_address", response.mac_address, true);
+				await this.setStateAsync("deviceInfo.product", response.product, true);
+				await this.setStateAsync("deviceInfo.serial", response.serial, true);
+				await this.setStateAsync("deviceInfo.software_version", response.software_version, true);
+				await this.setStateAsync("deviceInfo.vcs_version", response.vcs_version, true);
 			}
 			else {
 				const response = deviceInfoResponse as ApiError
