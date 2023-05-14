@@ -5,6 +5,9 @@
 // The adapter-core module gives you access to the core ioBroker functions
 // you need to create an adapter
 import * as utils from "@iobroker/adapter-core";
+import { HttpClient } from "./types";
+import { ApiError } from "./types/ApiError";
+import { DeviceInformationResponse } from "./types/DeviceInformationResponse";
 
 // Load your modules here, e.g.:
 // import * as fs from "fs";
@@ -31,25 +34,46 @@ class EchargeCpu2 extends utils.Adapter {
 
 		// The adapters config (in the instance object everything under the attribute "native") is accessible via
 		// this.config:
-		this.log.info("config option1: " + this.config.option1);
-		this.log.info("config option2: " + this.config.option2);
+		// this.log.info("config option1: " + this.config.option1);
+		// this.log.info("config option2: " + this.config.option2);
 
-		/*
-		For every state in the system there has to be also an object of type state
-		Here a simple template for a boolean variable named "testVariable"
-		Because every adapter instance uses its own unique namespace variable names can't collide with other adapters variables
-		*/
-		// await this.setObjectNotExistsAsync("testVariable", {
-		// 	type: "state",
-		// 	common: {
-		// 		name: "testVariable",
-		// 		type: "boolean",
-		// 		role: "indicator",
-		// 		read: true,
-		// 		write: true,
-		// 	},
-		// 	native: {},
-		// });
+		const url = "https://172.31.1.95/api/device";
+
+		const eChargeClient = new HttpClient(url);
+
+		try {
+			const deviceInfoResponse = await eChargeClient.getDeviceInfos();
+
+			if ((deviceInfoResponse as DeviceInformationResponse) == null) {
+
+				const response = deviceInfoResponse as DeviceInformationResponse
+				this.log.debug("deviceInfoResponse: " + JSON.stringify(response.data.hardware_version));
+
+				await this.setStateAsync("info.connection", true, true);
+			}
+			else {
+				const response = deviceInfoResponse as ApiError
+
+				await this.setStateAsync("info.connection", false, true);
+
+				this.log.error(response.message);
+			}
+
+
+			// if (deviceInfoResponse.status == 200) {
+			// 	await this.setStateAsync("info.connection", true, true);
+
+			// 	this.log.debug("deviceInfoResponse: " + JSON.stringify(deviceInfoResponse.data));
+
+			// 	// deviceInfoResponse: {"product":"2310007","modelname":"Salia PLCC Slave","hardware_version":"1.0","software_version":"1.84.50","vcs_version":"V0R5e","hostname":"salia","mac_address":"00:01:87:13:bc:1e","serial":"101293342","uuid":"5491ad62-022a-4356-a32c-00018713bc1e","internal_id":"998539","ip_lo":"127.0.0.1","ip_br0:fallback":"169.254.12.53","ip_br0":"172.31.1.95"}
+			// }
+			// else {
+			// 	await this.setStateAsync("info.connection", false, true);
+			// }
+
+		} catch (error) {
+			// this.log.error(error);
+		}
 
 		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
 		// this.subscribeStates("testVariable");
