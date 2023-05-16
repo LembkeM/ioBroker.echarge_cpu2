@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/types/DeviceInformation.ts"],
+  "sourcesContent": ["\nexport interface DeviceInformation {\n\tproduct: number;\n\tmodelname: string;\n\thardware_version: string;\n\tsoftware_version: string;\n\tvcs_version: string;\n\thostname: string;\n\tmac_address: string;\n\tserial: string;\n\tuuid: string;\n\tinternal_id: string;\n\tip_lo: string;\n\tip_br0fallback: string;\n\tip_br0: string;\n}\n"],
+  "mappings": ";;;;;;;;;;;;;;AAAA;AAAA;",
+  "names": []
+}

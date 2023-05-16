@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/types.ts"],
+  "sourcesContent": ["import axios, { AxiosInstance } from \"axios\";\nimport https from \"https\";\nimport { ApiError } from \"./types/ApiError\";\nimport { DeviceInformation } from \"./types/DeviceInformation\";\n\nexport class HttpClient {\n\tprotected readonly instance: AxiosInstance;\n\n\tpublic constructor(baseURL: string) {\n\t\tthis.instance = axios.create({\n\t\t\tbaseURL,\n\t\t\ttimeout: 1000,\n\t\t\tresponseType: \"json\",\n\t\t\tresponseEncoding: \"utf8\",\n\t\t\thttpsAgent: new https.Agent({\n\t\t\t\trejectUnauthorized: false\n\t\t\t})\n\t\t});\n\t}\n\n\tgetDeviceInfos = async () : Promise<DeviceInformation | ApiError> => {\n\t\ttry {\n\t\t\tconst { data } = await this.instance.get<DeviceInformation>(\"/api/device\");\n\n\t\t\treturn data;\n\t\t} catch (error: any) {\n\t\t\treturn {\n\t\t\t\tmessage: error.message,\n\t\t\t\tstatus: error.response.status\n\t\t\t}\n\t\t}\n\t}\n}"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,mBAAqC;AACrC,mBAAkB;AAIX,MAAM,WAAW;AAAA,EAGhB,YAAY,SAAiB;AAYpC,0BAAiB,YAAoD;AACpE,UAAI;AACH,cAAM,EAAE,KAAK,IAAI,MAAM,KAAK,SAAS,IAAuB,aAAa;AAEzE,eAAO;AAAA,MACR,SAAS,OAAP;AACD,eAAO;AAAA,UACN,SAAS,MAAM;AAAA,UACf,QAAQ,MAAM,SAAS;AAAA,QACxB;AAAA,MACD;AAAA,IACD;AAtBC,SAAK,WAAW,aAAAA,QAAM,OAAO;AAAA,MAC5B;AAAA,MACA,SAAS;AAAA,MACT,cAAc;AAAA,MACd,kBAAkB;AAAA,MAClB,YAAY,IAAI,aAAAC,QAAM,MAAM;AAAA,QAC3B,oBAAoB;AAAA,MACrB,CAAC;AAAA,IACF,CAAC;AAAA,EACF;AAcD;",
+  "names": ["axios", "https"]
+}
