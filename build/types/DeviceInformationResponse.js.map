@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/types/DeviceInformationResponse.ts"],
-  "sourcesContent": ["import { DeviceInformation } from \"./DeviceInformation\";\n\n\nexport interface DeviceInformationResponse {\n    data: DeviceInformation;\n    status: number;\n}\n"],
-  "mappings": ";;;;;;;;;;;;;;AAAA;AAAA;",
-  "names": []
-}
