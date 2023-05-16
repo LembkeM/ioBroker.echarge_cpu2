@@ -43,7 +43,6 @@ It is recommended that you add your own tests into the mix.
 
 ### **WORK IN PROGRESS**
 
-### 0.0.2 (2023-05-10)
 * (MLembke) initial release
 
 ## License
