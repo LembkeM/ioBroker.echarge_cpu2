@@ -7,7 +7,6 @@
 import * as utils from "@iobroker/adapter-core";
 import { HttpClient } from "./types";
 import { ApiError } from "./types/ApiError";
-import { DeviceInformationResponse } from "./types/DeviceInformationResponse";
 import { DeviceInformation } from "./types/DeviceInformation";
 
 // Load your modules here, e.g.:
