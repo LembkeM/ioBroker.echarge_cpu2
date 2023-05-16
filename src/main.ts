@@ -38,9 +38,14 @@ class EchargeCpu2 extends utils.Adapter {
 		// this.log.info("config option1: " + this.config.option1);
 		// this.log.info("config option2: " + this.config.option2);
 
-		const url = "https://172.31.1.95/api/device";
+		if (!this.config.basicDeviceUrl) {
+			this.log.error(`Device Url is empty - please check instance configuration of ${this.namespace}`);
+			return;
+		}
 
-		const eChargeClient = new HttpClient(url);
+		this.log.debug(`Device Url is - ${this.config.basicDeviceUrl}`);
+
+ 		const eChargeClient = new HttpClient(this.config.basicDeviceUrl);
 
 		try {
 			const deviceInfoResponse = await eChargeClient.getDeviceInfos();

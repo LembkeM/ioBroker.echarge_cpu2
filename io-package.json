@@ -94,8 +94,12 @@
         ]
     },
     "native": {
-        "option1": true,
-        "option2": "42"
+        "basicDeviceUrl": "",
+        "serverPort": 443,
+        "userName": "Installer",
+        "userPassword": "",
+        "createRoomsAndFunctions": false,
+        "webInstance": ""
     },
     "objects": [],
     "instanceObjects": [

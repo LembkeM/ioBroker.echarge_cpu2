@@ -1,6 +1,5 @@
 import axios, { AxiosInstance } from "axios";
 import https from "https";
-import { DeviceInformationResponse } from "./types/DeviceInformationResponse";
 import { ApiError } from "./types/ApiError";
 import { DeviceInformation } from "./types/DeviceInformation";
 
@@ -21,7 +20,7 @@ export class HttpClient {
 
 	getDeviceInfos = async () : Promise<DeviceInformation | ApiError> => {
 		try {
-			const { data } = await this.instance.get<DeviceInformation>("/");
+			const { data } = await this.instance.get<DeviceInformation>("/api/device");
 
 			return data;
 		} catch (error: any) {
