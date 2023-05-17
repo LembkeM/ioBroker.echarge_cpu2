@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "echarge_cpu2",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "news": {
+      "0.0.4": {
+        "en": "release workflow to npm finished",
+        "de": "release-workflow zu npm fertig",
+        "ru": "отпустите рабочий процесс до npm закончил",
+        "pt": "fluxo de trabalho de lançamento para npm terminado",
+        "nl": "laat het werk naar npm klaar",
+        "fr": "le flux de travail pour npm terminé",
+        "it": "uscita flusso di lavoro a npm finito",
+        "es": "flujo de trabajo de liberación a npm terminado",
+        "pl": "produkcja",
+        "uk": "випуск робочого процесу до npm завершено",
+        "zh-cn": "完成工作流程"
+      },
       "0.0.3": {
         "en": "initial release",
         "de": "erstausstrahlung",
