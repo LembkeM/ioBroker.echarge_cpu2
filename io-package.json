@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "echarge_cpu2",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "news": {
+      "0.0.5": {
+        "en": "README Text changed. Logo added.",
+        "de": "BEGRÜNDUNG Text geändert. Logo hinzugefügt.",
+        "ru": "Читать Текст изменен. Логотип добавлен.",
+        "pt": "REALIZAÇÃO O texto mudou. Logo adicionado.",
+        "nl": "Vertaling: Sms veranderd. Logo toegevoegd.",
+        "fr": "README Le texte a changé. Logo ajouté.",
+        "it": "READEM Il testo è cambiato. Logo aggiunto.",
+        "es": "README El texto cambió. Logo añadido.",
+        "pl": "README Tekst zmienił. Logo dodał.",
+        "uk": "ЗАМОВИТИ Змінено текст. Додано логотип.",
+        "zh-cn": "建 议 案文修改。 增加。."
+      },
       "0.0.4": {
         "en": "release workflow to npm finished",
         "de": "release-workflow zu npm fertig",

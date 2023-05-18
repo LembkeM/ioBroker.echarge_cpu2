@@ -34,7 +34,7 @@ Additional to the adapter installation you have to configure the adapter and add
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 0.0.5 (2023-05-18)
 
 * (MLembke) README Text changed. Logo added.
 
