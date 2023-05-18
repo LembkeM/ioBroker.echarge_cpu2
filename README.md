@@ -1,4 +1,4 @@
-![Logo](admin/echarge_cpu2.png | width=100)
+![Logo](admin/echarge_cpu2.png)
 # ioBroker.echarge_cpu2
 
 [![NPM version](https://img.shields.io/npm/v/iobroker.echarge_cpu2.svg)](https://www.npmjs.com/package/iobroker.echarge_cpu2)
