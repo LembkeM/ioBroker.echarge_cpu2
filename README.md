@@ -1,4 +1,4 @@
-![Logo](admin/echarge_cpu2.png)
+![Logo](admin/echarge_cpu2.png | width=100)
 # ioBroker.echarge_cpu2
 
 [![NPM version](https://img.shields.io/npm/v/iobroker.echarge_cpu2.svg)](https://www.npmjs.com/package/iobroker.echarge_cpu2)
@@ -12,27 +12,21 @@
 
 ## echarge_cpu2 adapter for ioBroker
 
-Describe your project here
+This adapter integrates the eCHARGE Hardy Barth eCHARGE cPµ2 - PRO Wallbox.
+For more details please visit https://www.echarge.de/
 
-## Developer manual
-This section is intended for the developer. It can be deleted later.
+## Installation
+You can install the adapter via the ioBroker web interface.
 
-### DISCLAIMER
+    1. Open your ioBroker web interface in a browser (eg: 192.168.1.30:8081)
+    2. Click on Tab "Adapters"
+    3. Type "echarge_cpu2" in the filter
+    4. Click on the "+" symbol of the Tesla Wall Connector Gen 3 adapter
 
-Please make sure that you consider copyrights and trademarks when you use names or logos of a company and add a disclaimer to your README.
-You can check other adapters for examples or ask in the developer community. Using a name or logo of a company without permission may cause legal problems for you.
+## Configuration
+Additional to the adapter installation you have to configure the adapter and add the Url of your Wallbox.
 
-
-### Writing tests
-When done right, testing code is invaluable, because it gives you the 
-confidence to change your code while knowing exactly if and when 
-something breaks. A good read on the topic of test-driven development 
-is https://hackernoon.com/introduction-to-test-driven-development-tdd-61a13bc92d92. 
-Although writing tests before the code might seem strange at first, but it has very 
-clear upsides.
-
-The template provides you with basic tests for the adapter startup and package files.
-It is recommended that you add your own tests into the mix.
+## Usage
 
 
 ## Changelog
