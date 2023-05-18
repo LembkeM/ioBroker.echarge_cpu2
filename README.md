@@ -34,7 +34,12 @@ Additional to the adapter installation you have to configure the adapter and add
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (MLembke) README Text changed. Logo added.
+
 ### 0.0.4 (2023-05-17)
+
 * (MLembke) release workflow to npm finished
 
 ### 0.0.3 (2023-05-16)
