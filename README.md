@@ -34,6 +34,12 @@ Additional to the adapter installation you have to configure the adapter and add
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* (MLembke) Implemented a scheduled based checking the online state.
+* (MLembke) Updating the deviceinformation if the onlinestate changes to true.
+* (MLembke) Implemented a scheduled based checking of the CP state if the onlinestate is true.
+
 ### 0.0.5 (2023-05-18)
 
 * (MLembke) README Text changed. Logo added.

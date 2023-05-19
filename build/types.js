@@ -42,6 +42,17 @@ class HttpClient {
         };
       }
     };
+    this.getDeviceCPInformation = async () => {
+      try {
+        const { data } = await this.instance.get("/api/secc/port0/cp");
+        return data;
+      } catch (error) {
+        return {
+          message: error.message,
+          status: error.response.status
+        };
+      }
+    };
     this.instance = import_axios.default.create({
       baseURL,
       timeout: 1e3,

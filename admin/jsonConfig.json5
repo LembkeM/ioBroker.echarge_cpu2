@@ -17,14 +17,6 @@
                     "label":"Device url",
                     "newLine": true
                 },
-                "checkbox1": {
-                    "type": "checkbox",
-                    "label": "Simple Checkbox",
-                    "tooltip":"click to enable or disable checkbox, check tooltiüp by hovering over checkbox",
-                    "help":"Helptext possible",
-                    "default":false,
-                    "newLine": true
-                },
             }
         }
     }

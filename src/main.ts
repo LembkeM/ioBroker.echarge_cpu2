@@ -8,11 +8,23 @@ import * as utils from "@iobroker/adapter-core";
 import { HttpClient } from "./types";
 import { ApiError } from "./types/ApiError";
 import { DeviceInformation } from "./types/DeviceInformation";
+import { ping } from "@network-utils/tcp-ping";
+import { DeviceCPInformation } from "./types/DeviceCPInformation";
 
 // Load your modules here, e.g.:
 // import * as fs from "fs";
 
+
+
 class EchargeCpu2 extends utils.Adapter {
+
+	isOnlineCheckTimeout: any;
+	isCPStateCheckTimeout: any;
+
+	deviceUrl!: URL;
+	devicePort!: number;
+
+	eChargeClient!: HttpClient;
 
 	public constructor(options: Partial<utils.AdapterOptions> = {}) {
 		super({
@@ -32,47 +44,52 @@ class EchargeCpu2 extends utils.Adapter {
 	private async onReady(): Promise<void> {
 		// Initialize your adapter here
 
-		// The adapters config (in the instance object everything under the attribute "native") is accessible via
-		// this.config:
-		// this.log.info("config option1: " + this.config.option1);
-		// this.log.info("config option2: " + this.config.option2);
-
 		if (!this.config.basicDeviceUrl) {
 			this.log.error(`Device Url is empty - please check instance configuration of ${this.namespace}`);
 			return;
 		}
 
-		this.log.debug(`Device Url is - ${this.config.basicDeviceUrl}`);
-
- 		const eChargeClient = new HttpClient(this.config.basicDeviceUrl);
-
 		try {
-			const deviceInfoResponse = await eChargeClient.getDeviceInfos();
+			this.deviceUrl = new URL(this.config.basicDeviceUrl);
+			this.log.debug(`Device Url is - ${this.config.basicDeviceUrl}`);
 
-			if ((deviceInfoResponse as DeviceInformation) != null) {
-
-				const response = deviceInfoResponse as DeviceInformation;
-				this.log.debug("deviceInfoResponse: " + response.hardware_version);
-
-				await this.setStateAsync("info.connection", true, true);
-
-				await this.setStateAsync("deviceInfo.hardware_version", response.hardware_version, true);
-				await this.setStateAsync("deviceInfo.hostname", response.hostname, true);
-				await this.setStateAsync("deviceInfo.internal_id", response.internal_id, true);
-				await this.setStateAsync("deviceInfo.mac_address", response.mac_address, true);
-				await this.setStateAsync("deviceInfo.product", response.product, true);
-				await this.setStateAsync("deviceInfo.serial", response.serial, true);
-				await this.setStateAsync("deviceInfo.software_version", response.software_version, true);
-				await this.setStateAsync("deviceInfo.vcs_version", response.vcs_version, true);
+			if (this.deviceUrl.port == "") {
+				this.devicePort = 443;
 			}
 			else {
-				const response = deviceInfoResponse as ApiError
-
-				await this.setStateAsync("info.connection", false, true);
-
-				this.log.error(response.message);
+				this.devicePort = parseInt(this.deviceUrl.port);
 			}
 
+			this.eChargeClient = new HttpClient(this.config.basicDeviceUrl);
+
+			await this.setStateAsync("info.connection", false);
+
+			// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
+			// this.subscribeStates("testVariable");
+			// You can also add a subscription for multiple states. The following line watches all states starting with "lights."
+			// this.subscribeStates("lights.*");
+			// Or, if you really must, you can also watch all states. Don't do this if you don't need to. Otherwise this will cause a lot of unnecessary load on the system:
+			// this.subscribeStates("*");
+
+			this.subscribeStates("info.connection");
+			this.subscribeStates("deviceSecc.scc_cp_state");
+
+			/*
+			setState examples
+			you will notice that each setState will cause the stateChange event to fire (because of above subscribeStates cmd)
+		*/
+			// the variable testVariable is set to true as command (ack=false)
+			// await this.setStateAsync("testVariable", true);
+
+			// same thing, but the value is flagged "ack"
+			// ack should be always set to true if the value is received from or acknowledged from the target system
+			// await this.setStateAsync("testVariable", { val: true, ack: true });
+
+			// same thing, but the state is deleted after 30s (getState will return null afterwards)
+			// await this.setStateAsync("testVariable", { val: true, ack: true, expire: 30 });
+
+			// Start online check
+			this.onlineCheck();
 
 			// if (deviceInfoResponse.status == 200) {
 			// 	await this.setStateAsync("info.connection", true, true);
@@ -85,37 +102,16 @@ class EchargeCpu2 extends utils.Adapter {
 			// 	await this.setStateAsync("info.connection", false, true);
 			// }
 
-		} catch (error) {
-			// this.log.error(error);
+		} catch (error: any) {
+			this.log.error(`[onReady] error: ${error.message}, stack: ${error.stack}`);
 		}
 
-		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
-		// this.subscribeStates("testVariable");
-		// You can also add a subscription for multiple states. The following line watches all states starting with "lights."
-		// this.subscribeStates("lights.*");
-		// Or, if you really must, you can also watch all states. Don't do this if you don't need to. Otherwise this will cause a lot of unnecessary load on the system:
-		// this.subscribeStates("*");
-
-		/*
-			setState examples
-			you will notice that each setState will cause the stateChange event to fire (because of above subscribeStates cmd)
-		*/
-		// the variable testVariable is set to true as command (ack=false)
-		// await this.setStateAsync("testVariable", true);
-
-		// same thing, but the value is flagged "ack"
-		// ack should be always set to true if the value is received from or acknowledged from the target system
-		// await this.setStateAsync("testVariable", { val: true, ack: true });
-
-		// same thing, but the state is deleted after 30s (getState will return null afterwards)
-		// await this.setStateAsync("testVariable", { val: true, ack: true, expire: 30 });
-
 		// examples for the checkPassword/checkGroup functions
-		let result = await this.checkPasswordAsync("admin", "iobroker");
-		this.log.info("check user admin pw iobroker: " + result);
+		// let result = await this.checkPasswordAsync("admin", "iobroker");
+		// this.log.info("check user admin pw iobroker: " + result);
 
-		result = await this.checkGroupAsync("admin", "admin");
-		this.log.info("check group user admin group admin: " + result);
+		// result = await this.checkGroupAsync("admin", "admin");
+		// this.log.info("check group user admin group admin: " + result);
 	}
 
 	/**
@@ -153,10 +149,27 @@ class EchargeCpu2 extends utils.Adapter {
 	/**
 	 * Is called if a subscribed state changes
 	 */
-	private onStateChange(id: string, state: ioBroker.State | null | undefined): void {
-		if (state) {
+	private async onStateChange(id: string, state: ioBroker.State | null | undefined): Promise<void> {
+		if (state && !state.ack) {
+			const stateId = id.replace(this.namespace + ".", "");
+
 			// The state was changed
-			this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
+			this.log.info(`state ${stateId} changed: ${state.val} (ack = ${state.ack})`);
+
+			if (stateId === "info.connection") {
+				this.log.debug(`[onStateChange] ${stateId} state changed - get device infos again`);
+
+				if (state.val) {
+					await this.getDeviceInformation();
+
+					await this.deviceCPInformationCheck();
+				}
+			}
+			else if (stateId === "deviceSecc.scc_cp_state") {
+				this.log.debug(`[onStateChange] ${stateId} state changed - get device infos again`);
+			}
+
+			await this.setStateAsync(stateId, state.val, true);
 		} else {
 			// The state was deleted
 			this.log.info(`state ${id} deleted`);
@@ -180,6 +193,94 @@ class EchargeCpu2 extends utils.Adapter {
 	// 	}
 	// }
 
+	private async onlineCheck(): Promise<void> {
+		if (this.isOnlineCheckTimeout) {
+			this.clearTimeout(this.isOnlineCheckTimeout);
+			this.isOnlineCheckTimeout = null;
+		}
+
+		try {
+			const hostReachable = await ping({address:this.deviceUrl.hostname, port: this.devicePort, timeout: 500} );
+
+			if (hostReachable.errors.length == 0) {
+				await this.setStateAsync("info.connection", true);
+			}
+			else {
+				await this.setStateAsync("info.connection", false);
+			}
+
+		} catch (error: any) {
+			this.log.error(`[onReady] error: ${error.message}, stack: ${error.stack}`);
+		}
+
+		this.isOnlineCheckTimeout = this.setTimeout(() => {
+			this.isOnlineCheckTimeout = null;
+			this.onlineCheck();
+		}, 60 * 1000); // Restart online check in 60 seconds
+	}
+
+	private async getDeviceInformation(): Promise<void> {
+		try {
+			const deviceInfoResponse = await this.eChargeClient.getDeviceInfos();
+
+			if ((deviceInfoResponse as DeviceInformation) != null) {
+
+				const response = deviceInfoResponse as DeviceInformation;
+				this.log.debug("deviceInfoResponse: " + response.hardware_version);
+
+				await this.setStateAsync("deviceInfo.hardware_version", response.hardware_version, true);
+				await this.setStateAsync("deviceInfo.hostname", response.hostname, true);
+				await this.setStateAsync("deviceInfo.internal_id", response.internal_id, true);
+				await this.setStateAsync("deviceInfo.mac_address", response.mac_address, true);
+				await this.setStateAsync("deviceInfo.product", response.product, true);
+				await this.setStateAsync("deviceInfo.serial", response.serial, true);
+				await this.setStateAsync("deviceInfo.software_version", response.software_version, true);
+				await this.setStateAsync("deviceInfo.vcs_version", response.vcs_version, true);
+			}
+			else {
+				const response = deviceInfoResponse as ApiError
+
+				this.log.error(response.message);
+			}
+
+		} catch (error: any) {
+			this.log.error(`[getDeviceInformation] error: ${error.message}, stack: ${error.stack}`);
+		}
+	}
+
+	private async deviceCPInformationCheck(): Promise<void> {
+		if (this.isCPStateCheckTimeout) {
+			this.clearTimeout(this.isCPStateCheckTimeout);
+			this.isCPStateCheckTimeout = null;
+		}
+
+		try {
+			const deviceInfoResponse = await this.eChargeClient.getDeviceCPInformation();
+
+			if ((deviceInfoResponse as DeviceCPInformation) != null) {
+
+				const response = deviceInfoResponse as DeviceCPInformation;
+				this.log.debug("deviceInfoResponse: " + response.state);
+
+				await this.setStateAsync("deviceSecc.scc_cp_state", response.state);
+			}
+			else {
+				const response = deviceInfoResponse as ApiError
+
+				// await this.setStateAsync("deviceInfo.scc.cp.state", false, true);
+
+				this.log.error(response.message);
+			}
+
+		} catch (error: any) {
+			this.log.error(`[deviceCPInformationCheck] error: ${error.message}, stack: ${error.stack}`);
+		}
+
+		this.isCPStateCheckTimeout = this.setTimeout(() => {
+			this.isCPStateCheckTimeout = null;
+			this.deviceCPInformationCheck();
+		}, 60 * 1000); // Restart online check in 60 seconds
+	}
 }
 
 if (require.main !== module) {

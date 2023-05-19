@@ -19,6 +19,7 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 ));
 var utils = __toESM(require("@iobroker/adapter-core"));
 var import_types = require("./types");
+var import_tcp_ping = require("@network-utils/tcp-ping");
 class EchargeCpu2 extends utils.Adapter {
   constructor(options = {}) {
     super({
@@ -34,14 +35,74 @@ class EchargeCpu2 extends utils.Adapter {
       this.log.error(`Device Url is empty - please check instance configuration of ${this.namespace}`);
       return;
     }
-    this.log.debug(`Device Url is - ${this.config.basicDeviceUrl}`);
-    const eChargeClient = new import_types.HttpClient(this.config.basicDeviceUrl);
     try {
-      const deviceInfoResponse = await eChargeClient.getDeviceInfos();
+      this.deviceUrl = new URL(this.config.basicDeviceUrl);
+      this.log.debug(`Device Url is - ${this.config.basicDeviceUrl}`);
+      if (this.deviceUrl.port == "") {
+        this.devicePort = 443;
+      } else {
+        this.devicePort = parseInt(this.deviceUrl.port);
+      }
+      this.eChargeClient = new import_types.HttpClient(this.config.basicDeviceUrl);
+      await this.setStateAsync("info.connection", false);
+      this.subscribeStates("info.connection");
+      this.subscribeStates("deviceSecc.scc_cp_state");
+      this.onlineCheck();
+    } catch (error) {
+      this.log.error(`[onReady] error: ${error.message}, stack: ${error.stack}`);
+    }
+  }
+  onUnload(callback) {
+    try {
+      callback();
+    } catch (e) {
+      callback();
+    }
+  }
+  async onStateChange(id, state) {
+    if (state && !state.ack) {
+      const stateId = id.replace(this.namespace + ".", "");
+      this.log.info(`state ${stateId} changed: ${state.val} (ack = ${state.ack})`);
+      if (stateId === "info.connection") {
+        this.log.debug(`[onStateChange] ${stateId} state changed - get device infos again`);
+        if (state.val) {
+          await this.getDeviceInformation();
+          await this.deviceCPInformationCheck();
+        }
+      } else if (stateId === "deviceSecc.scc_cp_state") {
+        this.log.debug(`[onStateChange] ${stateId} state changed - get device infos again`);
+      }
+      await this.setStateAsync(stateId, state.val, true);
+    } else {
+      this.log.info(`state ${id} deleted`);
+    }
+  }
+  async onlineCheck() {
+    if (this.isOnlineCheckTimeout) {
+      this.clearTimeout(this.isOnlineCheckTimeout);
+      this.isOnlineCheckTimeout = null;
+    }
+    try {
+      const hostReachable = await (0, import_tcp_ping.ping)({ address: this.deviceUrl.hostname, port: this.devicePort, timeout: 500 });
+      if (hostReachable.errors.length == 0) {
+        await this.setStateAsync("info.connection", true);
+      } else {
+        await this.setStateAsync("info.connection", false);
+      }
+    } catch (error) {
+      this.log.error(`[onReady] error: ${error.message}, stack: ${error.stack}`);
+    }
+    this.isOnlineCheckTimeout = this.setTimeout(() => {
+      this.isOnlineCheckTimeout = null;
+      this.onlineCheck();
+    }, 60 * 1e3);
+  }
+  async getDeviceInformation() {
+    try {
+      const deviceInfoResponse = await this.eChargeClient.getDeviceInfos();
       if (deviceInfoResponse != null) {
         const response = deviceInfoResponse;
         this.log.debug("deviceInfoResponse: " + response.hardware_version);
-        await this.setStateAsync("info.connection", true, true);
         await this.setStateAsync("deviceInfo.hardware_version", response.hardware_version, true);
         await this.setStateAsync("deviceInfo.hostname", response.hostname, true);
         await this.setStateAsync("deviceInfo.internal_id", response.internal_id, true);
@@ -52,29 +113,34 @@ class EchargeCpu2 extends utils.Adapter {
         await this.setStateAsync("deviceInfo.vcs_version", response.vcs_version, true);
       } else {
         const response = deviceInfoResponse;
-        await this.setStateAsync("info.connection", false, true);
         this.log.error(response.message);
       }
     } catch (error) {
+      this.log.error(`[getDeviceInformation] error: ${error.message}, stack: ${error.stack}`);
     }
-    let result = await this.checkPasswordAsync("admin", "iobroker");
-    this.log.info("check user admin pw iobroker: " + result);
-    result = await this.checkGroupAsync("admin", "admin");
-    this.log.info("check group user admin group admin: " + result);
   }
-  onUnload(callback) {
+  async deviceCPInformationCheck() {
+    if (this.isCPStateCheckTimeout) {
+      this.clearTimeout(this.isCPStateCheckTimeout);
+      this.isCPStateCheckTimeout = null;
+    }
     try {
-      callback();
-    } catch (e) {
-      callback();
+      const deviceInfoResponse = await this.eChargeClient.getDeviceCPInformation();
+      if (deviceInfoResponse != null) {
+        const response = deviceInfoResponse;
+        this.log.debug("deviceInfoResponse: " + response.state);
+        await this.setStateAsync("deviceSecc.scc_cp_state", response.state);
+      } else {
+        const response = deviceInfoResponse;
+        this.log.error(response.message);
+      }
+    } catch (error) {
+      this.log.error(`[deviceCPInformationCheck] error: ${error.message}, stack: ${error.stack}`);
     }
-  }
-  onStateChange(id, state) {
-    if (state) {
-      this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
-    } else {
-      this.log.info(`state ${id} deleted`);
-    }
+    this.isCPStateCheckTimeout = this.setTimeout(() => {
+      this.isCPStateCheckTimeout = null;
+      this.deviceCPInformationCheck();
+    }, 60 * 1e3);
   }
 }
 if (require.main !== module) {
