@@ -231,7 +231,7 @@
             "_id": "deviceInfo.hardware_version",
             "type": "state",
             "common": {
-                "role": "text",
+                "role": "info.hardware",
                 "name": "Device Hardware version",
                 "type": "string",
                 "read": true,
@@ -256,7 +256,7 @@
             "_id": "deviceInfo.software_version",
             "type": "state",
             "common": {
-                "role": "text",
+                "role": "info.firmware",
                 "name": "Device Softwareversion",
                 "type": "string",
                 "read": true,
@@ -306,7 +306,7 @@
             "_id": "deviceInfo.hostname",
             "type": "state",
             "common": {
-                "role": "text",
+                "role": "info.name",
                 "name": "Device Hostname",
                 "type": "string",
                 "read": true,
@@ -331,7 +331,7 @@
             "_id": "deviceInfo.mac_address",
             "type": "state",
             "common": {
-                "role": "text",
+                "role": "info.mac",
                 "name": "Device MAC Address",
                 "type": "string",
                 "read": true,
@@ -356,7 +356,7 @@
             "_id": "deviceInfo.serial",
             "type": "state",
             "common": {
-                "role": "text",
+                "role": "info.serial",
                 "name": "Device Serialnumber",
                 "type": "string",
                 "read": true,
