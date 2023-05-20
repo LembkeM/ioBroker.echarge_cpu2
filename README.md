@@ -15,6 +15,13 @@
 This adapter integrates the eCHARGE Hardy Barth eCHARGE cPµ2 - PRO Wallbox.
 For more details please visit https://www.echarge.de/
 
+## Supported devices
+
+| Shelly Device                        | Type      | Tested firmware version  |
+| ------------------------------------ | --------- | ------------------------ |
+| cPμ2                                 | 1T11      | 1.84.50                  |
+| cPμ2 Pro                             | 1T11      | 1.84.50                  |
+
 ## Installation
 You can install the adapter via the ioBroker web interface.
 
