@@ -4,7 +4,7 @@ import { ApiError } from "./types/ApiError";
 import { DeviceInformation } from "./types/DeviceInformation";
 import { DeviceCPInformation } from "./types/DeviceCPInformation";
 
-export class HttpClient {
+export class SaliaHttpClient {
 	protected readonly instance: AxiosInstance;
 
 	public constructor(baseURL: string) {

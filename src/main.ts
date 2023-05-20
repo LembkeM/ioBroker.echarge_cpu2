@@ -5,7 +5,7 @@
 // The adapter-core module gives you access to the core ioBroker functions
 // you need to create an adapter
 import * as utils from "@iobroker/adapter-core";
-import { HttpClient } from "./types";
+import { SaliaHttpClient } from "./salia-helper";
 import { ApiError } from "./types/ApiError";
 import { DeviceInformation } from "./types/DeviceInformation";
 import { ping } from "@network-utils/tcp-ping";
@@ -24,7 +24,7 @@ class EchargeCpu2 extends utils.Adapter {
 	deviceUrl!: URL;
 	devicePort!: number;
 
-	eChargeClient!: HttpClient;
+	eChargeClient!: SaliaHttpClient;
 
 	public constructor(options: Partial<utils.AdapterOptions> = {}) {
 		super({
