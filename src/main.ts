@@ -60,7 +60,7 @@ class EchargeCpu2 extends utils.Adapter {
 				this.devicePort = parseInt(this.deviceUrl.port);
 			}
 
-			this.eChargeClient = new HttpClient(this.config.basicDeviceUrl);
+			this.eChargeClient = new SaliaHttpClient(this.config.basicDeviceUrl);
 
 			await this.setStateAsync("info.connection", false);
 

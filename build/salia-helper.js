@@ -22,14 +22,14 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var types_exports = {};
-__export(types_exports, {
-  HttpClient: () => HttpClient
+var salia_helper_exports = {};
+__export(salia_helper_exports, {
+  SaliaHttpClient: () => SaliaHttpClient
 });
-module.exports = __toCommonJS(types_exports);
+module.exports = __toCommonJS(salia_helper_exports);
 var import_axios = __toESM(require("axios"));
 var import_https = __toESM(require("https"));
-class HttpClient {
+class SaliaHttpClient {
   constructor(baseURL) {
     this.getDeviceInfos = async () => {
       try {
@@ -66,6 +66,6 @@ class HttpClient {
 }
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  HttpClient
+  SaliaHttpClient
 });
-//# sourceMappingURL=types.js.map
+//# sourceMappingURL=salia-helper.js.map
