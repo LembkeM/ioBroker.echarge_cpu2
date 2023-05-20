@@ -28,7 +28,7 @@ You can install the adapter via the ioBroker web interface.
     1. Open your ioBroker web interface in a browser (eg: 192.168.1.30:8081)
     2. Click on Tab "Adapters"
     3. Type "echarge_cpu2" in the filter
-    4. Click on the "+" symbol of the Tesla Wall Connector Gen 3 adapter
+    4. Click on the "+" symbol of the eCharge cPu2 adapter
 
 ## Configuration
 Additional to the adapter installation you have to configure the adapter and add the Url of your Wallbox.
@@ -46,6 +46,7 @@ Additional to the adapter installation you have to configure the adapter and add
 * (MLembke) Implemented a scheduled based checking the online state.
 * (MLembke) Updating the deviceinformation if the onlinestate changes to true.
 * (MLembke) Implemented a scheduled based checking of the CP state if the onlinestate is true.
+* (MLembke) Corrections done to become an ioBroker.repository member.
 
 ### 0.0.5 (2023-05-18)
 
