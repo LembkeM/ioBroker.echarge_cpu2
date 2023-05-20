@@ -133,12 +133,7 @@
         ]
     },
     "native": {
-        "basicDeviceUrl": "",
-        "serverPort": 443,
-        "userName": "Installer",
-        "userPassword": "",
-        "createRoomsAndFunctions": false,
-        "webInstance": ""
+        "basicDeviceUrl": ""
     },
     "objects": [],
     "instanceObjects": [
