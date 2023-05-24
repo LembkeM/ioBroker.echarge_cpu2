@@ -1,4 +1,5 @@
 ![Logo](admin/echarge_cpu2.png)
+
 # ioBroker.echarge_cpu2
 
 [![NPM version](https://img.shields.io/npm/v/iobroker.echarge_cpu2.svg)](https://www.npmjs.com/package/iobroker.echarge_cpu2)
@@ -17,12 +18,13 @@ For more details please visit https://www.echarge.de/
 
 ## Supported devices
 
-| Shelly Device                        | Type      | Tested firmware version  |
-| ------------------------------------ | --------- | ------------------------ |
-| cPμ2                                 | 1T11      | 1.84.50                  |
-| cPμ2 Pro                             | 1T11      | 1.84.50                  |
+| Shelly Device | Type | Tested firmware version |
+| ------------- | ---- | ----------------------- |
+| cPμ2          | 1T11 | 1.84.50                 |
+| cPμ2 Pro      | 1T11 | 1.84.50                 |
 
 ## Installation
+
 You can install the adapter via the ioBroker web interface.
 
     1. Open your ioBroker web interface in a browser (eg: 192.168.1.30:8081)
@@ -31,36 +33,43 @@ You can install the adapter via the ioBroker web interface.
     4. Click on the "+" symbol of the eCharge cPu2 adapter
 
 ## Configuration
+
 Additional to the adapter installation you have to configure the adapter and add the Url of your Wallbox.
 
 ## Usage
 
-
 ## Changelog
+
 <!--
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+
+-   (MLembke) unused react in Admin removed
+
 ### 0.0.6 (2023-05-24)
 
-* (MLembke) Implemented a scheduled based checking the online state.
-* (MLembke) Updating the deviceinformation if the onlinestate changes to true.
-* (MLembke) Implemented a scheduled based checking of the CP state if the onlinestate is true.
-* (MLembke) Corrections done to become an ioBroker.repository member.
+-   (MLembke) Implemented a scheduled based checking the online state.
+-   (MLembke) Updating the deviceinformation if the onlinestate changes to true.
+-   (MLembke) Implemented a scheduled based checking of the CP state if the onlinestate is true.
+-   (MLembke) Corrections done to become an ioBroker.repository member.
 
 ### 0.0.5 (2023-05-18)
 
-* (MLembke) README Text changed. Logo added.
+-   (MLembke) README Text changed. Logo added.
 
 ### 0.0.4 (2023-05-17)
 
-* (MLembke) release workflow to npm finished
+-   (MLembke) release workflow to npm finished
 
 ### 0.0.3 (2023-05-16)
 
-* (MLembke) initial release
+-   (MLembke) initial release
 
 ## License
+
 MIT License
 
 Copyright (c) 2023 MLembke <m.lembke@lembke-it-service.de>
