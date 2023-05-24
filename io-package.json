@@ -117,9 +117,6 @@
         "compact": true,
         "connectionType": "local",
         "dataSource": "push",
-        "adminUI": {
-            "config": "json"
-        },
         "eraseOnUpload": true,
         "dependencies": [
             {

@@ -18,6 +18,7 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 var utils = __toESM(require("@iobroker/adapter-core"));
+var import_salia_helper = require("./salia-helper");
 var import_tcp_ping = require("@network-utils/tcp-ping");
 class EchargeCpu2 extends utils.Adapter {
   constructor(options = {}) {
@@ -42,7 +43,7 @@ class EchargeCpu2 extends utils.Adapter {
       } else {
         this.devicePort = parseInt(this.deviceUrl.port);
       }
-      this.eChargeClient = new HttpClient(this.config.basicDeviceUrl);
+      this.eChargeClient = new import_salia_helper.SaliaHttpClient(this.config.basicDeviceUrl);
       await this.setStateAsync("info.connection", false);
       this.subscribeStates("info.connection");
       this.subscribeStates("deviceSecc.scc_cp_state");
