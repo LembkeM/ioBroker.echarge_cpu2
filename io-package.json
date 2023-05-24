@@ -1,464 +1,464 @@
 {
-  "common": {
-    "name": "echarge_cpu2",
-    "version": "0.0.6",
-    "news": {
-      "0.0.6": {
-        "en": "Implemented a scheduled based checking the online state.\nUpdating the deviceinformation if the onlinestate changes to true.\nImplemented a scheduled based checking of the CP state if the onlinestate is true.\nCorrections done to become an ioBroker.repository member.",
-        "de": "Ergänzte eine planbasierte Überprüfung des Online-Zustands.\nAktualisierung der Geräteinformationen, wenn sich der Online-Zustand ändert.\nErgänzte eine planbasierte Überprüfung des CP-Zustands, wenn der Online-Zustand wahr ist.\nKorrekturen, um ein ioBroker. Repository-Mitglied.",
-        "ru": "Реализована плановая проверка состояния онлайн.\nОбновление девайсинформации, если онлайн-государство меняется в реальность.\nРеализована плановая проверка состояния CP, если онлайн-государство верно.\nИсправления, сделанные, чтобы стать ioBroker. член репозитория.",
-        "pt": "Implementou uma verificação baseada no estado on-line.\nAtualizando a informação do dispositivo se o estado on-line mudar para true.\nImplementou uma verificação com base programada do estado do CP se o estado on-line for verdadeiro.\nCorreções feitas para se tornar um ioBroker. membro do repositório.",
-        "nl": "Implementeerde een geplande basis om de online staat te controleren.\nDe apparaatinformatie aanpassen als de onlinestate verandert.\nImplementeerde een geplande basis controle over de CP staat als de onlinestaten waar zijn.\nCorrecties gedaan om een ioBroker te worden. Verplaatsingslid.",
-        "fr": "Mise en œuvre d'un contrôle régulier de l'état en ligne.\nMettre à jour les informations de l'appareil si l'état en ligne change à vrai.\nLa mise en œuvre d'un contrôle régulier de l'état CP si l'état en ligne est vrai.\nCorrections faites pour devenir un ioBroker. membre du dépôt.",
-        "it": "Ho implementato una base programmata che controlla lo stato online.\nAggiornare l'informazione del dispositivo se lo stato online cambia a vero.\nImplementato un controllo basato programmato dello stato CP se lo stato online è vero.\nCorrezioni fatte per diventare un ioBroker. membro del repository.",
-        "es": "Se implementó una comprobación basada en el estado en línea.\nActualizar la información del dispositivo si el estado en línea cambia a la verdad.\nSe implementó una comprobación basada en el estado CP si el estado en línea es cierto.\nCorrección hecha para convertirse en un ioBroker. miembro del repositorio.",
-        "pl": "Umożliwiło to zaplanowane sprawdzenie stanu internetowego.\nUlepszając dezinformację urządzenia, jeśli stan online zmienia się w prawdziwość.\nUmożliwiło to zaplanowane sprawdzenie stanu CP, jeżeli stan online jest prawdziwy.\nWykłaniane zostały jako ioBroker. Członek repozytorium.",
-        "uk": "Впровадження запланованої перевірки онлайн стану.\nОновлення інформації про пристрій, якщо зміни онлайн-держави до true.\nВпровадження запланованої перевірки стану CP, якщо реальна онлайндержава.\nКорекції, зроблені, щоб стати ioBroker. репозиторій.",
-        "zh-cn": "执行一个预定的网上国家检查。.\n如果网上国家对真实情况作出修改,则更新装置信息。.\n如果网上国家确实存在,则按计划对《和平协议》国家进行检查。.\n更正为零星。 存放成员。."
-      },
-      "0.0.5": {
-        "en": "README Text changed. Logo added.",
-        "de": "BEGRÜNDUNG Text geändert. Logo hinzugefügt.",
-        "ru": "Читать Текст изменен. Логотип добавлен.",
-        "pt": "REALIZAÇÃO O texto mudou. Logo adicionado.",
-        "nl": "Vertaling: Sms veranderd. Logo toegevoegd.",
-        "fr": "README Le texte a changé. Logo ajouté.",
-        "it": "READEM Il testo è cambiato. Logo aggiunto.",
-        "es": "README El texto cambió. Logo añadido.",
-        "pl": "README Tekst zmienił. Logo dodał.",
-        "uk": "ЗАМОВИТИ Змінено текст. Додано логотип.",
-        "zh-cn": "建 议 案文修改。 增加。."
-      },
-      "0.0.4": {
-        "en": "release workflow to npm finished",
-        "de": "release-workflow zu npm fertig",
-        "ru": "отпустите рабочий процесс до npm закончил",
-        "pt": "fluxo de trabalho de lançamento para npm terminado",
-        "nl": "laat het werk naar npm klaar",
-        "fr": "le flux de travail pour npm terminé",
-        "it": "uscita flusso di lavoro a npm finito",
-        "es": "flujo de trabajo de liberación a npm terminado",
-        "pl": "produkcja",
-        "uk": "випуск робочого процесу до npm завершено",
-        "zh-cn": "完成工作流程"
-      },
-      "0.0.3": {
-        "en": "initial release",
-        "de": "erstausstrahlung",
-        "ru": "начальный выпуск",
-        "pt": "lançamento inicial",
-        "nl": "niet",
-        "fr": "initial release",
-        "it": "rilascio iniziale",
-        "es": "liberación inicial",
-        "pl": "pierwsze wydanie",
-        "uk": "початковий реліз",
-        "zh-cn": "初步释放"
-      },
-      "0.0.2": {
-        "en": "initial release",
-        "de": "erstausstrahlung",
-        "ru": "начальный выпуск",
-        "pt": "lançamento inicial",
-        "nl": "niet",
-        "fr": "initial release",
-        "it": "rilascio iniziale",
-        "es": "liberación inicial",
-        "pl": "pierwsze wydanie",
-        "uk": "початковий реліз",
-        "zh-cn": "初步释放"
-      },
-      "0.0.1": {
-        "en": "initial release",
-        "de": "Erstveröffentlichung",
-        "ru": "Начальная версия",
-        "pt": "lançamento inicial",
-        "nl": "Eerste uitgave",
-        "fr": "Première version",
-        "it": "Versione iniziale",
-        "es": "Versión inicial",
-        "pl": "Pierwsze wydanie",
-        "uk": "Початкова версія",
-        "zh-cn": "首次出版"
-      }
+    "common": {
+        "name": "echarge_cpu2",
+        "version": "0.0.6",
+        "news": {
+            "0.0.6": {
+                "en": "Implemented a scheduled based checking the online state.\nUpdating the deviceinformation if the onlinestate changes to true.\nImplemented a scheduled based checking of the CP state if the onlinestate is true.\nCorrections done to become an ioBroker.repository member.",
+                "de": "Ergänzte eine planbasierte Überprüfung des Online-Zustands.\nAktualisierung der Geräteinformationen, wenn sich der Online-Zustand ändert.\nErgänzte eine planbasierte Überprüfung des CP-Zustands, wenn der Online-Zustand wahr ist.\nKorrekturen, um ein ioBroker. Repository-Mitglied.",
+                "ru": "Реализована плановая проверка состояния онлайн.\nОбновление девайсинформации, если онлайн-государство меняется в реальность.\nРеализована плановая проверка состояния CP, если онлайн-государство верно.\nИсправления, сделанные, чтобы стать ioBroker. член репозитория.",
+                "pt": "Implementou uma verificação baseada no estado on-line.\nAtualizando a informação do dispositivo se o estado on-line mudar para true.\nImplementou uma verificação com base programada do estado do CP se o estado on-line for verdadeiro.\nCorreções feitas para se tornar um ioBroker. membro do repositório.",
+                "nl": "Implementeerde een geplande basis om de online staat te controleren.\nDe apparaatinformatie aanpassen als de onlinestate verandert.\nImplementeerde een geplande basis controle over de CP staat als de onlinestaten waar zijn.\nCorrecties gedaan om een ioBroker te worden. Verplaatsingslid.",
+                "fr": "Mise en œuvre d'un contrôle régulier de l'état en ligne.\nMettre à jour les informations de l'appareil si l'état en ligne change à vrai.\nLa mise en œuvre d'un contrôle régulier de l'état CP si l'état en ligne est vrai.\nCorrections faites pour devenir un ioBroker. membre du dépôt.",
+                "it": "Ho implementato una base programmata che controlla lo stato online.\nAggiornare l'informazione del dispositivo se lo stato online cambia a vero.\nImplementato un controllo basato programmato dello stato CP se lo stato online è vero.\nCorrezioni fatte per diventare un ioBroker. membro del repository.",
+                "es": "Se implementó una comprobación basada en el estado en línea.\nActualizar la información del dispositivo si el estado en línea cambia a la verdad.\nSe implementó una comprobación basada en el estado CP si el estado en línea es cierto.\nCorrección hecha para convertirse en un ioBroker. miembro del repositorio.",
+                "pl": "Umożliwiło to zaplanowane sprawdzenie stanu internetowego.\nUlepszając dezinformację urządzenia, jeśli stan online zmienia się w prawdziwość.\nUmożliwiło to zaplanowane sprawdzenie stanu CP, jeżeli stan online jest prawdziwy.\nWykłaniane zostały jako ioBroker. Członek repozytorium.",
+                "uk": "Впровадження запланованої перевірки онлайн стану.\nОновлення інформації про пристрій, якщо зміни онлайн-держави до true.\nВпровадження запланованої перевірки стану CP, якщо реальна онлайндержава.\nКорекції, зроблені, щоб стати ioBroker. репозиторій.",
+                "zh-cn": "执行一个预定的网上国家检查。.\n如果网上国家对真实情况作出修改,则更新装置信息。.\n如果网上国家确实存在,则按计划对《和平协议》国家进行检查。.\n更正为零星。 存放成员。."
+            },
+            "0.0.5": {
+                "en": "README Text changed. Logo added.",
+                "de": "BEGRÜNDUNG Text geändert. Logo hinzugefügt.",
+                "ru": "Читать Текст изменен. Логотип добавлен.",
+                "pt": "REALIZAÇÃO O texto mudou. Logo adicionado.",
+                "nl": "Vertaling: Sms veranderd. Logo toegevoegd.",
+                "fr": "README Le texte a changé. Logo ajouté.",
+                "it": "READEM Il testo è cambiato. Logo aggiunto.",
+                "es": "README El texto cambió. Logo añadido.",
+                "pl": "README Tekst zmienił. Logo dodał.",
+                "uk": "ЗАМОВИТИ Змінено текст. Додано логотип.",
+                "zh-cn": "建 议 案文修改。 增加。."
+            },
+            "0.0.4": {
+                "en": "release workflow to npm finished",
+                "de": "release-workflow zu npm fertig",
+                "ru": "отпустите рабочий процесс до npm закончил",
+                "pt": "fluxo de trabalho de lançamento para npm terminado",
+                "nl": "laat het werk naar npm klaar",
+                "fr": "le flux de travail pour npm terminé",
+                "it": "uscita flusso di lavoro a npm finito",
+                "es": "flujo de trabajo de liberación a npm terminado",
+                "pl": "produkcja",
+                "uk": "випуск робочого процесу до npm завершено",
+                "zh-cn": "完成工作流程"
+            },
+            "0.0.3": {
+                "en": "initial release",
+                "de": "erstausstrahlung",
+                "ru": "начальный выпуск",
+                "pt": "lançamento inicial",
+                "nl": "niet",
+                "fr": "initial release",
+                "it": "rilascio iniziale",
+                "es": "liberación inicial",
+                "pl": "pierwsze wydanie",
+                "uk": "початковий реліз",
+                "zh-cn": "初步释放"
+            },
+            "0.0.2": {
+                "en": "initial release",
+                "de": "erstausstrahlung",
+                "ru": "начальный выпуск",
+                "pt": "lançamento inicial",
+                "nl": "niet",
+                "fr": "initial release",
+                "it": "rilascio iniziale",
+                "es": "liberación inicial",
+                "pl": "pierwsze wydanie",
+                "uk": "початковий реліз",
+                "zh-cn": "初步释放"
+            },
+            "0.0.1": {
+                "en": "initial release",
+                "de": "Erstveröffentlichung",
+                "ru": "Начальная версия",
+                "pt": "lançamento inicial",
+                "nl": "Eerste uitgave",
+                "fr": "Première version",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "Pierwsze wydanie",
+                "uk": "Початкова версія",
+                "zh-cn": "首次出版"
+            }
+        },
+        "titleLang": {
+            "en": "Hardy Barth eCharge cPµ2",
+            "de": "Hardy Barth eCharge CPµ2",
+            "ru": "Hardy Barth eCharge cPµ2",
+            "pt": "Hardy Barth eCharge cPµ2",
+            "nl": "Hardy Barth eCharge cPµ2",
+            "fr": "Chargeur Hardy Barth cPµ2",
+            "it": "Caricabatterie Hardy Barth cPµ2",
+            "es": "eCharge Hardy Barth cPµ2",
+            "pl": "Hardy Barth eCharge cPµ2",
+            "uk": "Зарядний пристрій Hardy Barth eCharge cPµ2",
+            "zh-cn": "Hardy Barth eCharge cPµ2"
+        },
+        "desc": {
+            "en": "echarge_cpu2",
+            "de": "echarge_cpu2",
+            "ru": "echarge_cpu2",
+            "pt": "echarge_cpu2",
+            "nl": "echarge_cpu2",
+            "fr": "echarge_cpu2",
+            "it": "echarge_cpu2",
+            "es": "echarge_cpu2",
+            "pl": "echarge_cpu2",
+            "uk": "echarge_cpu2",
+            "zh-cn": "echarge_cpu2"
+        },
+        "authors": [
+            "MLembke <m.lembke@lembke-it-service.de>"
+        ],
+        "keywords": [
+            "Hardy Barth",
+            "eCharge",
+            "template",
+            "home automation"
+        ],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "main": "build/main.js",
+        "icon": "echarge_cpu2.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/LembkeM/ioBroker.echarge_cpu2/main/admin/echarge_cpu2.png",
+        "readme": "https://github.com/LembkeM/ioBroker.echarge_cpu2/blob/main/README.md",
+        "loglevel": "info",
+        "mode": "daemon",
+        "type": "vehicle",
+        "compact": true,
+        "connectionType": "local",
+        "dataSource": "push",
+        "adminUI": {
+            "config": "json"
+        },
+        "eraseOnUpload": true,
+        "dependencies": [
+            {
+                "js-controller": ">=3.3.22"
+            }
+        ],
+        "globalDependencies": [
+            {
+                "admin": ">=5.1.28"
+            }
+        ]
     },
-    "titleLang": {
-      "en": "Hardy Barth eCharge cPµ2",
-      "de": "Hardy Barth eCharge CPµ2",
-      "ru": "Hardy Barth eCharge cPµ2",
-      "pt": "Hardy Barth eCharge cPµ2",
-      "nl": "Hardy Barth eCharge cPµ2",
-      "fr": "Chargeur Hardy Barth cPµ2",
-      "it": "Caricabatterie Hardy Barth cPµ2",
-      "es": "eCharge Hardy Barth cPµ2",
-      "pl": "Hardy Barth eCharge cPµ2",
-      "uk": "Зарядний пристрій Hardy Barth eCharge cPµ2",
-      "zh-cn": "Hardy Barth eCharge cPµ2"
+    "native": {
+        "basicDeviceUrl": ""
     },
-    "desc": {
-      "en": "echarge_cpu2",
-      "de": "echarge_cpu2",
-      "ru": "echarge_cpu2",
-      "pt": "echarge_cpu2",
-      "nl": "echarge_cpu2",
-      "fr": "echarge_cpu2",
-      "it": "echarge_cpu2",
-      "es": "echarge_cpu2",
-      "pl": "echarge_cpu2",
-      "uk": "echarge_cpu2",
-      "zh-cn": "echarge_cpu2"
-    },
-    "authors": [
-      "MLembke <m.lembke@lembke-it-service.de>"
-    ],
-    "keywords": [
-      "Hardy Barth",
-      "eCharge",
-      "template",
-      "home automation"
-    ],
-    "license": "MIT",
-    "platform": "Javascript/Node.js",
-    "main": "build/main.js",
-    "icon": "echarge_cpu2.png",
-    "enabled": true,
-    "extIcon": "https://raw.githubusercontent.com/LembkeM/ioBroker.echarge_cpu2/main/admin/echarge_cpu2.png",
-    "readme": "https://github.com/LembkeM/ioBroker.echarge_cpu2/blob/main/README.md",
-    "loglevel": "info",
-    "mode": "daemon",
-    "type": "vehicle",
-    "compact": true,
-    "connectionType": "local",
-    "dataSource": "push",
-    "adminUI": {
-      "config": "json"
-    },
-    "eraseOnUpload": true,
-    "dependencies": [
-      {
-        "js-controller": ">=3.3.22"
-      }
-    ],
-    "globalDependencies": [
-      {
-        "admin": ">=5.1.28"
-      }
+    "objects": [],
+    "instanceObjects": [
+        {
+            "_id": "info",
+            "type": "channel",
+            "common": {
+                "name": "Information"
+            },
+            "native": {
+                "en": "Information",
+                "de": "Informationen",
+                "ru": "Информация",
+                "pt": "Informação",
+                "nl": "Informatie",
+                "fr": "Information",
+                "it": "Informazioni",
+                "es": "Información",
+                "pl": "Informacja",
+                "uk": "Інформація",
+                "zh-cn": "信息"
+            }
+        },
+        {
+            "_id": "info.connection",
+            "type": "state",
+            "common": {
+                "role": "indicator.connection",
+                "name": "Device or service connected",
+                "type": "boolean",
+                "read": true,
+                "write": false,
+                "def": false
+            },
+            "native": {
+                "en": "Device or service connected\"",
+                "de": "Gerät oder Dienst verbunden\"",
+                "ru": "Устройство или сервис подключены\"",
+                "pt": "Dispositivo ou serviço conectado\"",
+                "nl": "Device of dienst verbonden",
+                "fr": "Appareil ou service connecté\"",
+                "it": "Dispositivo o servizio collegato\"",
+                "es": "Dispositivo o servicio conectado\"",
+                "pl": "Device lub serwis połączony",
+                "uk": "Пристрої або послуги підключені",
+                "zh-cn": "证人或有关服务”"
+            }
+        },
+        {
+            "_id": "deviceInfo",
+            "type": "channel",
+            "common": {
+                "name": "Information"
+            },
+            "native": {
+                "en": "Device Information",
+                "de": "Informationen zum Produkt",
+                "ru": "Информация об устройстве",
+                "pt": "InformaÃ§Ã£o do dispositivo",
+                "nl": "Device Informatie",
+                "fr": "Information sur les dispositifs",
+                "it": "Informazioni sul dispositivo",
+                "es": "Información sobre dispositivos",
+                "pl": "Device Information",
+                "uk": "Інформація про пристрій",
+                "zh-cn": "证人信息"
+            }
+        },
+        {
+            "_id": "deviceInfo.product",
+            "type": "state",
+            "common": {
+                "role": "text",
+                "name": "Device product",
+                "type": "string",
+                "read": true,
+                "write": false,
+                "def": ""
+            },
+            "native": {
+                "en": "Device product",
+                "de": "Geräteprodukt",
+                "ru": "Продукт устройства",
+                "pt": "Produto do dispositivo",
+                "nl": "Vernietig product",
+                "fr": "Produit du dispositif",
+                "it": "Prodotto di dispositivo",
+                "es": "Producto del dispositivo",
+                "pl": "Produkt Device",
+                "uk": "Продукція пристрою",
+                "zh-cn": "丧失产品"
+            }
+        },
+        {
+            "_id": "deviceInfo.hardware_version",
+            "type": "state",
+            "common": {
+                "role": "info.hardware",
+                "name": "Device Hardware version",
+                "type": "string",
+                "read": true,
+                "write": false,
+                "def": ""
+            },
+            "native": {
+                "en": "Device Hardware version",
+                "de": "Geräte-Hardware-Version",
+                "ru": "Устройство Hardware версия",
+                "pt": "Versão do hardware do dispositivo",
+                "nl": "Device Hardware versie",
+                "fr": "Hardware version",
+                "it": "Versione hardware del dispositivo",
+                "es": "Versión de hardware de dispositivo",
+                "pl": "Device Hardware",
+                "uk": "Версія для пристроїв",
+                "zh-cn": "Devic Hardware版本"
+            }
+        },
+        {
+            "_id": "deviceInfo.software_version",
+            "type": "state",
+            "common": {
+                "role": "info.firmware",
+                "name": "Device Softwareversion",
+                "type": "string",
+                "read": true,
+                "write": false,
+                "def": ""
+            },
+            "native": {
+                "en": "Device Softwareversion",
+                "de": "Softwareversion des Geräts",
+                "ru": "Устройство Softwareversion",
+                "pt": "Software de dispositivo",
+                "nl": "Vernietig Software",
+                "fr": "Logiciel de traitement",
+                "it": "Software di dispositivo",
+                "es": "Softwareversion de dispositivo",
+                "pl": "Device Software",
+                "uk": "Налаштування програмного забезпечення",
+                "zh-cn": "Devic Soft软件转换"
+            }
+        },
+        {
+            "_id": "deviceInfo.vcs_version",
+            "type": "state",
+            "common": {
+                "role": "text",
+                "name": "Device VCS Version",
+                "type": "string",
+                "read": true,
+                "write": false,
+                "def": ""
+            },
+            "native": {
+                "en": "Device VCS Version",
+                "de": "Gerät VCS Version",
+                "ru": "Устройство VCS Версия",
+                "pt": "Dispositivo VCS Versão",
+                "nl": "Vernietig VCS Vers",
+                "fr": "Dispositif VCS Version",
+                "it": "Dispositivo VCS Versione",
+                "es": "Dispositivo VCS Versión",
+                "pl": "VCS Wersja",
+                "uk": "Пристрої VCS Редагування",
+                "zh-cn": "Devic VCS 目 录"
+            }
+        },
+        {
+            "_id": "deviceInfo.hostname",
+            "type": "state",
+            "common": {
+                "role": "info.name",
+                "name": "Device Hostname",
+                "type": "string",
+                "read": true,
+                "write": false,
+                "def": ""
+            },
+            "native": {
+                "en": "Device Hostname",
+                "de": "Gerätename",
+                "ru": "Устройство Hostname",
+                "pt": "Nome de host do dispositivo",
+                "nl": "Device Host",
+                "fr": "Hostname",
+                "it": "Nome host del dispositivo",
+                "es": "Nombre de host de dispositivo",
+                "pl": "Device Hostname",
+                "uk": "Назва пристрою",
+                "zh-cn": "被遗弃人质"
+            }
+        },
+        {
+            "_id": "deviceInfo.mac_address",
+            "type": "state",
+            "common": {
+                "role": "info.mac",
+                "name": "Device MAC Address",
+                "type": "string",
+                "read": true,
+                "write": false,
+                "def": ""
+            },
+            "native": {
+                "en": "Device MAC Address",
+                "de": "Gerät MAC Anschrift",
+                "ru": "Устройство MAC Адрес",
+                "pt": "Dispositivo MAC Endereço",
+                "nl": "Vernietig MAC Adres",
+                "fr": "Appareil MAC Adresse",
+                "it": "Dispositivo MAC Indirizzo",
+                "es": "Dispositivo MAC Dirección",
+                "pl": "MAC Addressa",
+                "uk": "Пристрої MAC Контакти",
+                "zh-cn": "Device MAC 问题"
+            }
+        },
+        {
+            "_id": "deviceInfo.serial",
+            "type": "state",
+            "common": {
+                "role": "info.serial",
+                "name": "Device Serialnumber",
+                "type": "string",
+                "read": true,
+                "write": false,
+                "def": ""
+            },
+            "native": {
+                "en": "Device Serialnumber",
+                "de": "Gerät Seriennummer",
+                "ru": "Устройство Serialnumber",
+                "pt": "Número de série do dispositivo",
+                "nl": "Vernietig Serialnumber",
+                "fr": "Appareil numéro de série",
+                "it": "Numero di serie",
+                "es": "Número de serie de dispositivos",
+                "pl": "Szeregowy",
+                "uk": "Пристрої Serialnumber",
+                "zh-cn": "证人人数"
+            }
+        },
+        {
+            "_id": "deviceInfo.internal_id",
+            "type": "state",
+            "common": {
+                "role": "text",
+                "name": "Device internal Id",
+                "type": "string",
+                "read": true,
+                "write": false,
+                "def": ""
+            },
+            "native": {
+                "en": "Device internal Id",
+                "de": "Gerät intern I",
+                "ru": "Устройство внутреннего Ид",
+                "pt": "Dispositivo interno I",
+                "nl": "Vernietig intern ID",
+                "fr": "Appareil interne Id",
+                "it": "Dispositivo interno Id",
+                "es": "Dispositivo interno Id",
+                "pl": "Wewnątrz Id",
+                "uk": "Пристрої внутрішні Ід",
+                "zh-cn": "内部拘留 Id"
+            }
+        },
+        {
+            "_id": "deviceSecc",
+            "type": "channel",
+            "common": {
+                "name": "Device SECC Information"
+            },
+            "native": {
+                "en": "Device SECC Information",
+                "de": "Gerät SECC Informationen",
+                "ru": "Устройство SECC Информация",
+                "pt": "Dispositivo SECC Informação",
+                "nl": "Vernietig SECC Informatie",
+                "fr": "SECC Information",
+                "it": "Dispositivo SECC Informazioni",
+                "es": "Device SECC Información",
+                "pl": "Device SECC Informacja",
+                "uk": "Пристрої SECC Інформація",
+                "zh-cn": "D. 被剥夺自由者 信息"
+            }
+        },
+        {
+            "_id": "deviceSecc.scc_cp_state",
+            "type": "state",
+            "common": {
+                "role": "text",
+                "name": "Device Control Pilot State",
+                "type": "string",
+                "read": true,
+                "write": false,
+                "def": ""
+            },
+            "native": {
+                "en": "Device Control Pilot State",
+                "de": "Gerätesteuerung Pilot State",
+                "ru": "Управление устройством Pilot State",
+                "pt": "Controle de dispositivo Pilot State",
+                "nl": "Device Controle Pilot State",
+                "fr": "Pilot State",
+                "it": "Controllo dispositivi Stato pilota",
+                "es": "Estado piloto de control de dispositivos",
+                "pl": "Strona oficjalna",
+                "uk": "Контроль пристрою Пілотний стан",
+                "zh-cn": "证人控制试点国家"
+            }
+        }
     ]
-  },
-  "native": {
-    "basicDeviceUrl": ""
-  },
-  "objects": [],
-  "instanceObjects": [
-    {
-      "_id": "info",
-      "type": "channel",
-      "common": {
-        "name": "Information"
-      },
-      "native": {
-        "en": "Information",
-        "de": "Informationen",
-        "ru": "Информация",
-        "pt": "Informação",
-        "nl": "Informatie",
-        "fr": "Information",
-        "it": "Informazioni",
-        "es": "Información",
-        "pl": "Informacja",
-        "uk": "Інформація",
-        "zh-cn": "信息"
-      }
-    },
-    {
-      "_id": "info.connection",
-      "type": "state",
-      "common": {
-        "role": "indicator.connection",
-        "name": "Device or service connected",
-        "type": "boolean",
-        "read": true,
-        "write": false,
-        "def": false
-      },
-      "native": {
-        "en": "Device or service connected\"",
-        "de": "Gerät oder Dienst verbunden\"",
-        "ru": "Устройство или сервис подключены\"",
-        "pt": "Dispositivo ou serviço conectado\"",
-        "nl": "Device of dienst verbonden",
-        "fr": "Appareil ou service connecté\"",
-        "it": "Dispositivo o servizio collegato\"",
-        "es": "Dispositivo o servicio conectado\"",
-        "pl": "Device lub serwis połączony",
-        "uk": "Пристрої або послуги підключені",
-        "zh-cn": "证人或有关服务”"
-      }
-    },
-    {
-      "_id": "deviceInfo",
-      "type": "channel",
-      "common": {
-        "name": "Information"
-      },
-      "native": {
-        "en": "Device Information",
-        "de": "Informationen zum Produkt",
-        "ru": "Информация об устройстве",
-        "pt": "InformaÃ§Ã£o do dispositivo",
-        "nl": "Device Informatie",
-        "fr": "Information sur les dispositifs",
-        "it": "Informazioni sul dispositivo",
-        "es": "Información sobre dispositivos",
-        "pl": "Device Information",
-        "uk": "Інформація про пристрій",
-        "zh-cn": "证人信息"
-      }
-    },
-    {
-      "_id": "deviceInfo.product",
-      "type": "state",
-      "common": {
-        "role": "text",
-        "name": "Device product",
-        "type": "string",
-        "read": true,
-        "write": false,
-        "def": ""
-      },
-      "native": {
-        "en": "Device product",
-        "de": "Geräteprodukt",
-        "ru": "Продукт устройства",
-        "pt": "Produto do dispositivo",
-        "nl": "Vernietig product",
-        "fr": "Produit du dispositif",
-        "it": "Prodotto di dispositivo",
-        "es": "Producto del dispositivo",
-        "pl": "Produkt Device",
-        "uk": "Продукція пристрою",
-        "zh-cn": "丧失产品"
-      }
-    },
-    {
-      "_id": "deviceInfo.hardware_version",
-      "type": "state",
-      "common": {
-        "role": "info.hardware",
-        "name": "Device Hardware version",
-        "type": "string",
-        "read": true,
-        "write": false,
-        "def": ""
-      },
-      "native": {
-        "en": "Device Hardware version",
-        "de": "Geräte-Hardware-Version",
-        "ru": "Устройство Hardware версия",
-        "pt": "Versão do hardware do dispositivo",
-        "nl": "Device Hardware versie",
-        "fr": "Hardware version",
-        "it": "Versione hardware del dispositivo",
-        "es": "Versión de hardware de dispositivo",
-        "pl": "Device Hardware",
-        "uk": "Версія для пристроїв",
-        "zh-cn": "Devic Hardware版本"
-      }
-    },
-    {
-      "_id": "deviceInfo.software_version",
-      "type": "state",
-      "common": {
-        "role": "info.firmware",
-        "name": "Device Softwareversion",
-        "type": "string",
-        "read": true,
-        "write": false,
-        "def": ""
-      },
-      "native": {
-        "en": "Device Softwareversion",
-        "de": "Softwareversion des Geräts",
-        "ru": "Устройство Softwareversion",
-        "pt": "Software de dispositivo",
-        "nl": "Vernietig Software",
-        "fr": "Logiciel de traitement",
-        "it": "Software di dispositivo",
-        "es": "Softwareversion de dispositivo",
-        "pl": "Device Software",
-        "uk": "Налаштування програмного забезпечення",
-        "zh-cn": "Devic Soft软件转换"
-      }
-    },
-    {
-      "_id": "deviceInfo.vcs_version",
-      "type": "state",
-      "common": {
-        "role": "text",
-        "name": "Device VCS Version",
-        "type": "string",
-        "read": true,
-        "write": false,
-        "def": ""
-      },
-      "native": {
-        "en": "Device VCS Version",
-        "de": "Gerät VCS Version",
-        "ru": "Устройство VCS Версия",
-        "pt": "Dispositivo VCS Versão",
-        "nl": "Vernietig VCS Vers",
-        "fr": "Dispositif VCS Version",
-        "it": "Dispositivo VCS Versione",
-        "es": "Dispositivo VCS Versión",
-        "pl": "VCS Wersja",
-        "uk": "Пристрої VCS Редагування",
-        "zh-cn": "Devic VCS 目 录"
-      }
-    },
-    {
-      "_id": "deviceInfo.hostname",
-      "type": "state",
-      "common": {
-        "role": "info.name",
-        "name": "Device Hostname",
-        "type": "string",
-        "read": true,
-        "write": false,
-        "def": ""
-      },
-      "native": {
-        "en": "Device Hostname",
-        "de": "Gerätename",
-        "ru": "Устройство Hostname",
-        "pt": "Nome de host do dispositivo",
-        "nl": "Device Host",
-        "fr": "Hostname",
-        "it": "Nome host del dispositivo",
-        "es": "Nombre de host de dispositivo",
-        "pl": "Device Hostname",
-        "uk": "Назва пристрою",
-        "zh-cn": "被遗弃人质"
-      }
-    },
-    {
-      "_id": "deviceInfo.mac_address",
-      "type": "state",
-      "common": {
-        "role": "info.mac",
-        "name": "Device MAC Address",
-        "type": "string",
-        "read": true,
-        "write": false,
-        "def": ""
-      },
-      "native": {
-        "en": "Device MAC Address",
-        "de": "Gerät MAC Anschrift",
-        "ru": "Устройство MAC Адрес",
-        "pt": "Dispositivo MAC Endereço",
-        "nl": "Vernietig MAC Adres",
-        "fr": "Appareil MAC Adresse",
-        "it": "Dispositivo MAC Indirizzo",
-        "es": "Dispositivo MAC Dirección",
-        "pl": "MAC Addressa",
-        "uk": "Пристрої MAC Контакти",
-        "zh-cn": "Device MAC 问题"
-      }
-    },
-    {
-      "_id": "deviceInfo.serial",
-      "type": "state",
-      "common": {
-        "role": "info.serial",
-        "name": "Device Serialnumber",
-        "type": "string",
-        "read": true,
-        "write": false,
-        "def": ""
-      },
-      "native": {
-        "en": "Device Serialnumber",
-        "de": "Gerät Seriennummer",
-        "ru": "Устройство Serialnumber",
-        "pt": "Número de série do dispositivo",
-        "nl": "Vernietig Serialnumber",
-        "fr": "Appareil numéro de série",
-        "it": "Numero di serie",
-        "es": "Número de serie de dispositivos",
-        "pl": "Szeregowy",
-        "uk": "Пристрої Serialnumber",
-        "zh-cn": "证人人数"
-      }
-    },
-    {
-      "_id": "deviceInfo.internal_id",
-      "type": "state",
-      "common": {
-        "role": "text",
-        "name": "Device internal Id",
-        "type": "string",
-        "read": true,
-        "write": false,
-        "def": ""
-      },
-      "native": {
-        "en": "Device internal Id",
-        "de": "Gerät intern I",
-        "ru": "Устройство внутреннего Ид",
-        "pt": "Dispositivo interno I",
-        "nl": "Vernietig intern ID",
-        "fr": "Appareil interne Id",
-        "it": "Dispositivo interno Id",
-        "es": "Dispositivo interno Id",
-        "pl": "Wewnątrz Id",
-        "uk": "Пристрої внутрішні Ід",
-        "zh-cn": "内部拘留 Id"
-      }
-    },
-    {
-      "_id": "deviceSecc",
-      "type": "channel",
-      "common": {
-        "name": "Device SECC Information"
-      },
-      "native": {
-        "en": "Device SECC Information",
-        "de": "Gerät SECC Informationen",
-        "ru": "Устройство SECC Информация",
-        "pt": "Dispositivo SECC Informação",
-        "nl": "Vernietig SECC Informatie",
-        "fr": "SECC Information",
-        "it": "Dispositivo SECC Informazioni",
-        "es": "Device SECC Información",
-        "pl": "Device SECC Informacja",
-        "uk": "Пристрої SECC Інформація",
-        "zh-cn": "D. 被剥夺自由者 信息"
-      }
-    },
-    {
-      "_id": "deviceSecc.scc_cp_state",
-      "type": "state",
-      "common": {
-        "role": "text",
-        "name": "Device Control Pilot State",
-        "type": "string",
-        "read": true,
-        "write": false,
-        "def": ""
-      },
-      "native": {
-        "en": "Device Control Pilot State",
-        "de": "Gerätesteuerung Pilot State",
-        "ru": "Управление устройством Pilot State",
-        "pt": "Controle de dispositivo Pilot State",
-        "nl": "Device Controle Pilot State",
-        "fr": "Pilot State",
-        "it": "Controllo dispositivi Stato pilota",
-        "es": "Estado piloto de control de dispositivos",
-        "pl": "Strona oficjalna",
-        "uk": "Контроль пристрою Пілотний стан",
-        "zh-cn": "证人控制试点国家"
-      }
-    }
-  ]
 }

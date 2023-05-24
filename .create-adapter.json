@@ -13,7 +13,7 @@
     "connectionIndicator": "no",
     "language": "TypeScript",
     "nodeVersion": "14",
-    "adminUi": "react",
+    "adminUi": "json",
     "tools": ["ESLint", "Prettier", "code coverage"],
     "releaseScript": "yes",
     "devServer": "yes",
