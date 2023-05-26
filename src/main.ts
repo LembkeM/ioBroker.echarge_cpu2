@@ -7,7 +7,9 @@
 import * as utils from "@iobroker/adapter-core";
 import EventEmitter from "events";
 import { SaliaHttpClient } from "./salia-helper";
+import { DeviceCPInformation } from "./types/DeviceCPInformation";
 import { DeviceInformation } from "./types/DeviceInformation";
+import { DeviceMetering } from "./types/DeviceMetering";
 
 class EchargeCpu2 extends utils.Adapter {
     isOnlineCheckTimeout: any;
@@ -59,6 +61,18 @@ class EchargeCpu2 extends utils.Adapter {
                 "onDeviceInformationRefreshed",
                 async (deviceInformation: DeviceInformation) =>
                     await this.DeviceInformationRefreshed(deviceInformation),
+            );
+
+            // Handle Device changes to the connectionstate
+            this.eventEmitter.on(
+                "onDeviceCPInformationRefreshed",
+                async (deviceCPInformation: DeviceCPInformation) =>
+                    await this.deviceCPInformationCheck(deviceCPInformation),
+            );
+
+            this.eventEmitter.on(
+                "onDeviceMeteringRefreshed",
+                async (deviceMetering: DeviceMetering) => await this.deviceMeteringInformation(deviceMetering),
             );
 
             // Reset the Connectionstate
@@ -198,36 +212,13 @@ class EchargeCpu2 extends utils.Adapter {
         // }
     }
 
-    // private async deviceCPInformationCheck(): Promise<void> {
-    //     if (this.isCPStateCheckTimeout) {
-    //         this.clearTimeout(this.isCPStateCheckTimeout);
-    //         this.isCPStateCheckTimeout = null;
-    //     }
+    private async deviceCPInformationCheck(deviceCPInformation: DeviceCPInformation): Promise<void> {
+        await this.setStateAsync("deviceSecc.scc_cp_state", deviceCPInformation.state, true);
+    }
 
-    //     try {
-    //         const deviceInfoResponse = await this.eChargeClient.getDeviceCPInformation();
-
-    //         if ((deviceInfoResponse as DeviceCPInformation) != null) {
-    //             const response = deviceInfoResponse as DeviceCPInformation;
-    //             this.log.debug("deviceInfoResponse: " + response.state);
-
-    //             await this.setStateAsync("deviceSecc.scc_cp_state", response.state);
-    //         } else {
-    //             const response = deviceInfoResponse as ApiError;
-
-    //             // await this.setStateAsync("deviceInfo.scc.cp.state", false, true);
-
-    //             this.log.error(response.message);
-    //         }
-    //     } catch (error: any) {
-    //         this.log.error(`[deviceCPInformationCheck] error: ${error.message}, stack: ${error.stack}`);
-    //     }
-
-    //     this.isCPStateCheckTimeout = this.setTimeout(() => {
-    //         this.isCPStateCheckTimeout = null;
-    //         this.deviceCPInformationCheck();
-    //     }, 60 * 1000); // Restart online check in 60 seconds
-    // }
+    private async deviceMeteringInformation(deviceMetering: DeviceMetering): Promise<void> {
+        await this.setStateAsync("deviceSecc.metering.actual", deviceMetering.actual, true);
+    }
 }
 
 if (require.main !== module) {

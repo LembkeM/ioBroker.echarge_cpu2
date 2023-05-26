@@ -49,6 +49,14 @@ class EchargeCpu2 extends utils.Adapter {
         "onDeviceInformationRefreshed",
         async (deviceInformation) => await this.DeviceInformationRefreshed(deviceInformation)
       );
+      this.eventEmitter.on(
+        "onDeviceCPInformationRefreshed",
+        async (deviceCPInformation) => await this.deviceCPInformationCheck(deviceCPInformation)
+      );
+      this.eventEmitter.on(
+        "onDeviceMeteringRefreshed",
+        async (deviceMetering) => await this.deviceMeteringInformation(deviceMetering)
+      );
       await this.setStateAsync("info.connection", false, true);
       this.eChargeClient.connect().then(() => {
         this.log.info("Connected");
@@ -79,6 +87,12 @@ class EchargeCpu2 extends utils.Adapter {
     await this.setStateAsync("deviceInfo.serial", deviceInfo.serial, true);
     await this.setStateAsync("deviceInfo.software_version", deviceInfo.software_version, true);
     await this.setStateAsync("deviceInfo.vcs_version", deviceInfo.vcs_version, true);
+  }
+  async deviceCPInformationCheck(deviceCPInformation) {
+    await this.setStateAsync("deviceSecc.scc_cp_state", deviceCPInformation.state, true);
+  }
+  async deviceMeteringInformation(deviceMetering) {
+    await this.setStateAsync("deviceSecc.metering.actual", deviceMetering.actual, true);
   }
 }
 if (require.main !== module) {

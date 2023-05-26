@@ -1,7 +1,7 @@
 {
   "version": 3,
   "sources": ["../../src/types/DeviceInformation.ts"],
-  "sourcesContent": ["\nexport interface DeviceInformation {\n\tproduct: number;\n\tmodelname: string;\n\thardware_version: string;\n\tsoftware_version: string;\n\tvcs_version: string;\n\thostname: string;\n\tmac_address: string;\n\tserial: string;\n\tuuid: string;\n\tinternal_id: string;\n\tip_lo: string;\n\tip_br0fallback: string;\n\tip_br0: string;\n}\n"],
+  "sourcesContent": ["export interface DeviceInformation {\n    product: number;\n    modelname: string;\n    hardware_version: string;\n    software_version: string;\n    vcs_version: string;\n    hostname: string;\n    mac_address: string;\n    serial: string;\n    uuid: string;\n    internal_id: string;\n    ip_lo: string;\n    ip_br0fallback: string;\n    ip_br0: string;\n}\n"],
   "mappings": ";;;;;;;;;;;;;;AAAA;AAAA;",
   "names": []
 }

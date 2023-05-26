@@ -2,9 +2,9 @@ import { ping } from "@network-utils/tcp-ping";
 import axios, { AxiosInstance } from "axios";
 import EventEmitter from "events";
 import https from "https";
-import { ApiError } from "./types/ApiError";
 import { DeviceCPInformation } from "./types/DeviceCPInformation";
 import { DeviceInformation } from "./types/DeviceInformation";
+import { DeviceMetering } from "./types/DeviceMetering";
 
 interface CancellableSleep {
     promise: Promise<void>;
@@ -62,6 +62,8 @@ export class SaliaHttpClient {
                 if (this.deviceStatus) {
                     await this.getDeviceInfos();
                     await this.getDeviceCPInformation();
+
+                    await this.getDeviceMetering();
                 }
                 return Promise.resolve();
             } catch (e) {
@@ -126,18 +128,33 @@ export class SaliaHttpClient {
         }
     };
 
-    private getDeviceCPInformation = async (): Promise<DeviceCPInformation | ApiError> => {
+    private getDeviceCPInformation = async (): Promise<void> => {
         try {
             const { data } = await this.instance.get<DeviceCPInformation>("/api/secc/port0/cp");
 
-            return data;
+            // Zustand A (12V): Fahrzeug nicht angeschlossen und nicht ladebereit
+            // Zustand B (9V/-12V): Fahrzeug angeschlossen, aber nicht ladebereit
+            // Zustand C (6V/-12V): Fahrzeug angeschlossen und ladebereit
+            // Zustand D (3V/-12V): Lüftungsanforderung
+            // Zustand E (0V): Fehlerzustand “Kurzschluss” (CP-PE über Diode)
+            // Zustand F (-): Fehlerzustand “Wallbox-Ausfall, keine Verbindung”
+
+            this.eventEmitter.emit("onDeviceCPInformationRefreshed", data);
         } catch (error: any) {
             this.log.error(`[onReady] error: ${error.message}, stack: ${error.stack}`);
-
-            return {
-                message: error.message,
-                status: error.response.status,
-            };
         }
+    };
+
+    private getDeviceMetering = async (): Promise<void> => {
+        await this.instance
+            .get<DeviceMetering>("/api/secc/port0/metering/power/active_total")
+            .then((resp) => {
+                this.log.debug(JSON.stringify(resp.data));
+
+                this.eventEmitter.emit("onDeviceMeteringRefreshed", resp.data);
+            })
+            .catch((error) => {
+                this.log.error(`[onReady] error: ${error.message}, stack: ${error.stack}`);
+            });
     };
 }

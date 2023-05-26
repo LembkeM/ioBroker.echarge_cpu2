@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/types/DeviceMetering.ts"],
+  "sourcesContent": ["export interface DeviceMetering {\n    actual: number;\n}\n"],
+  "mappings": ";;;;;;;;;;;;;;AAAA;AAAA;",
+  "names": []
+}

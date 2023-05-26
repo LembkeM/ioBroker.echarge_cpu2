@@ -1,7 +1,7 @@
 {
   "version": 3,
   "sources": ["../../src/types/ApiError.ts"],
-  "sourcesContent": ["\nexport interface ApiError {\n\tmessage: string;\n\tstatus: number;\n}\n"],
+  "sourcesContent": ["export interface ApiError {\n    message: string;\n    status: number;\n}\n"],
   "mappings": ";;;;;;;;;;;;;;AAAA;AAAA;",
   "names": []
 }
