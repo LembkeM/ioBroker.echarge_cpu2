@@ -18,8 +18,8 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 var utils = __toESM(require("@iobroker/adapter-core"));
+var import_events = __toESM(require("events"));
 var import_salia_helper = require("./salia-helper");
-var import_tcp_ping = require("@network-utils/tcp-ping");
 class EchargeCpu2 extends utils.Adapter {
   constructor(options = {}) {
     super({
@@ -27,8 +27,8 @@ class EchargeCpu2 extends utils.Adapter {
       name: "echarge_cpu2"
     });
     this.on("ready", this.onReady.bind(this));
-    this.on("stateChange", this.onStateChange.bind(this));
     this.on("unload", this.onUnload.bind(this));
+    this.eventEmitter = new import_events.default();
   }
   async onReady() {
     if (!this.config.basicDeviceUrl) {
@@ -36,111 +36,49 @@ class EchargeCpu2 extends utils.Adapter {
       return;
     }
     try {
-      this.deviceUrl = new URL(this.config.basicDeviceUrl);
-      this.log.debug(`Device Url is - ${this.config.basicDeviceUrl}`);
-      if (this.deviceUrl.port == "") {
-        this.devicePort = 443;
-      } else {
-        this.devicePort = parseInt(this.deviceUrl.port);
-      }
-      this.eChargeClient = new import_salia_helper.SaliaHttpClient(this.config.basicDeviceUrl);
-      await this.setStateAsync("info.connection", false);
-      this.subscribeStates("info.connection");
-      this.subscribeStates("deviceSecc.scc_cp_state");
-      this.onlineCheck();
+      this.eChargeClient = new import_salia_helper.SaliaHttpClient({
+        baseURL: this.config.basicDeviceUrl,
+        log: this.log,
+        eventEmitter: this.eventEmitter
+      });
+      this.eventEmitter.on(
+        "onisOnlineChanged",
+        async (isOnline) => await this.connectionStateChanged(isOnline)
+      );
+      this.eventEmitter.on(
+        "onDeviceInformationRefreshed",
+        async (deviceInformation) => await this.DeviceInformationRefreshed(deviceInformation)
+      );
+      await this.setStateAsync("info.connection", false, true);
+      this.eChargeClient.connect().then(() => {
+        this.log.info("Connected");
+      }).catch((reason) => {
+        this.log.error(`Connection failure: ${reason}`);
+      });
     } catch (error) {
       this.log.error(`[onReady] error: ${error.message}, stack: ${error.stack}`);
     }
   }
   onUnload(callback) {
     try {
+      this.eChargeClient.stop();
       callback();
     } catch (e) {
       callback();
     }
   }
-  async onStateChange(id, state) {
-    if (state && !state.ack) {
-      const stateId = id.replace(this.namespace + ".", "");
-      this.log.info(`state ${stateId} changed: ${state.val} (ack = ${state.ack})`);
-      if (stateId === "info.connection") {
-        this.log.debug(`[onStateChange] ${stateId} state changed - get device infos again`);
-        if (state.val) {
-          await this.getDeviceInformation();
-          await this.deviceCPInformationCheck();
-        }
-      } else if (stateId === "deviceSecc.scc_cp_state") {
-        this.log.debug(`[onStateChange] ${stateId} state changed - get device infos again`);
-      }
-      await this.setStateAsync(stateId, state.val, true);
-    } else {
-      this.log.info(`state ${id} deleted`);
-    }
+  async connectionStateChanged(isOnline) {
+    await this.setStateAsync("info.connection", isOnline, true);
   }
-  async onlineCheck() {
-    if (this.isOnlineCheckTimeout) {
-      this.clearTimeout(this.isOnlineCheckTimeout);
-      this.isOnlineCheckTimeout = null;
-    }
-    try {
-      const hostReachable = await (0, import_tcp_ping.ping)({ address: this.deviceUrl.hostname, port: this.devicePort, timeout: 500 });
-      if (hostReachable.errors.length == 0) {
-        await this.setStateAsync("info.connection", true);
-      } else {
-        await this.setStateAsync("info.connection", false);
-      }
-    } catch (error) {
-      this.log.error(`[onReady] error: ${error.message}, stack: ${error.stack}`);
-    }
-    this.isOnlineCheckTimeout = this.setTimeout(() => {
-      this.isOnlineCheckTimeout = null;
-      this.onlineCheck();
-    }, 60 * 1e3);
-  }
-  async getDeviceInformation() {
-    try {
-      const deviceInfoResponse = await this.eChargeClient.getDeviceInfos();
-      if (deviceInfoResponse != null) {
-        const response = deviceInfoResponse;
-        this.log.debug("deviceInfoResponse: " + response.hardware_version);
-        await this.setStateAsync("deviceInfo.hardware_version", response.hardware_version, true);
-        await this.setStateAsync("deviceInfo.hostname", response.hostname, true);
-        await this.setStateAsync("deviceInfo.internal_id", response.internal_id, true);
-        await this.setStateAsync("deviceInfo.mac_address", response.mac_address, true);
-        await this.setStateAsync("deviceInfo.product", response.product, true);
-        await this.setStateAsync("deviceInfo.serial", response.serial, true);
-        await this.setStateAsync("deviceInfo.software_version", response.software_version, true);
-        await this.setStateAsync("deviceInfo.vcs_version", response.vcs_version, true);
-      } else {
-        const response = deviceInfoResponse;
-        this.log.error(response.message);
-      }
-    } catch (error) {
-      this.log.error(`[getDeviceInformation] error: ${error.message}, stack: ${error.stack}`);
-    }
-  }
-  async deviceCPInformationCheck() {
-    if (this.isCPStateCheckTimeout) {
-      this.clearTimeout(this.isCPStateCheckTimeout);
-      this.isCPStateCheckTimeout = null;
-    }
-    try {
-      const deviceInfoResponse = await this.eChargeClient.getDeviceCPInformation();
-      if (deviceInfoResponse != null) {
-        const response = deviceInfoResponse;
-        this.log.debug("deviceInfoResponse: " + response.state);
-        await this.setStateAsync("deviceSecc.scc_cp_state", response.state);
-      } else {
-        const response = deviceInfoResponse;
-        this.log.error(response.message);
-      }
-    } catch (error) {
-      this.log.error(`[deviceCPInformationCheck] error: ${error.message}, stack: ${error.stack}`);
-    }
-    this.isCPStateCheckTimeout = this.setTimeout(() => {
-      this.isCPStateCheckTimeout = null;
-      this.deviceCPInformationCheck();
-    }, 60 * 1e3);
+  async DeviceInformationRefreshed(deviceInfo) {
+    await this.setStateAsync("deviceInfo.hardware_version", deviceInfo.hardware_version, true);
+    await this.setStateAsync("deviceInfo.hostname", deviceInfo.hostname, true);
+    await this.setStateAsync("deviceInfo.internal_id", deviceInfo.internal_id, true);
+    await this.setStateAsync("deviceInfo.mac_address", deviceInfo.mac_address, true);
+    await this.setStateAsync("deviceInfo.product", deviceInfo.product, true);
+    await this.setStateAsync("deviceInfo.serial", deviceInfo.serial, true);
+    await this.setStateAsync("deviceInfo.software_version", deviceInfo.software_version, true);
+    await this.setStateAsync("deviceInfo.vcs_version", deviceInfo.vcs_version, true);
   }
 }
 if (require.main !== module) {
