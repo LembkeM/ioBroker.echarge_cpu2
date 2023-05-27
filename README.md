@@ -48,7 +48,7 @@ Additional to the adapter installation you have to configure the adapter and add
 ### **WORK IN PROGRESS**
 
 -   (MLembke) Improvements in logging
--   (MLembke)
+-   (MLembke) Geting actual_total metering
 
 ### 0.0.7 (2023-05-24)
 
