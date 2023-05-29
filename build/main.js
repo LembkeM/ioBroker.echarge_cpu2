@@ -92,7 +92,35 @@ class EchargeCpu2 extends utils.Adapter {
     await this.setStateAsync("deviceSecc.scc_cp_state", deviceCPInformation.state, true);
   }
   async deviceMeteringInformation(deviceMetering) {
-    await this.setStateAsync("deviceSecc.metering.actual", deviceMetering.actual, true);
+    await this.setStateAsync("deviceSecc.metering.meter.available", deviceMetering.meter.available, true);
+    await this.setStateAsync(
+      "deviceSecc.metering.energy.active_total.actual",
+      deviceMetering.energy.active_total.actual,
+      true
+    );
+    await this.setStateAsync(
+      "deviceSecc.metering.power.active_total.actual",
+      deviceMetering.power.active_total.actual,
+      true
+    );
+    await this.setStateAsync(
+      "deviceSecc.metering.power.active.ac.l1_actual",
+      deviceMetering.power.active.ac.l1.actual,
+      true
+    );
+    await this.setStateAsync(
+      "deviceSecc.metering.power.active.ac.l2_actual",
+      deviceMetering.power.active.ac.l2.actual,
+      true
+    );
+    await this.setStateAsync(
+      "deviceSecc.metering.power.active.ac.l3_actual",
+      deviceMetering.power.active.ac.l3.actual,
+      true
+    );
+    await this.setStateAsync("deviceSecc.metering.current.ac.l1_actual", deviceMetering.current.ac.l1.actual, true);
+    await this.setStateAsync("deviceSecc.metering.current.ac.l2_actual", deviceMetering.current.ac.l2.actual, true);
+    await this.setStateAsync("deviceSecc.metering.current.ac.l3_actual", deviceMetering.current.ac.l3.actual, true);
   }
 }
 if (require.main !== module) {

@@ -9,7 +9,7 @@ import EventEmitter from "events";
 import { SaliaHttpClient } from "./salia-helper";
 import { DeviceCPInformation } from "./types/DeviceCPInformation";
 import { DeviceInformation } from "./types/DeviceInformation";
-import { DeviceMetering } from "./types/DeviceMetering";
+import { Metering } from "./types/Root";
 
 class EchargeCpu2 extends utils.Adapter {
     isOnlineCheckTimeout: any;
@@ -72,7 +72,7 @@ class EchargeCpu2 extends utils.Adapter {
 
             this.eventEmitter.on(
                 "onDeviceMeteringRefreshed",
-                async (deviceMetering: DeviceMetering) => await this.deviceMeteringInformation(deviceMetering),
+                async (deviceMetering: Metering) => await this.deviceMeteringInformation(deviceMetering),
             );
 
             // Reset the Connectionstate
@@ -216,8 +216,39 @@ class EchargeCpu2 extends utils.Adapter {
         await this.setStateAsync("deviceSecc.scc_cp_state", deviceCPInformation.state, true);
     }
 
-    private async deviceMeteringInformation(deviceMetering: DeviceMetering): Promise<void> {
-        await this.setStateAsync("deviceSecc.metering.actual", deviceMetering.actual, true);
+    private async deviceMeteringInformation(deviceMetering: Metering): Promise<void> {
+        await this.setStateAsync("deviceSecc.metering.meter.available", deviceMetering.meter.available, true);
+        await this.setStateAsync(
+            "deviceSecc.metering.energy.active_total.actual",
+            deviceMetering.energy.active_total.actual,
+            true,
+        );
+
+        await this.setStateAsync(
+            "deviceSecc.metering.power.active_total.actual",
+            deviceMetering.power.active_total.actual,
+            true,
+        );
+
+        await this.setStateAsync(
+            "deviceSecc.metering.power.active.ac.l1_actual",
+            deviceMetering.power.active.ac.l1.actual,
+            true,
+        );
+        await this.setStateAsync(
+            "deviceSecc.metering.power.active.ac.l2_actual",
+            deviceMetering.power.active.ac.l2.actual,
+            true,
+        );
+        await this.setStateAsync(
+            "deviceSecc.metering.power.active.ac.l3_actual",
+            deviceMetering.power.active.ac.l3.actual,
+            true,
+        );
+
+        await this.setStateAsync("deviceSecc.metering.current.ac.l1_actual", deviceMetering.current.ac.l1.actual, true);
+        await this.setStateAsync("deviceSecc.metering.current.ac.l2_actual", deviceMetering.current.ac.l2.actual, true);
+        await this.setStateAsync("deviceSecc.metering.current.ac.l3_actual", deviceMetering.current.ac.l3.actual, true);
     }
 }
 

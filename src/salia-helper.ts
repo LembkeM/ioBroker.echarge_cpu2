@@ -4,7 +4,7 @@ import EventEmitter from "events";
 import https from "https";
 import { DeviceCPInformation } from "./types/DeviceCPInformation";
 import { DeviceInformation } from "./types/DeviceInformation";
-import { DeviceMetering } from "./types/DeviceMetering";
+import { Metering } from "./types/Root";
 
 interface CancellableSleep {
     promise: Promise<void>;
@@ -147,7 +147,7 @@ export class SaliaHttpClient {
 
     private getDeviceMetering = async (): Promise<void> => {
         await this.instance
-            .get<DeviceMetering>("/api/secc/port0/metering/power/active_total")
+            .get<Metering>("/api/secc/port0/metering")
             .then((resp) => {
                 this.log.debug(JSON.stringify(resp.data));
 

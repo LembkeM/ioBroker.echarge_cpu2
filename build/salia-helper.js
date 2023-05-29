@@ -49,7 +49,7 @@ class SaliaHttpClient {
       }
     };
     this.getDeviceMetering = async () => {
-      await this.instance.get("/api/secc/port0/metering/power/active_total").then((resp) => {
+      await this.instance.get("/api/secc/port0/metering").then((resp) => {
         this.log.debug(JSON.stringify(resp.data));
         this.eventEmitter.emit("onDeviceMeteringRefreshed", resp.data);
       }).catch((error) => {
