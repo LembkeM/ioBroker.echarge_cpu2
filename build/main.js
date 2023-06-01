@@ -54,6 +54,10 @@ class EchargeCpu2 extends utils.Adapter {
         async (deviceCPInformation) => await this.deviceCPInformationCheck(deviceCPInformation)
       );
       this.eventEmitter.on(
+        "onDeviceChargeDataRefreshed",
+        async (deviceChargeData) => await this.DeviceChargeDataRefreshed(deviceChargeData)
+      );
+      this.eventEmitter.on(
         "onDeviceMeteringRefreshed",
         async (deviceMetering) => await this.deviceMeteringInformation(deviceMetering)
       );
@@ -71,12 +75,16 @@ class EchargeCpu2 extends utils.Adapter {
     try {
       this.eChargeClient.stop();
       callback();
-    } catch (e) {
+    } catch (error) {
+      this.log.error(`[onReady] error: ${error.message}, stack: ${error.stack}`);
       callback();
     }
   }
   async connectionStateChanged(isOnline) {
     await this.setStateAsync("info.connection", isOnline, true);
+  }
+  async DeviceChargeDataRefreshed(chargeData) {
+    this.log.error(`${chargeData.chargedata}`);
   }
   async DeviceInformationRefreshed(deviceInfo) {
     await this.setStateAsync("deviceInfo.hardware_version", deviceInfo.hardware_version, true);

@@ -71,6 +71,11 @@ class EchargeCpu2 extends utils.Adapter {
             );
 
             this.eventEmitter.on(
+                "onDeviceChargeDataRefreshed",
+                async (deviceChargeData: Salia) => await this.DeviceChargeDataRefreshed(deviceChargeData),
+            );
+
+            this.eventEmitter.on(
                 "onDeviceMeteringRefreshed",
                 async (deviceMetering: Metering) => await this.deviceMeteringInformation(deviceMetering),
             );
@@ -134,7 +139,8 @@ class EchargeCpu2 extends utils.Adapter {
             this.eChargeClient.stop();
 
             callback();
-        } catch (e) {
+        } catch (error: any) {
+            this.log.error(`[onReady] error: ${error.message}, stack: ${error.stack}`);
             callback();
         }
     }
@@ -190,6 +196,10 @@ class EchargeCpu2 extends utils.Adapter {
 
     private async connectionStateChanged(isOnline: boolean): Promise<void> {
         await this.setStateAsync("info.connection", isOnline, true);
+    }
+
+    private async DeviceChargeDataRefreshed(chargeData: Salia): Promise<void> {
+        this.log.error(`${chargeData.chargedata}`);
     }
 
     private async DeviceInformationRefreshed(deviceInfo: DeviceInformation): Promise<void> {

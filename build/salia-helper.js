@@ -48,6 +48,14 @@ class SaliaHttpClient {
         this.log.error(`[onReady] error: ${error.message}, stack: ${error.stack}`);
       }
     };
+    this.getDeviceChargeData = async () => {
+      await this.instance.get("/api/secc/port0/salia").then((resp) => {
+        this.log.debug(JSON.stringify(resp.data));
+        this.eventEmitter.emit("onDeviceChargeDataRefreshed", resp.data);
+      }).catch((error) => {
+        this.log.error(`[onReady] error: ${error.message}, stack: ${error.stack}`);
+      });
+    };
     this.getDeviceMetering = async () => {
       await this.instance.get("/api/secc/port0/metering").then((resp) => {
         this.log.debug(JSON.stringify(resp.data));
@@ -84,6 +92,7 @@ class SaliaHttpClient {
         if (this.deviceStatus) {
           await this.getDeviceInfos();
           await this.getDeviceCPInformation();
+          await this.getDeviceChargeData();
           await this.getDeviceMetering();
         }
         return Promise.resolve();

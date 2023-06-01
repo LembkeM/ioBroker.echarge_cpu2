@@ -4,7 +4,7 @@ import EventEmitter from "events";
 import https from "https";
 import { DeviceCPInformation } from "./types/DeviceCPInformation";
 import { DeviceInformation } from "./types/DeviceInformation";
-import { Metering } from "./types/Root";
+import { Metering, Salia } from "./types/Root";
 
 interface CancellableSleep {
     promise: Promise<void>;
@@ -62,6 +62,8 @@ export class SaliaHttpClient {
                 if (this.deviceStatus) {
                     await this.getDeviceInfos();
                     await this.getDeviceCPInformation();
+
+                    await this.getDeviceChargeData();
 
                     await this.getDeviceMetering();
                 }
@@ -143,6 +145,19 @@ export class SaliaHttpClient {
         } catch (error: any) {
             this.log.error(`[onReady] error: ${error.message}, stack: ${error.stack}`);
         }
+    };
+
+    private getDeviceChargeData = async (): Promise<void> => {
+        await this.instance
+            .get<Salia>("/api/secc/port0/salia")
+            .then((resp) => {
+                this.log.debug(JSON.stringify(resp.data));
+
+                this.eventEmitter.emit("onDeviceChargeDataRefreshed", resp.data);
+            })
+            .catch((error) => {
+                this.log.error(`[onReady] error: ${error.message}, stack: ${error.stack}`);
+            });
     };
 
     private getDeviceMetering = async (): Promise<void> => {
