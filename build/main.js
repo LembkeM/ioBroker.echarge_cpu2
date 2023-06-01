@@ -55,7 +55,7 @@ class EchargeCpu2 extends utils.Adapter {
       );
       this.eventEmitter.on(
         "onDeviceChargeDataRefreshed",
-        async (deviceChargeData) => await this.DeviceChargeDataRefreshed(deviceChargeData)
+        async (deviceChargeData) => await this.DeviceChargeDataRefreshed({ chargeData: deviceChargeData })
       );
       this.eventEmitter.on(
         "onDeviceMeteringRefreshed",
@@ -83,7 +83,7 @@ class EchargeCpu2 extends utils.Adapter {
   async connectionStateChanged(isOnline) {
     await this.setStateAsync("info.connection", isOnline, true);
   }
-  async DeviceChargeDataRefreshed(chargeData) {
+  async DeviceChargeDataRefreshed({ chargeData }) {
     this.log.error(`${chargeData.chargedata}`);
   }
   async DeviceInformationRefreshed(deviceInfo) {

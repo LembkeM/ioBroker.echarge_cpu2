@@ -155,7 +155,7 @@ export class SaliaHttpClient {
 
                 this.eventEmitter.emit("onDeviceChargeDataRefreshed", resp.data);
             })
-            .catch((error) => {
+            .catch((error: any) => {
                 this.log.error(`[onReady] error: ${error.message}, stack: ${error.stack}`);
             });
     };
@@ -168,7 +168,7 @@ export class SaliaHttpClient {
 
                 this.eventEmitter.emit("onDeviceMeteringRefreshed", resp.data);
             })
-            .catch((error) => {
+            .catch((error: any) => {
                 this.log.error(`[onReady] error: ${error.message}, stack: ${error.stack}`);
             });
     };

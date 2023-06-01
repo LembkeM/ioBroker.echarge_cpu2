@@ -9,7 +9,7 @@ import EventEmitter from "events";
 import { SaliaHttpClient } from "./salia-helper";
 import { DeviceCPInformation } from "./types/DeviceCPInformation";
 import { DeviceInformation } from "./types/DeviceInformation";
-import { Metering } from "./types/Root";
+import { Metering, Salia } from "./types/Root";
 
 class EchargeCpu2 extends utils.Adapter {
     isOnlineCheckTimeout: any;
@@ -72,7 +72,8 @@ class EchargeCpu2 extends utils.Adapter {
 
             this.eventEmitter.on(
                 "onDeviceChargeDataRefreshed",
-                async (deviceChargeData: Salia) => await this.DeviceChargeDataRefreshed(deviceChargeData),
+                async (deviceChargeData: Salia) =>
+                    await this.DeviceChargeDataRefreshed({ chargeData: deviceChargeData }),
             );
 
             this.eventEmitter.on(
@@ -198,7 +199,7 @@ class EchargeCpu2 extends utils.Adapter {
         await this.setStateAsync("info.connection", isOnline, true);
     }
 
-    private async DeviceChargeDataRefreshed(chargeData: Salia): Promise<void> {
+    private async DeviceChargeDataRefreshed({ chargeData }: { chargeData: Salia }): Promise<void> {
         this.log.error(`${chargeData.chargedata}`);
     }
 

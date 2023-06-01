@@ -707,7 +707,7 @@
             "common": {
                 "role": "value.power",
                 "name": "Device Charging power active ac l1",
-                "type": "string",
+                "type": "number",
                 "read": true,
                 "write": false,
                 "def": ""
@@ -732,7 +732,7 @@
             "common": {
                 "role": "value.power",
                 "name": "Device Charging power active ac l2",
-                "type": "string",
+                "type": "number",
                 "read": true,
                 "write": false,
                 "def": ""
@@ -757,7 +757,7 @@
             "common": {
                 "role": "value.power",
                 "name": "Device Charging power active ac l3",
-                "type": "string",
+                "type": "number",
                 "read": true,
                 "write": false,
                 "def": ""
@@ -802,7 +802,7 @@
             "common": {
                 "role": "value.power",
                 "name": "Device Charging power active ac l1",
-                "type": "string",
+                "type": "number",
                 "read": true,
                 "write": false,
                 "def": ""
@@ -827,7 +827,7 @@
             "common": {
                 "role": "value.power",
                 "name": "Device Charging power active ac l2",
-                "type": "string",
+                "type": "number",
                 "read": true,
                 "write": false,
                 "def": ""
@@ -852,7 +852,7 @@
             "common": {
                 "role": "value.power",
                 "name": "Device Charging power active ac l3",
-                "type": "string",
+                "type": "number",
                 "read": true,
                 "write": false,
                 "def": ""
