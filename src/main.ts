@@ -230,7 +230,7 @@ class EchargeCpu2 extends utils.Adapter {
 
         await this.setStateAsync(
             "deviceSecc.metering.energy.active_total.actual",
-            +deviceMetering.energy.active_total.actual / 10,
+            +deviceMetering.energy.active_total.actual,
             true,
         );
 
