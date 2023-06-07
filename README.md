@@ -44,6 +44,11 @@ Additional to the adapter installation you have to configure the adapter and add
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+
+-   (MLembke) Correction of deviceSecc.metering.energy.active_total.actual and deviceSecc.metering.power.active_total.actual
+
 ### 0.0.10 (2023-06-07)
 
 -   (MLembke) Enhanced polling implemented. Metering information added.
