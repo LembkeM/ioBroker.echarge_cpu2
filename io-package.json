@@ -1,875 +1,882 @@
 {
-    "common": {
-        "name": "echarge_cpu2",
-        "version": "0.0.10",
-        "news": {
-            "0.0.10": {
-                "en": "Enhanced polling implemented. Metering information added.",
-                "de": "Verbesserte Umfrage durchgeführt. Metering Informationen hinzugefügt.",
-                "ru": "Повышенный опрос реализован. Добавлена информация.",
-                "pt": "Pesquisa avançada implementada. Informações de medição adicionadas.",
-                "nl": "Verbeterde polling geïnformeerd. Meting informatie toegevoegd.",
-                "fr": "Mise en œuvre accrue du sondage. Informations de mesure ajoutées.",
-                "it": "Inquinamento migliorato implementato. Informazioni di Metering aggiunte.",
-                "es": "Se aplica una mejor encuesta. Metering information added.",
-                "pl": "Zaimplementowane były badania. Dodano informacje o mapach.",
-                "uk": "Впровадження розширеного опитування. Додана інформація.",
-                "zh-cn": "实施了强化的投票。 气象资料增加。."
-            },
-            "0.0.9": {
-                "en": "Polling metering informations implemented",
-                "de": "Polling-Meßinformationen implementiert",
-                "ru": "Внедренные измерительные данные",
-                "pt": "InformaÃ§Ãμes de medição de Polling implementadas",
-                "nl": "Polling Metering informatie uitgevoerd",
-                "fr": "Informations de mesure des polluants mises en œuvre",
-                "it": "Le informazioni sulla misurazione dell'inquinamento implementate",
-                "es": "Información de medición de contaminantes aplicada",
-                "pl": "Zastosowanie liczników zaimplementowanych w życie",
-                "uk": "Впровадження інформації з обліку полів",
-                "zh-cn": "执行的参数信息"
-            },
-            "0.0.8": {
-                "en": "Improvements in logging\nGeting actual_total metering",
-                "de": "Verbesserungen bei der Protokollierung\nIst-totale Dosierung",
-                "ru": "Улучшения в лесозаготовке\nПолучение фактического_общего измерения",
-                "pt": "Melhorias no registro\nObter Medição real_total",
-                "nl": "Improvementen in logging\nEchte meting krijgen",
-                "fr": "Amélioration de l ' exploitation forestière\nRéaliser la mesure réelle_total",
-                "it": "Miglioramenti nella registrazione\nOttenere la misurazione effettiva_totale",
-                "es": "Mejoras en el registro\nObtención de medición real_total",
-                "pl": "Wprowadzenie do logowania\nGet the actual metering (ang.)",
-                "uk": "Удосконалення в заїзді\nОтримання фактичного дозування",
-                "zh-cn": "伐木方面的改进\nA. 实际点:总参数"
-            },
-            "0.0.7": {
-                "en": "unused react in Admin removed",
-                "de": "ungenutzte Reaktion in Admin entfernt",
-                "ru": "неиспользуемый ответ в Admin удален",
-                "pt": "reação não utilizada em Admin removida",
-                "nl": "ongebruikt reageren in administratie",
-                "fr": "réaction inutilisée dans Admin enlevé",
-                "it": "reagire inutilizzato in Admin rimosso",
-                "es": "reacción no utilizado en Admin eliminado",
-                "pl": "nieużywane reakcje w Admin usunęły",
-                "uk": "невикористана реагація в адмін видалено",
-                "zh-cn": "被撤职的未用反应"
-            },
-            "0.0.6": {
-                "en": "Implemented a scheduled based checking the online state.\nUpdating the deviceinformation if the onlinestate changes to true.\nImplemented a scheduled based checking of the CP state if the onlinestate is true.\nCorrections done to become an ioBroker.repository member.",
-                "de": "Ergänzte eine planbasierte Überprüfung des Online-Zustands.\nAktualisierung der Geräteinformationen, wenn sich der Online-Zustand ändert.\nErgänzte eine planbasierte Überprüfung des CP-Zustands, wenn der Online-Zustand wahr ist.\nKorrekturen, um ein ioBroker. Repository-Mitglied.",
-                "ru": "Реализована плановая проверка состояния онлайн.\nОбновление девайсинформации, если онлайн-государство меняется в реальность.\nРеализована плановая проверка состояния CP, если онлайн-государство верно.\nИсправления, сделанные, чтобы стать ioBroker. член репозитория.",
-                "pt": "Implementou uma verificação baseada no estado on-line.\nAtualizando a informação do dispositivo se o estado on-line mudar para true.\nImplementou uma verificação com base programada do estado do CP se o estado on-line for verdadeiro.\nCorreções feitas para se tornar um ioBroker. membro do repositório.",
-                "nl": "Implementeerde een geplande basis om de online staat te controleren.\nDe apparaatinformatie aanpassen als de onlinestate verandert.\nImplementeerde een geplande basis controle over de CP staat als de onlinestaten waar zijn.\nCorrecties gedaan om een ioBroker te worden. Verplaatsingslid.",
-                "fr": "Mise en œuvre d'un contrôle régulier de l'état en ligne.\nMettre à jour les informations de l'appareil si l'état en ligne change à vrai.\nLa mise en œuvre d'un contrôle régulier de l'état CP si l'état en ligne est vrai.\nCorrections faites pour devenir un ioBroker. membre du dépôt.",
-                "it": "Ho implementato una base programmata che controlla lo stato online.\nAggiornare l'informazione del dispositivo se lo stato online cambia a vero.\nImplementato un controllo basato programmato dello stato CP se lo stato online è vero.\nCorrezioni fatte per diventare un ioBroker. membro del repository.",
-                "es": "Se implementó una comprobación basada en el estado en línea.\nActualizar la información del dispositivo si el estado en línea cambia a la verdad.\nSe implementó una comprobación basada en el estado CP si el estado en línea es cierto.\nCorrección hecha para convertirse en un ioBroker. miembro del repositorio.",
-                "pl": "Umożliwiło to zaplanowane sprawdzenie stanu internetowego.\nUlepszając dezinformację urządzenia, jeśli stan online zmienia się w prawdziwość.\nUmożliwiło to zaplanowane sprawdzenie stanu CP, jeżeli stan online jest prawdziwy.\nWykłaniane zostały jako ioBroker. Członek repozytorium.",
-                "uk": "Впровадження запланованої перевірки онлайн стану.\nОновлення інформації про пристрій, якщо зміни онлайн-держави до true.\nВпровадження запланованої перевірки стану CP, якщо реальна онлайндержава.\nКорекції, зроблені, щоб стати ioBroker. репозиторій.",
-                "zh-cn": "执行一个预定的网上国家检查。.\n如果网上国家对真实情况作出修改,则更新装置信息。.\n如果网上国家确实存在,则按计划对《和平协议》国家进行检查。.\n更正为零星。 存放成员。."
-            },
-            "0.0.5": {
-                "en": "README Text changed. Logo added.",
-                "de": "BEGRÜNDUNG Text geändert. Logo hinzugefügt.",
-                "ru": "Читать Текст изменен. Логотип добавлен.",
-                "pt": "REALIZAÇÃO O texto mudou. Logo adicionado.",
-                "nl": "Vertaling: Sms veranderd. Logo toegevoegd.",
-                "fr": "README Le texte a changé. Logo ajouté.",
-                "it": "READEM Il testo è cambiato. Logo aggiunto.",
-                "es": "README El texto cambió. Logo añadido.",
-                "pl": "README Tekst zmienił. Logo dodał.",
-                "uk": "ЗАМОВИТИ Змінено текст. Додано логотип.",
-                "zh-cn": "建 议 案文修改。 增加。."
-            },
-            "0.0.4": {
-                "en": "release workflow to npm finished",
-                "de": "release-workflow zu npm fertig",
-                "ru": "отпустите рабочий процесс до npm закончил",
-                "pt": "fluxo de trabalho de lançamento para npm terminado",
-                "nl": "laat het werk naar npm klaar",
-                "fr": "le flux de travail pour npm terminé",
-                "it": "uscita flusso di lavoro a npm finito",
-                "es": "flujo de trabajo de liberación a npm terminado",
-                "pl": "produkcja",
-                "uk": "випуск робочого процесу до npm завершено",
-                "zh-cn": "完成工作流程"
-            }
-        },
-        "titleLang": {
-            "en": "Hardy Barth eCharge cPµ2",
-            "de": "Hardy Barth eCharge CPµ2",
-            "ru": "Hardy Barth eCharge cPµ2",
-            "pt": "Hardy Barth eCharge cPµ2",
-            "nl": "Hardy Barth eCharge cPµ2",
-            "fr": "Chargeur Hardy Barth cPµ2",
-            "it": "Caricabatterie Hardy Barth cPµ2",
-            "es": "eCharge Hardy Barth cPµ2",
-            "pl": "Hardy Barth eCharge cPµ2",
-            "uk": "Зарядний пристрій Hardy Barth eCharge cPµ2",
-            "zh-cn": "Hardy Barth eCharge cPµ2"
-        },
-        "desc": {
-            "en": "echarge_cpu2",
-            "de": "echarge_cpu2",
-            "ru": "echarge_cpu2",
-            "pt": "echarge_cpu2",
-            "nl": "echarge_cpu2",
-            "fr": "echarge_cpu2",
-            "it": "echarge_cpu2",
-            "es": "echarge_cpu2",
-            "pl": "echarge_cpu2",
-            "uk": "echarge_cpu2",
-            "zh-cn": "echarge_cpu2"
-        },
-        "authors": ["MLembke <m.lembke@lembke-it-service.de>"],
-        "keywords": ["Hardy Barth", "eCharge", "template", "home automation"],
-        "license": "MIT",
-        "platform": "Javascript/Node.js",
-        "main": "build/main.js",
-        "icon": "echarge_cpu2.png",
-        "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/LembkeM/ioBroker.echarge_cpu2/main/admin/echarge_cpu2.png",
-        "readme": "https://github.com/LembkeM/ioBroker.echarge_cpu2/blob/main/README.md",
-        "loglevel": "info",
-        "mode": "daemon",
-        "type": "vehicle",
-        "compact": true,
-        "connectionType": "local",
-        "dataSource": "push",
-        "adminUI": {
-            "config": "json"
-        },
-        "eraseOnUpload": true,
-        "dependencies": [
-            {
-                "js-controller": ">=3.3.22"
-            }
-        ],
-        "globalDependencies": [
-            {
-                "admin": ">=5.1.28"
-            }
-        ]
+  "common": {
+    "name": "echarge_cpu2",
+    "version": "0.0.11",
+    "news": {
+      "0.0.11": {
+        "en": "Correction of deviceSecc.metering.energy.active_total.actual and deviceSecc.metering.power.active_total.actual",
+        "de": "Korrektur von deviceSecc.metering.energy.active_total.actual und deviceSecc.metering.power.active_total.actual",
+        "ru": "Исправление устройстваSecc.metering.energy.active_total.actual и deviceSecc.metering.power.active_total.actual",
+        "pt": "Correção de dispositivoSecc.metering.energy.active_total.actual e dispositivoSecc.metering.power.active_total.actual",
+        "nl": "Correctie van apparatuur bereikbaar. Actief",
+        "fr": "Correction du dispositifSecc.metering.energy.active_total.actual and deviceSecc.metering.power.active_total.actual",
+        "it": "Correzione del dispositivoSecc.metering.energy.active_total.actual e dispositivoSecc.metering.power.active_total.actual",
+        "es": "Corrección del dispositivoSecc.metering.energy.active_total.actual y dispositivoSecc.metering.power.active_total.actual",
+        "pl": "Współczynnikowy.active_total.actual. and deviceSecc.metering.power.active_total.actual",
+        "uk": "Корекція пристроюSecc.metering.energy.active_total.actual and deviceSecc.metering.power.active_total.actual",
+        "zh-cn": "装置Secc. 参数.energy.action_total.actual and装置Secc. 参数.power. action_total.actactual"
+      },
+      "0.0.10": {
+        "en": "Enhanced polling implemented. Metering information added.",
+        "de": "Verbesserte Umfrage durchgeführt. Metering Informationen hinzugefügt.",
+        "ru": "Повышенный опрос реализован. Добавлена информация.",
+        "pt": "Pesquisa avançada implementada. Informações de medição adicionadas.",
+        "nl": "Verbeterde polling geïnformeerd. Meting informatie toegevoegd.",
+        "fr": "Mise en œuvre accrue du sondage. Informations de mesure ajoutées.",
+        "it": "Inquinamento migliorato implementato. Informazioni di Metering aggiunte.",
+        "es": "Se aplica una mejor encuesta. Metering information added.",
+        "pl": "Zaimplementowane były badania. Dodano informacje o mapach.",
+        "uk": "Впровадження розширеного опитування. Додана інформація.",
+        "zh-cn": "实施了强化的投票。 气象资料增加。."
+      },
+      "0.0.9": {
+        "en": "Polling metering informations implemented",
+        "de": "Polling-Meßinformationen implementiert",
+        "ru": "Внедренные измерительные данные",
+        "pt": "InformaÃ§Ãμes de medição de Polling implementadas",
+        "nl": "Polling Metering informatie uitgevoerd",
+        "fr": "Informations de mesure des polluants mises en œuvre",
+        "it": "Le informazioni sulla misurazione dell'inquinamento implementate",
+        "es": "Información de medición de contaminantes aplicada",
+        "pl": "Zastosowanie liczników zaimplementowanych w życie",
+        "uk": "Впровадження інформації з обліку полів",
+        "zh-cn": "执行的参数信息"
+      },
+      "0.0.8": {
+        "en": "Improvements in logging\nGeting actual_total metering",
+        "de": "Verbesserungen bei der Protokollierung\nIst-totale Dosierung",
+        "ru": "Улучшения в лесозаготовке\nПолучение фактического_общего измерения",
+        "pt": "Melhorias no registro\nObter Medição real_total",
+        "nl": "Improvementen in logging\nEchte meting krijgen",
+        "fr": "Amélioration de l ' exploitation forestière\nRéaliser la mesure réelle_total",
+        "it": "Miglioramenti nella registrazione\nOttenere la misurazione effettiva_totale",
+        "es": "Mejoras en el registro\nObtención de medición real_total",
+        "pl": "Wprowadzenie do logowania\nGet the actual metering (ang.)",
+        "uk": "Удосконалення в заїзді\nОтримання фактичного дозування",
+        "zh-cn": "伐木方面的改进\nA. 实际点:总参数"
+      },
+      "0.0.7": {
+        "en": "unused react in Admin removed",
+        "de": "ungenutzte Reaktion in Admin entfernt",
+        "ru": "неиспользуемый ответ в Admin удален",
+        "pt": "reação não utilizada em Admin removida",
+        "nl": "ongebruikt reageren in administratie",
+        "fr": "réaction inutilisée dans Admin enlevé",
+        "it": "reagire inutilizzato in Admin rimosso",
+        "es": "reacción no utilizado en Admin eliminado",
+        "pl": "nieużywane reakcje w Admin usunęły",
+        "uk": "невикористана реагація в адмін видалено",
+        "zh-cn": "被撤职的未用反应"
+      },
+      "0.0.6": {
+        "en": "Implemented a scheduled based checking the online state.\nUpdating the deviceinformation if the onlinestate changes to true.\nImplemented a scheduled based checking of the CP state if the onlinestate is true.\nCorrections done to become an ioBroker.repository member.",
+        "de": "Ergänzte eine planbasierte Überprüfung des Online-Zustands.\nAktualisierung der Geräteinformationen, wenn sich der Online-Zustand ändert.\nErgänzte eine planbasierte Überprüfung des CP-Zustands, wenn der Online-Zustand wahr ist.\nKorrekturen, um ein ioBroker. Repository-Mitglied.",
+        "ru": "Реализована плановая проверка состояния онлайн.\nОбновление девайсинформации, если онлайн-государство меняется в реальность.\nРеализована плановая проверка состояния CP, если онлайн-государство верно.\nИсправления, сделанные, чтобы стать ioBroker. член репозитория.",
+        "pt": "Implementou uma verificação baseada no estado on-line.\nAtualizando a informação do dispositivo se o estado on-line mudar para true.\nImplementou uma verificação com base programada do estado do CP se o estado on-line for verdadeiro.\nCorreções feitas para se tornar um ioBroker. membro do repositório.",
+        "nl": "Implementeerde een geplande basis om de online staat te controleren.\nDe apparaatinformatie aanpassen als de onlinestate verandert.\nImplementeerde een geplande basis controle over de CP staat als de onlinestaten waar zijn.\nCorrecties gedaan om een ioBroker te worden. Verplaatsingslid.",
+        "fr": "Mise en œuvre d'un contrôle régulier de l'état en ligne.\nMettre à jour les informations de l'appareil si l'état en ligne change à vrai.\nLa mise en œuvre d'un contrôle régulier de l'état CP si l'état en ligne est vrai.\nCorrections faites pour devenir un ioBroker. membre du dépôt.",
+        "it": "Ho implementato una base programmata che controlla lo stato online.\nAggiornare l'informazione del dispositivo se lo stato online cambia a vero.\nImplementato un controllo basato programmato dello stato CP se lo stato online è vero.\nCorrezioni fatte per diventare un ioBroker. membro del repository.",
+        "es": "Se implementó una comprobación basada en el estado en línea.\nActualizar la información del dispositivo si el estado en línea cambia a la verdad.\nSe implementó una comprobación basada en el estado CP si el estado en línea es cierto.\nCorrección hecha para convertirse en un ioBroker. miembro del repositorio.",
+        "pl": "Umożliwiło to zaplanowane sprawdzenie stanu internetowego.\nUlepszając dezinformację urządzenia, jeśli stan online zmienia się w prawdziwość.\nUmożliwiło to zaplanowane sprawdzenie stanu CP, jeżeli stan online jest prawdziwy.\nWykłaniane zostały jako ioBroker. Członek repozytorium.",
+        "uk": "Впровадження запланованої перевірки онлайн стану.\nОновлення інформації про пристрій, якщо зміни онлайн-держави до true.\nВпровадження запланованої перевірки стану CP, якщо реальна онлайндержава.\nКорекції, зроблені, щоб стати ioBroker. репозиторій.",
+        "zh-cn": "执行一个预定的网上国家检查。.\n如果网上国家对真实情况作出修改,则更新装置信息。.\n如果网上国家确实存在,则按计划对《和平协议》国家进行检查。.\n更正为零星。 存放成员。."
+      },
+      "0.0.5": {
+        "en": "README Text changed. Logo added.",
+        "de": "BEGRÜNDUNG Text geändert. Logo hinzugefügt.",
+        "ru": "Читать Текст изменен. Логотип добавлен.",
+        "pt": "REALIZAÇÃO O texto mudou. Logo adicionado.",
+        "nl": "Vertaling: Sms veranderd. Logo toegevoegd.",
+        "fr": "README Le texte a changé. Logo ajouté.",
+        "it": "READEM Il testo è cambiato. Logo aggiunto.",
+        "es": "README El texto cambió. Logo añadido.",
+        "pl": "README Tekst zmienił. Logo dodał.",
+        "uk": "ЗАМОВИТИ Змінено текст. Додано логотип.",
+        "zh-cn": "建 议 案文修改。 增加。."
+      }
     },
-    "native": {
-        "basicDeviceUrl": ""
+    "titleLang": {
+      "en": "Hardy Barth eCharge cPµ2",
+      "de": "Hardy Barth eCharge CPµ2",
+      "ru": "Hardy Barth eCharge cPµ2",
+      "pt": "Hardy Barth eCharge cPµ2",
+      "nl": "Hardy Barth eCharge cPµ2",
+      "fr": "Chargeur Hardy Barth cPµ2",
+      "it": "Caricabatterie Hardy Barth cPµ2",
+      "es": "eCharge Hardy Barth cPµ2",
+      "pl": "Hardy Barth eCharge cPµ2",
+      "uk": "Зарядний пристрій Hardy Barth eCharge cPµ2",
+      "zh-cn": "Hardy Barth eCharge cPµ2"
     },
-    "objects": [],
-    "instanceObjects": [
-        {
-            "_id": "info",
-            "type": "channel",
-            "common": {
-                "name": "Information"
-            },
-            "native": {
-                "en": "Information",
-                "de": "Informationen",
-                "ru": "Информация",
-                "pt": "Informação",
-                "nl": "Informatie",
-                "fr": "Information",
-                "it": "Informazioni",
-                "es": "Información",
-                "pl": "Informacja",
-                "uk": "Інформація",
-                "zh-cn": "信息"
-            }
-        },
-        {
-            "_id": "info.connection",
-            "type": "state",
-            "common": {
-                "role": "indicator.connection",
-                "name": "Device or service connected",
-                "type": "boolean",
-                "read": true,
-                "write": false,
-                "def": false
-            },
-            "native": {
-                "en": "Device or service connected\"",
-                "de": "Gerät oder Dienst verbunden\"",
-                "ru": "Устройство или сервис подключены\"",
-                "pt": "Dispositivo ou serviço conectado\"",
-                "nl": "Device of dienst verbonden",
-                "fr": "Appareil ou service connecté\"",
-                "it": "Dispositivo o servizio collegato\"",
-                "es": "Dispositivo o servicio conectado\"",
-                "pl": "Device lub serwis połączony",
-                "uk": "Пристрої або послуги підключені",
-                "zh-cn": "证人或有关服务”"
-            }
-        },
-        {
-            "_id": "deviceInfo",
-            "type": "channel",
-            "common": {
-                "name": "Information"
-            },
-            "native": {
-                "en": "Device Information",
-                "de": "Informationen zum Produkt",
-                "ru": "Информация об устройстве",
-                "pt": "InformaÃ§Ã£o do dispositivo",
-                "nl": "Device Informatie",
-                "fr": "Information sur les dispositifs",
-                "it": "Informazioni sul dispositivo",
-                "es": "Información sobre dispositivos",
-                "pl": "Device Information",
-                "uk": "Інформація про пристрій",
-                "zh-cn": "证人信息"
-            }
-        },
-        {
-            "_id": "deviceInfo.product",
-            "type": "state",
-            "common": {
-                "role": "text",
-                "name": "Device product",
-                "type": "string",
-                "read": true,
-                "write": false,
-                "def": ""
-            },
-            "native": {
-                "en": "Device product",
-                "de": "Geräteprodukt",
-                "ru": "Продукт устройства",
-                "pt": "Produto do dispositivo",
-                "nl": "Vernietig product",
-                "fr": "Produit du dispositif",
-                "it": "Prodotto di dispositivo",
-                "es": "Producto del dispositivo",
-                "pl": "Produkt Device",
-                "uk": "Продукція пристрою",
-                "zh-cn": "丧失产品"
-            }
-        },
-        {
-            "_id": "deviceInfo.hardware_version",
-            "type": "state",
-            "common": {
-                "role": "info.hardware",
-                "name": "Device Hardware version",
-                "type": "string",
-                "read": true,
-                "write": false,
-                "def": ""
-            },
-            "native": {
-                "en": "Device Hardware version",
-                "de": "Geräte-Hardware-Version",
-                "ru": "Устройство Hardware версия",
-                "pt": "Versão do hardware do dispositivo",
-                "nl": "Device Hardware versie",
-                "fr": "Hardware version",
-                "it": "Versione hardware del dispositivo",
-                "es": "Versión de hardware de dispositivo",
-                "pl": "Device Hardware",
-                "uk": "Версія для пристроїв",
-                "zh-cn": "Devic Hardware版本"
-            }
-        },
-        {
-            "_id": "deviceInfo.software_version",
-            "type": "state",
-            "common": {
-                "role": "info.firmware",
-                "name": "Device Softwareversion",
-                "type": "string",
-                "read": true,
-                "write": false,
-                "def": ""
-            },
-            "native": {
-                "en": "Device Softwareversion",
-                "de": "Softwareversion des Geräts",
-                "ru": "Устройство Softwareversion",
-                "pt": "Software de dispositivo",
-                "nl": "Vernietig Software",
-                "fr": "Logiciel de traitement",
-                "it": "Software di dispositivo",
-                "es": "Softwareversion de dispositivo",
-                "pl": "Device Software",
-                "uk": "Налаштування програмного забезпечення",
-                "zh-cn": "Devic Soft软件转换"
-            }
-        },
-        {
-            "_id": "deviceInfo.vcs_version",
-            "type": "state",
-            "common": {
-                "role": "text",
-                "name": "Device VCS Version",
-                "type": "string",
-                "read": true,
-                "write": false,
-                "def": ""
-            },
-            "native": {
-                "en": "Device VCS Version",
-                "de": "Gerät VCS Version",
-                "ru": "Устройство VCS Версия",
-                "pt": "Dispositivo VCS Versão",
-                "nl": "Vernietig VCS Vers",
-                "fr": "Dispositif VCS Version",
-                "it": "Dispositivo VCS Versione",
-                "es": "Dispositivo VCS Versión",
-                "pl": "VCS Wersja",
-                "uk": "Пристрої VCS Редагування",
-                "zh-cn": "Devic VCS 目 录"
-            }
-        },
-        {
-            "_id": "deviceInfo.hostname",
-            "type": "state",
-            "common": {
-                "role": "info.name",
-                "name": "Device Hostname",
-                "type": "string",
-                "read": true,
-                "write": false,
-                "def": ""
-            },
-            "native": {
-                "en": "Device Hostname",
-                "de": "Gerätename",
-                "ru": "Устройство Hostname",
-                "pt": "Nome de host do dispositivo",
-                "nl": "Device Host",
-                "fr": "Hostname",
-                "it": "Nome host del dispositivo",
-                "es": "Nombre de host de dispositivo",
-                "pl": "Device Hostname",
-                "uk": "Назва пристрою",
-                "zh-cn": "被遗弃人质"
-            }
-        },
-        {
-            "_id": "deviceInfo.mac_address",
-            "type": "state",
-            "common": {
-                "role": "info.mac",
-                "name": "Device MAC Address",
-                "type": "string",
-                "read": true,
-                "write": false,
-                "def": ""
-            },
-            "native": {
-                "en": "Device MAC Address",
-                "de": "Gerät MAC Anschrift",
-                "ru": "Устройство MAC Адрес",
-                "pt": "Dispositivo MAC Endereço",
-                "nl": "Vernietig MAC Adres",
-                "fr": "Appareil MAC Adresse",
-                "it": "Dispositivo MAC Indirizzo",
-                "es": "Dispositivo MAC Dirección",
-                "pl": "MAC Addressa",
-                "uk": "Пристрої MAC Контакти",
-                "zh-cn": "Device MAC 问题"
-            }
-        },
-        {
-            "_id": "deviceInfo.serial",
-            "type": "state",
-            "common": {
-                "role": "info.serial",
-                "name": "Device Serialnumber",
-                "type": "string",
-                "read": true,
-                "write": false,
-                "def": ""
-            },
-            "native": {
-                "en": "Device Serialnumber",
-                "de": "Gerät Seriennummer",
-                "ru": "Устройство Serialnumber",
-                "pt": "Número de série do dispositivo",
-                "nl": "Vernietig Serialnumber",
-                "fr": "Appareil numéro de série",
-                "it": "Numero di serie",
-                "es": "Número de serie de dispositivos",
-                "pl": "Szeregowy",
-                "uk": "Пристрої Serialnumber",
-                "zh-cn": "证人人数"
-            }
-        },
-        {
-            "_id": "deviceInfo.internal_id",
-            "type": "state",
-            "common": {
-                "role": "text",
-                "name": "Device internal Id",
-                "type": "string",
-                "read": true,
-                "write": false,
-                "def": ""
-            },
-            "native": {
-                "en": "Device internal Id",
-                "de": "Gerät intern I",
-                "ru": "Устройство внутреннего Ид",
-                "pt": "Dispositivo interno I",
-                "nl": "Vernietig intern ID",
-                "fr": "Appareil interne Id",
-                "it": "Dispositivo interno Id",
-                "es": "Dispositivo interno Id",
-                "pl": "Wewnątrz Id",
-                "uk": "Пристрої внутрішні Ід",
-                "zh-cn": "内部拘留 Id"
-            }
-        },
-        {
-            "_id": "deviceSecc",
-            "type": "channel",
-            "common": {
-                "name": "Device SECC Information"
-            },
-            "native": {
-                "en": "Device SECC Information",
-                "de": "Gerät SECC Informationen",
-                "ru": "Устройство SECC Информация",
-                "pt": "Dispositivo SECC Informação",
-                "nl": "Vernietig SECC Informatie",
-                "fr": "SECC Information",
-                "it": "Dispositivo SECC Informazioni",
-                "es": "Device SECC Información",
-                "pl": "Device SECC Informacja",
-                "uk": "Пристрої SECC Інформація",
-                "zh-cn": "D. 被剥夺自由者 信息"
-            }
-        },
-        {
-            "_id": "deviceSecc.scc_cp_state",
-            "type": "state",
-            "common": {
-                "role": "text",
-                "name": "Device Control Pilot State",
-                "type": "string",
-                "read": true,
-                "write": false,
-                "def": ""
-            },
-            "native": {
-                "en": "Device Control Pilot State",
-                "de": "Gerätesteuerung Pilot State",
-                "ru": "Управление устройством Pilot State",
-                "pt": "Controle de dispositivo Pilot State",
-                "nl": "Device Controle Pilot State",
-                "fr": "Pilot State",
-                "it": "Controllo dispositivi Stato pilota",
-                "es": "Estado piloto de control de dispositivos",
-                "pl": "Strona oficjalna",
-                "uk": "Контроль пристрою Пілотний стан",
-                "zh-cn": "证人控制试点国家"
-            }
-        },
-        {
-            "_id": "deviceSecc.metering",
-            "type": "channel",
-            "common": {
-                "name": "Device Control Metering"
-            },
-            "native": {
-                "en": "Device Control current metering",
-                "de": "Gerätesteuerung Strommessung",
-                "ru": "Контроль устройства текущий метринг",
-                "pt": "Medição de corrente de controle de dispositivo",
-                "nl": "Device controle huidige metro",
-                "fr": "Mesure du courant de contrôle de l'appareil",
-                "it": "Misurazione corrente di controllo del dispositivo",
-                "es": "Medición de corriente de control de dispositivos",
-                "pl": "Prezentacja prądu metrowego",
-                "uk": "Пристрої контролю струму обліку",
-                "zh-cn": "当前墓地的控制"
-            }
-        },
-        {
-            "_id": "deviceSecc.metering.meter",
-            "type": "channel",
-            "common": {
-                "name": "Device Control Meter"
-            },
-            "native": {
-                "en": "Device Control Meter",
-                "de": "Gerätesteuerung",
-                "ru": "Устройство управления метр",
-                "pt": "Medidor de controle de dispositivo",
-                "nl": "Device Control Meter",
-                "fr": "Compteur de contrôle de l'appareil",
-                "it": "Misuratore di controllo del dispositivo",
-                "es": "Medidor de control de dispositivos",
-                "pl": "Oficjalna strona",
-                "uk": "Пристрої контролю",
-                "zh-cn": "证人控制金属"
-            }
-        },
-        {
-            "_id": "deviceSecc.metering.meter.available",
-            "type": "state",
-            "common": {
-                "role": "value",
-                "name": "Device Control Meter available",
-                "type": "number",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {
-                "en": "Device Control Meter available",
-                "de": "Gerätesteuerung Meter verfügbar",
-                "ru": "Управление устройством Метр доступный",
-                "pt": "Controle de dispositivo Medidor disponível",
-                "nl": "Device Controle Metro beschikbaar",
-                "fr": "Contrôle des dispositifs Meter disponible",
-                "it": "Controllo dispositivi Meter disponibile",
-                "es": "Control de dispositivos Medidor disponible",
-                "pl": "Kontrola dostęp",
-                "uk": "Контроль пристрою Вимірювання",
-                "zh-cn": "证人控制 可用的金属"
-            }
-        },
-        {
-            "_id": "deviceSecc.metering.energy",
-            "type": "channel",
-            "common": {
-                "name": "Device Control Energy"
-            },
-            "native": {
-                "en": "Device Control Energy",
-                "de": "Gerätesteuerung Energie",
-                "ru": "Управление устройством Energy",
-                "pt": "Energia de controle de dispositivo",
-                "nl": "Device Control Energie",
-                "fr": "Device Control Energy",
-                "it": "Controllo dispositivi Energia",
-                "es": "Control de dispositivos Energía",
-                "pl": "Kontrola bezpieczeństwa",
-                "uk": "Енергоблоки",
-                "zh-cn": "能源控制"
-            }
-        },
-        {
-            "_id": "deviceSecc.metering.energy.active_total",
-            "type": "channel",
-            "common": {
-                "name": "Device Control Energy active total"
-            },
-            "native": {
-                "en": "Device Control Energy active total",
-                "de": "Gerätesteuerung Gesamt",
-                "ru": "Управление устройством Энергетическая активная общая",
-                "pt": "Controle de dispositivo Total de energia activa",
-                "nl": "Device Controle Energie actief",
-                "fr": "Contrôle des dispositifs Total de l ' énergie",
-                "it": "Controllo dispositivi Totale attivo energetico",
-                "es": "Control de dispositivos Energía total",
-                "pl": "Kontrola energetyczny",
-                "uk": "Контроль пристрою Енергетика",
-                "zh-cn": "证人控制 积极能源"
-            }
-        },
-        {
-            "_id": "deviceSecc.metering.energy.active_total.actual",
-            "type": "state",
-            "common": {
-                "role": "value.power",
-                "name": "Device Control Meter actual active total",
-                "type": "number",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {
-                "en": "Device Control Meter actual active total",
-                "de": "Gerätesteuerung Zähler tatsächlich aktiv insgesamt",
-                "ru": "Управление устройством Метр фактический активный",
-                "pt": "Controle de dispositivo Medidor total ativo",
-                "nl": "Device Controle Metro actief",
-                "fr": "Contrôle des dispositifs Total actif réel",
-                "it": "Controllo dispositivi Totale attivo effettivo",
-                "es": "Control de dispositivos Total activo",
-                "pl": "Kontrola aktualny",
-                "uk": "Контроль пристрою Вимірювання фактичного активу",
-                "zh-cn": "证人控制 实际活跃的金属总数"
-            }
-        },
-        {
-            "_id": "deviceSecc.metering.power",
-            "type": "channel",
-            "common": {
-                "name": "Device Control Metering"
-            },
-            "native": {
-                "en": "Device Control current metering",
-                "de": "Gerätesteuerung Strommessung",
-                "ru": "Контроль устройства текущий метринг",
-                "pt": "Medição de corrente de controle de dispositivo",
-                "nl": "Device controle huidige metro",
-                "fr": "Mesure du courant de contrôle de l'appareil",
-                "it": "Misurazione corrente di controllo del dispositivo",
-                "es": "Medición de corriente de control de dispositivos",
-                "pl": "Prezentacja prądu metrowego",
-                "uk": "Пристрої контролю струму обліку",
-                "zh-cn": "当前墓地的控制"
-            }
-        },
-        {
-            "_id": "deviceSecc.metering.power.active_total",
-            "type": "channel",
-            "common": {
-                "name": "Device Control Metering power active total"
-            },
-            "native": {
-                "en": "Device Control Metering power active total",
-                "de": "Gerätesteuerung Dosierleistung aktiv insgesamt",
-                "ru": "Управление устройством Метровая мощность активная общая",
-                "pt": "Controle de dispositivo Potência de medição total ativo",
-                "nl": "Device Controle Metrokracht in totaal",
-                "fr": "Contrôle des dispositifs Puissance active totale",
-                "it": "Controllo dispositivi Potenza di misurazione totale attiva",
-                "es": "Control de dispositivos Potencia de medición total activo",
-                "pl": "Kontrola Łączność",
-                "uk": "Контроль пристрою Вимірювальні потужності активні",
-                "zh-cn": "证人控制 A. 积极投入的金属力量"
-            }
-        },
-        {
-            "_id": "deviceSecc.metering.power.active_total.actual",
-            "type": "state",
-            "common": {
-                "role": "value.power.consumption",
-                "name": "Device Charging power actual active total",
-                "type": "number",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {
-                "en": "Device Charging power actual active total",
-                "de": "Gerät Ladeleistung tatsächlich aktive Gesamt",
-                "ru": "Сила зарядки устройства фактический активный общий",
-                "pt": "Potência de carregamento do dispositivo total ativo real",
-                "nl": "Vernietigingskracht daadwerkelijk actief",
-                "fr": "Puissance de charge réelle active totale",
-                "it": "Potenza di carica effettivo attivo totale",
-                "es": "Potencia de carga del dispositivo total activo real",
-                "pl": "Własność rzeczywista",
-                "uk": "Зарядна потужність пристрою фактична активна сума",
-                "zh-cn": "B. 实际活跃的保有权"
-            }
-        },
-        {
-            "_id": "deviceSecc.metering.power.active",
-            "type": "channel",
-            "common": {
-                "name": "Device Control Metering Power Active"
-            },
-            "native": {
-                "en": "Device Control Metering Power Active",
-                "de": "Gerätesteuerung Zählerleistung aktiv",
-                "ru": "Управление устройством измерительная мощность активная",
-                "pt": "Potência de medição de controle de dispositivo ativa",
-                "nl": "Device Control Metering Power Active",
-                "fr": "Puissance de contrôle du dispositif active",
-                "it": "Controllo dispositivi Metering Power Active",
-                "es": "Control de dispositivos de medición Power Active",
-                "pl": "Oficjalna strona",
-                "uk": "Контроль пристрою вимірювальна потужність Активний",
-                "zh-cn": "滥用权力"
-            }
-        },
-        {
-            "_id": "deviceSecc.metering.power.active.ac",
-            "type": "channel",
-            "common": {
-                "name": "Device Control Metering active AC"
-            },
-            "native": {
-                "en": "Device Control Metering active AC",
-                "de": "Gerätesteuerung Messgerät aktiv AC",
-                "ru": "Управление устройством Счет активный AC",
-                "pt": "Controle de dispositivo Medição de AC ativo",
-                "nl": "Device Controle AC",
-                "fr": "Contrôle des dispositifs Metering active AC",
-                "it": "Controllo dispositivi Misurazione attiva AC",
-                "es": "Control de dispositivos Medición de AC activo",
-                "pl": "Kontrola Aktor",
-                "uk": "Контроль пристрою Вимірювання активного AC",
-                "zh-cn": "证人控制 积极承诺"
-            }
-        },
-        {
-            "_id": "deviceSecc.metering.power.active.ac.l1_actual",
-            "type": "state",
-            "common": {
-                "role": "value.power",
-                "name": "Device Charging power active ac l1",
-                "type": "number",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {
-                "en": "Device Charging power active ac l1",
-                "de": "Gerät Ladeleistung aktiv ac l1",
-                "ru": "Сила зарядки устройства активная ac l1",
-                "pt": "Poder de carregamento do dispositivo ativo ac l1",
-                "nl": "Vernietigingskracht actieve AcL1",
-                "fr": "Puissance de charge de l'appareil actif ac l1",
-                "it": "Potenza di carica del dispositivo attivo ac l1",
-                "es": "Potencia de carga de dispositivo activo ac l1",
-                "pl": "Siła Zbrojenia Device’a aktywna jest w ruchu acl1",
-                "uk": "Зарядна потужність пристрою активна ac l1",
-                "zh-cn": "A. 具有活力的假期1"
-            }
-        },
-        {
-            "_id": "deviceSecc.metering.power.active.ac.l2_actual",
-            "type": "state",
-            "common": {
-                "role": "value.power",
-                "name": "Device Charging power active ac l2",
-                "type": "number",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {
-                "en": "Device Charging power active ac l2",
-                "de": "Gerät Ladeleistung aktiv ac l2",
-                "ru": "Устройство зарядки активный ac l2",
-                "pt": "Poder de carregamento do dispositivo ativo ac l2",
-                "nl": "Vernietigingskracht actieve",
-                "fr": "Puissance de charge de l'appareil actif ac l2",
-                "it": "Potenza di carica del dispositivo attivo ac l2",
-                "es": "Potencia de carga de dispositivo activo ac l2",
-                "pl": "Siła Zbrojenia Device aktywuje ac l2",
-                "uk": "Зарядна потужність пристрою активна ac l2",
-                "zh-cn": "B. 具有创意的丧失能力 2"
-            }
-        },
-        {
-            "_id": "deviceSecc.metering.power.active.ac.l3_actual",
-            "type": "state",
-            "common": {
-                "role": "value.power",
-                "name": "Device Charging power active ac l3",
-                "type": "number",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {
-                "en": "Device Charging power active ac l3",
-                "de": "Gerät Ladeleistung aktiv ac l3",
-                "ru": "Устройство зарядки активный ac l3",
-                "pt": "Poder de carregamento do dispositivo ativo ac l3",
-                "nl": "Vernietigingskracht actief",
-                "fr": "Puissance de charge de l'appareil actif ac l3",
-                "it": "Potenza di carica del dispositivo attivo ac l3",
-                "es": "Potencia de carga de dispositivo activo ac l3",
-                "pl": "Siła Zbrojenia Device’a aktywuje acl3",
-                "uk": "Зарядна потужність пристрою активна ac l3",
-                "zh-cn": "B. 行使停机权 3"
-            }
-        },
-        {
-            "_id": "deviceSecc.metering.current.ac",
-            "type": "channel",
-            "common": {
-                "name": "Device Control Metering AC"
-            },
-            "native": {
-                "en": "Device Control Metering AC",
-                "de": "Gerätesteuerung Zähler AC",
-                "ru": "Управление устройствами Metering AC",
-                "pt": "Controle de dispositivo de medição AC",
-                "nl": "Device Controle AC",
-                "fr": "Régulateur d'appareils AC",
-                "it": "Misurazione di controllo del dispositivo AC",
-                "es": "Control de dispositivos de medición AC",
-                "pl": "Okładka",
-                "uk": "Вимірювальні прилади",
-                "zh-cn": "控制金属"
-            }
-        },
-        {
-            "_id": "deviceSecc.metering.current.ac.l1_actual",
-            "type": "state",
-            "common": {
-                "role": "value.power",
-                "name": "Device Charging power active ac l1",
-                "type": "number",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {
-                "en": "Device Charging power active ac l1",
-                "de": "Gerät Ladeleistung aktiv ac l1",
-                "ru": "Сила зарядки устройства активная ac l1",
-                "pt": "Poder de carregamento do dispositivo ativo ac l1",
-                "nl": "Vernietigingskracht actieve AcL1",
-                "fr": "Puissance de charge de l'appareil actif ac l1",
-                "it": "Potenza di carica del dispositivo attivo ac l1",
-                "es": "Potencia de carga de dispositivo activo ac l1",
-                "pl": "Siła Zbrojenia Device’a aktywna jest w ruchu acl1",
-                "uk": "Зарядна потужність пристрою активна ac l1",
-                "zh-cn": "A. 具有活力的假期1"
-            }
-        },
-        {
-            "_id": "deviceSecc.metering.current.ac.l2_actual",
-            "type": "state",
-            "common": {
-                "role": "value.power",
-                "name": "Device Charging power active ac l2",
-                "type": "number",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {
-                "en": "Device Charging power active ac l2",
-                "de": "Gerät Ladeleistung aktiv ac l2",
-                "ru": "Устройство зарядки активный ac l2",
-                "pt": "Poder de carregamento do dispositivo ativo ac l2",
-                "nl": "Vernietigingskracht actieve",
-                "fr": "Puissance de charge de l'appareil actif ac l2",
-                "it": "Potenza di carica del dispositivo attivo ac l2",
-                "es": "Potencia de carga de dispositivo activo ac l2",
-                "pl": "Siła Zbrojenia Device aktywuje ac l2",
-                "uk": "Зарядна потужність пристрою активна ac l2",
-                "zh-cn": "B. 具有创意的丧失能力 2"
-            }
-        },
-        {
-            "_id": "deviceSecc.metering.current.ac.l3_actual",
-            "type": "state",
-            "common": {
-                "role": "value.power",
-                "name": "Device Charging power active ac l3",
-                "type": "number",
-                "read": true,
-                "write": false,
-                "def": 0
-            },
-            "native": {
-                "en": "Device Charging power active ac l3",
-                "de": "Gerät Ladeleistung aktiv ac l3",
-                "ru": "Устройство зарядки активный ac l3",
-                "pt": "Poder de carregamento do dispositivo ativo ac l3",
-                "nl": "Vernietigingskracht actief",
-                "fr": "Puissance de charge de l'appareil actif ac l3",
-                "it": "Potenza di carica del dispositivo attivo ac l3",
-                "es": "Potencia de carga de dispositivo activo ac l3",
-                "pl": "Siła Zbrojenia Device’a aktywuje acl3",
-                "uk": "Зарядна потужність пристрою активна ac l3",
-                "zh-cn": "B. 行使停机权 3"
-            }
-        }
+    "desc": {
+      "en": "echarge_cpu2",
+      "de": "echarge_cpu2",
+      "ru": "echarge_cpu2",
+      "pt": "echarge_cpu2",
+      "nl": "echarge_cpu2",
+      "fr": "echarge_cpu2",
+      "it": "echarge_cpu2",
+      "es": "echarge_cpu2",
+      "pl": "echarge_cpu2",
+      "uk": "echarge_cpu2",
+      "zh-cn": "echarge_cpu2"
+    },
+    "authors": [
+      "MLembke <m.lembke@lembke-it-service.de>"
+    ],
+    "keywords": [
+      "Hardy Barth",
+      "eCharge",
+      "template",
+      "home automation"
+    ],
+    "license": "MIT",
+    "platform": "Javascript/Node.js",
+    "main": "build/main.js",
+    "icon": "echarge_cpu2.png",
+    "enabled": true,
+    "extIcon": "https://raw.githubusercontent.com/LembkeM/ioBroker.echarge_cpu2/main/admin/echarge_cpu2.png",
+    "readme": "https://github.com/LembkeM/ioBroker.echarge_cpu2/blob/main/README.md",
+    "loglevel": "info",
+    "mode": "daemon",
+    "type": "vehicle",
+    "compact": true,
+    "connectionType": "local",
+    "dataSource": "push",
+    "adminUI": {
+      "config": "json"
+    },
+    "eraseOnUpload": true,
+    "dependencies": [
+      {
+        "js-controller": ">=3.3.22"
+      }
+    ],
+    "globalDependencies": [
+      {
+        "admin": ">=5.1.28"
+      }
     ]
+  },
+  "native": {
+    "basicDeviceUrl": ""
+  },
+  "objects": [],
+  "instanceObjects": [
+    {
+      "_id": "info",
+      "type": "channel",
+      "common": {
+        "name": "Information"
+      },
+      "native": {
+        "en": "Information",
+        "de": "Informationen",
+        "ru": "Информация",
+        "pt": "Informação",
+        "nl": "Informatie",
+        "fr": "Information",
+        "it": "Informazioni",
+        "es": "Información",
+        "pl": "Informacja",
+        "uk": "Інформація",
+        "zh-cn": "信息"
+      }
+    },
+    {
+      "_id": "info.connection",
+      "type": "state",
+      "common": {
+        "role": "indicator.connection",
+        "name": "Device or service connected",
+        "type": "boolean",
+        "read": true,
+        "write": false,
+        "def": false
+      },
+      "native": {
+        "en": "Device or service connected\"",
+        "de": "Gerät oder Dienst verbunden\"",
+        "ru": "Устройство или сервис подключены\"",
+        "pt": "Dispositivo ou serviço conectado\"",
+        "nl": "Device of dienst verbonden",
+        "fr": "Appareil ou service connecté\"",
+        "it": "Dispositivo o servizio collegato\"",
+        "es": "Dispositivo o servicio conectado\"",
+        "pl": "Device lub serwis połączony",
+        "uk": "Пристрої або послуги підключені",
+        "zh-cn": "证人或有关服务”"
+      }
+    },
+    {
+      "_id": "deviceInfo",
+      "type": "channel",
+      "common": {
+        "name": "Information"
+      },
+      "native": {
+        "en": "Device Information",
+        "de": "Informationen zum Produkt",
+        "ru": "Информация об устройстве",
+        "pt": "InformaÃ§Ã£o do dispositivo",
+        "nl": "Device Informatie",
+        "fr": "Information sur les dispositifs",
+        "it": "Informazioni sul dispositivo",
+        "es": "Información sobre dispositivos",
+        "pl": "Device Information",
+        "uk": "Інформація про пристрій",
+        "zh-cn": "证人信息"
+      }
+    },
+    {
+      "_id": "deviceInfo.product",
+      "type": "state",
+      "common": {
+        "role": "text",
+        "name": "Device product",
+        "type": "string",
+        "read": true,
+        "write": false,
+        "def": ""
+      },
+      "native": {
+        "en": "Device product",
+        "de": "Geräteprodukt",
+        "ru": "Продукт устройства",
+        "pt": "Produto do dispositivo",
+        "nl": "Vernietig product",
+        "fr": "Produit du dispositif",
+        "it": "Prodotto di dispositivo",
+        "es": "Producto del dispositivo",
+        "pl": "Produkt Device",
+        "uk": "Продукція пристрою",
+        "zh-cn": "丧失产品"
+      }
+    },
+    {
+      "_id": "deviceInfo.hardware_version",
+      "type": "state",
+      "common": {
+        "role": "info.hardware",
+        "name": "Device Hardware version",
+        "type": "string",
+        "read": true,
+        "write": false,
+        "def": ""
+      },
+      "native": {
+        "en": "Device Hardware version",
+        "de": "Geräte-Hardware-Version",
+        "ru": "Устройство Hardware версия",
+        "pt": "Versão do hardware do dispositivo",
+        "nl": "Device Hardware versie",
+        "fr": "Hardware version",
+        "it": "Versione hardware del dispositivo",
+        "es": "Versión de hardware de dispositivo",
+        "pl": "Device Hardware",
+        "uk": "Версія для пристроїв",
+        "zh-cn": "Devic Hardware版本"
+      }
+    },
+    {
+      "_id": "deviceInfo.software_version",
+      "type": "state",
+      "common": {
+        "role": "info.firmware",
+        "name": "Device Softwareversion",
+        "type": "string",
+        "read": true,
+        "write": false,
+        "def": ""
+      },
+      "native": {
+        "en": "Device Softwareversion",
+        "de": "Softwareversion des Geräts",
+        "ru": "Устройство Softwareversion",
+        "pt": "Software de dispositivo",
+        "nl": "Vernietig Software",
+        "fr": "Logiciel de traitement",
+        "it": "Software di dispositivo",
+        "es": "Softwareversion de dispositivo",
+        "pl": "Device Software",
+        "uk": "Налаштування програмного забезпечення",
+        "zh-cn": "Devic Soft软件转换"
+      }
+    },
+    {
+      "_id": "deviceInfo.vcs_version",
+      "type": "state",
+      "common": {
+        "role": "text",
+        "name": "Device VCS Version",
+        "type": "string",
+        "read": true,
+        "write": false,
+        "def": ""
+      },
+      "native": {
+        "en": "Device VCS Version",
+        "de": "Gerät VCS Version",
+        "ru": "Устройство VCS Версия",
+        "pt": "Dispositivo VCS Versão",
+        "nl": "Vernietig VCS Vers",
+        "fr": "Dispositif VCS Version",
+        "it": "Dispositivo VCS Versione",
+        "es": "Dispositivo VCS Versión",
+        "pl": "VCS Wersja",
+        "uk": "Пристрої VCS Редагування",
+        "zh-cn": "Devic VCS 目 录"
+      }
+    },
+    {
+      "_id": "deviceInfo.hostname",
+      "type": "state",
+      "common": {
+        "role": "info.name",
+        "name": "Device Hostname",
+        "type": "string",
+        "read": true,
+        "write": false,
+        "def": ""
+      },
+      "native": {
+        "en": "Device Hostname",
+        "de": "Gerätename",
+        "ru": "Устройство Hostname",
+        "pt": "Nome de host do dispositivo",
+        "nl": "Device Host",
+        "fr": "Hostname",
+        "it": "Nome host del dispositivo",
+        "es": "Nombre de host de dispositivo",
+        "pl": "Device Hostname",
+        "uk": "Назва пристрою",
+        "zh-cn": "被遗弃人质"
+      }
+    },
+    {
+      "_id": "deviceInfo.mac_address",
+      "type": "state",
+      "common": {
+        "role": "info.mac",
+        "name": "Device MAC Address",
+        "type": "string",
+        "read": true,
+        "write": false,
+        "def": ""
+      },
+      "native": {
+        "en": "Device MAC Address",
+        "de": "Gerät MAC Anschrift",
+        "ru": "Устройство MAC Адрес",
+        "pt": "Dispositivo MAC Endereço",
+        "nl": "Vernietig MAC Adres",
+        "fr": "Appareil MAC Adresse",
+        "it": "Dispositivo MAC Indirizzo",
+        "es": "Dispositivo MAC Dirección",
+        "pl": "MAC Addressa",
+        "uk": "Пристрої MAC Контакти",
+        "zh-cn": "Device MAC 问题"
+      }
+    },
+    {
+      "_id": "deviceInfo.serial",
+      "type": "state",
+      "common": {
+        "role": "info.serial",
+        "name": "Device Serialnumber",
+        "type": "string",
+        "read": true,
+        "write": false,
+        "def": ""
+      },
+      "native": {
+        "en": "Device Serialnumber",
+        "de": "Gerät Seriennummer",
+        "ru": "Устройство Serialnumber",
+        "pt": "Número de série do dispositivo",
+        "nl": "Vernietig Serialnumber",
+        "fr": "Appareil numéro de série",
+        "it": "Numero di serie",
+        "es": "Número de serie de dispositivos",
+        "pl": "Szeregowy",
+        "uk": "Пристрої Serialnumber",
+        "zh-cn": "证人人数"
+      }
+    },
+    {
+      "_id": "deviceInfo.internal_id",
+      "type": "state",
+      "common": {
+        "role": "text",
+        "name": "Device internal Id",
+        "type": "string",
+        "read": true,
+        "write": false,
+        "def": ""
+      },
+      "native": {
+        "en": "Device internal Id",
+        "de": "Gerät intern I",
+        "ru": "Устройство внутреннего Ид",
+        "pt": "Dispositivo interno I",
+        "nl": "Vernietig intern ID",
+        "fr": "Appareil interne Id",
+        "it": "Dispositivo interno Id",
+        "es": "Dispositivo interno Id",
+        "pl": "Wewnątrz Id",
+        "uk": "Пристрої внутрішні Ід",
+        "zh-cn": "内部拘留 Id"
+      }
+    },
+    {
+      "_id": "deviceSecc",
+      "type": "channel",
+      "common": {
+        "name": "Device SECC Information"
+      },
+      "native": {
+        "en": "Device SECC Information",
+        "de": "Gerät SECC Informationen",
+        "ru": "Устройство SECC Информация",
+        "pt": "Dispositivo SECC Informação",
+        "nl": "Vernietig SECC Informatie",
+        "fr": "SECC Information",
+        "it": "Dispositivo SECC Informazioni",
+        "es": "Device SECC Información",
+        "pl": "Device SECC Informacja",
+        "uk": "Пристрої SECC Інформація",
+        "zh-cn": "D. 被剥夺自由者 信息"
+      }
+    },
+    {
+      "_id": "deviceSecc.scc_cp_state",
+      "type": "state",
+      "common": {
+        "role": "text",
+        "name": "Device Control Pilot State",
+        "type": "string",
+        "read": true,
+        "write": false,
+        "def": ""
+      },
+      "native": {
+        "en": "Device Control Pilot State",
+        "de": "Gerätesteuerung Pilot State",
+        "ru": "Управление устройством Pilot State",
+        "pt": "Controle de dispositivo Pilot State",
+        "nl": "Device Controle Pilot State",
+        "fr": "Pilot State",
+        "it": "Controllo dispositivi Stato pilota",
+        "es": "Estado piloto de control de dispositivos",
+        "pl": "Strona oficjalna",
+        "uk": "Контроль пристрою Пілотний стан",
+        "zh-cn": "证人控制试点国家"
+      }
+    },
+    {
+      "_id": "deviceSecc.metering",
+      "type": "channel",
+      "common": {
+        "name": "Device Control Metering"
+      },
+      "native": {
+        "en": "Device Control current metering",
+        "de": "Gerätesteuerung Strommessung",
+        "ru": "Контроль устройства текущий метринг",
+        "pt": "Medição de corrente de controle de dispositivo",
+        "nl": "Device controle huidige metro",
+        "fr": "Mesure du courant de contrôle de l'appareil",
+        "it": "Misurazione corrente di controllo del dispositivo",
+        "es": "Medición de corriente de control de dispositivos",
+        "pl": "Prezentacja prądu metrowego",
+        "uk": "Пристрої контролю струму обліку",
+        "zh-cn": "当前墓地的控制"
+      }
+    },
+    {
+      "_id": "deviceSecc.metering.meter",
+      "type": "channel",
+      "common": {
+        "name": "Device Control Meter"
+      },
+      "native": {
+        "en": "Device Control Meter",
+        "de": "Gerätesteuerung",
+        "ru": "Устройство управления метр",
+        "pt": "Medidor de controle de dispositivo",
+        "nl": "Device Control Meter",
+        "fr": "Compteur de contrôle de l'appareil",
+        "it": "Misuratore di controllo del dispositivo",
+        "es": "Medidor de control de dispositivos",
+        "pl": "Oficjalna strona",
+        "uk": "Пристрої контролю",
+        "zh-cn": "证人控制金属"
+      }
+    },
+    {
+      "_id": "deviceSecc.metering.meter.available",
+      "type": "state",
+      "common": {
+        "role": "value",
+        "name": "Device Control Meter available",
+        "type": "number",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {
+        "en": "Device Control Meter available",
+        "de": "Gerätesteuerung Meter verfügbar",
+        "ru": "Управление устройством Метр доступный",
+        "pt": "Controle de dispositivo Medidor disponível",
+        "nl": "Device Controle Metro beschikbaar",
+        "fr": "Contrôle des dispositifs Meter disponible",
+        "it": "Controllo dispositivi Meter disponibile",
+        "es": "Control de dispositivos Medidor disponible",
+        "pl": "Kontrola dostęp",
+        "uk": "Контроль пристрою Вимірювання",
+        "zh-cn": "证人控制 可用的金属"
+      }
+    },
+    {
+      "_id": "deviceSecc.metering.energy",
+      "type": "channel",
+      "common": {
+        "name": "Device Control Energy"
+      },
+      "native": {
+        "en": "Device Control Energy",
+        "de": "Gerätesteuerung Energie",
+        "ru": "Управление устройством Energy",
+        "pt": "Energia de controle de dispositivo",
+        "nl": "Device Control Energie",
+        "fr": "Device Control Energy",
+        "it": "Controllo dispositivi Energia",
+        "es": "Control de dispositivos Energía",
+        "pl": "Kontrola bezpieczeństwa",
+        "uk": "Енергоблоки",
+        "zh-cn": "能源控制"
+      }
+    },
+    {
+      "_id": "deviceSecc.metering.energy.active_total",
+      "type": "channel",
+      "common": {
+        "name": "Device Control Energy active total"
+      },
+      "native": {
+        "en": "Device Control Energy active total",
+        "de": "Gerätesteuerung Gesamt",
+        "ru": "Управление устройством Энергетическая активная общая",
+        "pt": "Controle de dispositivo Total de energia activa",
+        "nl": "Device Controle Energie actief",
+        "fr": "Contrôle des dispositifs Total de l ' énergie",
+        "it": "Controllo dispositivi Totale attivo energetico",
+        "es": "Control de dispositivos Energía total",
+        "pl": "Kontrola energetyczny",
+        "uk": "Контроль пристрою Енергетика",
+        "zh-cn": "证人控制 积极能源"
+      }
+    },
+    {
+      "_id": "deviceSecc.metering.energy.active_total.actual",
+      "type": "state",
+      "common": {
+        "role": "value.power",
+        "name": "Device Control Meter actual active total",
+        "type": "number",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {
+        "en": "Device Control Meter actual active total",
+        "de": "Gerätesteuerung Zähler tatsächlich aktiv insgesamt",
+        "ru": "Управление устройством Метр фактический активный",
+        "pt": "Controle de dispositivo Medidor total ativo",
+        "nl": "Device Controle Metro actief",
+        "fr": "Contrôle des dispositifs Total actif réel",
+        "it": "Controllo dispositivi Totale attivo effettivo",
+        "es": "Control de dispositivos Total activo",
+        "pl": "Kontrola aktualny",
+        "uk": "Контроль пристрою Вимірювання фактичного активу",
+        "zh-cn": "证人控制 实际活跃的金属总数"
+      }
+    },
+    {
+      "_id": "deviceSecc.metering.power",
+      "type": "channel",
+      "common": {
+        "name": "Device Control Metering"
+      },
+      "native": {
+        "en": "Device Control current metering",
+        "de": "Gerätesteuerung Strommessung",
+        "ru": "Контроль устройства текущий метринг",
+        "pt": "Medição de corrente de controle de dispositivo",
+        "nl": "Device controle huidige metro",
+        "fr": "Mesure du courant de contrôle de l'appareil",
+        "it": "Misurazione corrente di controllo del dispositivo",
+        "es": "Medición de corriente de control de dispositivos",
+        "pl": "Prezentacja prądu metrowego",
+        "uk": "Пристрої контролю струму обліку",
+        "zh-cn": "当前墓地的控制"
+      }
+    },
+    {
+      "_id": "deviceSecc.metering.power.active_total",
+      "type": "channel",
+      "common": {
+        "name": "Device Control Metering power active total"
+      },
+      "native": {
+        "en": "Device Control Metering power active total",
+        "de": "Gerätesteuerung Dosierleistung aktiv insgesamt",
+        "ru": "Управление устройством Метровая мощность активная общая",
+        "pt": "Controle de dispositivo Potência de medição total ativo",
+        "nl": "Device Controle Metrokracht in totaal",
+        "fr": "Contrôle des dispositifs Puissance active totale",
+        "it": "Controllo dispositivi Potenza di misurazione totale attiva",
+        "es": "Control de dispositivos Potencia de medición total activo",
+        "pl": "Kontrola Łączność",
+        "uk": "Контроль пристрою Вимірювальні потужності активні",
+        "zh-cn": "证人控制 A. 积极投入的金属力量"
+      }
+    },
+    {
+      "_id": "deviceSecc.metering.power.active_total.actual",
+      "type": "state",
+      "common": {
+        "role": "value.power.consumption",
+        "name": "Device Charging power actual active total",
+        "type": "number",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {
+        "en": "Device Charging power actual active total",
+        "de": "Gerät Ladeleistung tatsächlich aktive Gesamt",
+        "ru": "Сила зарядки устройства фактический активный общий",
+        "pt": "Potência de carregamento do dispositivo total ativo real",
+        "nl": "Vernietigingskracht daadwerkelijk actief",
+        "fr": "Puissance de charge réelle active totale",
+        "it": "Potenza di carica effettivo attivo totale",
+        "es": "Potencia de carga del dispositivo total activo real",
+        "pl": "Własność rzeczywista",
+        "uk": "Зарядна потужність пристрою фактична активна сума",
+        "zh-cn": "B. 实际活跃的保有权"
+      }
+    },
+    {
+      "_id": "deviceSecc.metering.power.active",
+      "type": "channel",
+      "common": {
+        "name": "Device Control Metering Power Active"
+      },
+      "native": {
+        "en": "Device Control Metering Power Active",
+        "de": "Gerätesteuerung Zählerleistung aktiv",
+        "ru": "Управление устройством измерительная мощность активная",
+        "pt": "Potência de medição de controle de dispositivo ativa",
+        "nl": "Device Control Metering Power Active",
+        "fr": "Puissance de contrôle du dispositif active",
+        "it": "Controllo dispositivi Metering Power Active",
+        "es": "Control de dispositivos de medición Power Active",
+        "pl": "Oficjalna strona",
+        "uk": "Контроль пристрою вимірювальна потужність Активний",
+        "zh-cn": "滥用权力"
+      }
+    },
+    {
+      "_id": "deviceSecc.metering.power.active.ac",
+      "type": "channel",
+      "common": {
+        "name": "Device Control Metering active AC"
+      },
+      "native": {
+        "en": "Device Control Metering active AC",
+        "de": "Gerätesteuerung Messgerät aktiv AC",
+        "ru": "Управление устройством Счет активный AC",
+        "pt": "Controle de dispositivo Medição de AC ativo",
+        "nl": "Device Controle AC",
+        "fr": "Contrôle des dispositifs Metering active AC",
+        "it": "Controllo dispositivi Misurazione attiva AC",
+        "es": "Control de dispositivos Medición de AC activo",
+        "pl": "Kontrola Aktor",
+        "uk": "Контроль пристрою Вимірювання активного AC",
+        "zh-cn": "证人控制 积极承诺"
+      }
+    },
+    {
+      "_id": "deviceSecc.metering.power.active.ac.l1_actual",
+      "type": "state",
+      "common": {
+        "role": "value.power",
+        "name": "Device Charging power active ac l1",
+        "type": "number",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {
+        "en": "Device Charging power active ac l1",
+        "de": "Gerät Ladeleistung aktiv ac l1",
+        "ru": "Сила зарядки устройства активная ac l1",
+        "pt": "Poder de carregamento do dispositivo ativo ac l1",
+        "nl": "Vernietigingskracht actieve AcL1",
+        "fr": "Puissance de charge de l'appareil actif ac l1",
+        "it": "Potenza di carica del dispositivo attivo ac l1",
+        "es": "Potencia de carga de dispositivo activo ac l1",
+        "pl": "Siła Zbrojenia Device’a aktywna jest w ruchu acl1",
+        "uk": "Зарядна потужність пристрою активна ac l1",
+        "zh-cn": "A. 具有活力的假期1"
+      }
+    },
+    {
+      "_id": "deviceSecc.metering.power.active.ac.l2_actual",
+      "type": "state",
+      "common": {
+        "role": "value.power",
+        "name": "Device Charging power active ac l2",
+        "type": "number",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {
+        "en": "Device Charging power active ac l2",
+        "de": "Gerät Ladeleistung aktiv ac l2",
+        "ru": "Устройство зарядки активный ac l2",
+        "pt": "Poder de carregamento do dispositivo ativo ac l2",
+        "nl": "Vernietigingskracht actieve",
+        "fr": "Puissance de charge de l'appareil actif ac l2",
+        "it": "Potenza di carica del dispositivo attivo ac l2",
+        "es": "Potencia de carga de dispositivo activo ac l2",
+        "pl": "Siła Zbrojenia Device aktywuje ac l2",
+        "uk": "Зарядна потужність пристрою активна ac l2",
+        "zh-cn": "B. 具有创意的丧失能力 2"
+      }
+    },
+    {
+      "_id": "deviceSecc.metering.power.active.ac.l3_actual",
+      "type": "state",
+      "common": {
+        "role": "value.power",
+        "name": "Device Charging power active ac l3",
+        "type": "number",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {
+        "en": "Device Charging power active ac l3",
+        "de": "Gerät Ladeleistung aktiv ac l3",
+        "ru": "Устройство зарядки активный ac l3",
+        "pt": "Poder de carregamento do dispositivo ativo ac l3",
+        "nl": "Vernietigingskracht actief",
+        "fr": "Puissance de charge de l'appareil actif ac l3",
+        "it": "Potenza di carica del dispositivo attivo ac l3",
+        "es": "Potencia de carga de dispositivo activo ac l3",
+        "pl": "Siła Zbrojenia Device’a aktywuje acl3",
+        "uk": "Зарядна потужність пристрою активна ac l3",
+        "zh-cn": "B. 行使停机权 3"
+      }
+    },
+    {
+      "_id": "deviceSecc.metering.current.ac",
+      "type": "channel",
+      "common": {
+        "name": "Device Control Metering AC"
+      },
+      "native": {
+        "en": "Device Control Metering AC",
+        "de": "Gerätesteuerung Zähler AC",
+        "ru": "Управление устройствами Metering AC",
+        "pt": "Controle de dispositivo de medição AC",
+        "nl": "Device Controle AC",
+        "fr": "Régulateur d'appareils AC",
+        "it": "Misurazione di controllo del dispositivo AC",
+        "es": "Control de dispositivos de medición AC",
+        "pl": "Okładka",
+        "uk": "Вимірювальні прилади",
+        "zh-cn": "控制金属"
+      }
+    },
+    {
+      "_id": "deviceSecc.metering.current.ac.l1_actual",
+      "type": "state",
+      "common": {
+        "role": "value.power",
+        "name": "Device Charging power active ac l1",
+        "type": "number",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {
+        "en": "Device Charging power active ac l1",
+        "de": "Gerät Ladeleistung aktiv ac l1",
+        "ru": "Сила зарядки устройства активная ac l1",
+        "pt": "Poder de carregamento do dispositivo ativo ac l1",
+        "nl": "Vernietigingskracht actieve AcL1",
+        "fr": "Puissance de charge de l'appareil actif ac l1",
+        "it": "Potenza di carica del dispositivo attivo ac l1",
+        "es": "Potencia de carga de dispositivo activo ac l1",
+        "pl": "Siła Zbrojenia Device’a aktywna jest w ruchu acl1",
+        "uk": "Зарядна потужність пристрою активна ac l1",
+        "zh-cn": "A. 具有活力的假期1"
+      }
+    },
+    {
+      "_id": "deviceSecc.metering.current.ac.l2_actual",
+      "type": "state",
+      "common": {
+        "role": "value.power",
+        "name": "Device Charging power active ac l2",
+        "type": "number",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {
+        "en": "Device Charging power active ac l2",
+        "de": "Gerät Ladeleistung aktiv ac l2",
+        "ru": "Устройство зарядки активный ac l2",
+        "pt": "Poder de carregamento do dispositivo ativo ac l2",
+        "nl": "Vernietigingskracht actieve",
+        "fr": "Puissance de charge de l'appareil actif ac l2",
+        "it": "Potenza di carica del dispositivo attivo ac l2",
+        "es": "Potencia de carga de dispositivo activo ac l2",
+        "pl": "Siła Zbrojenia Device aktywuje ac l2",
+        "uk": "Зарядна потужність пристрою активна ac l2",
+        "zh-cn": "B. 具有创意的丧失能力 2"
+      }
+    },
+    {
+      "_id": "deviceSecc.metering.current.ac.l3_actual",
+      "type": "state",
+      "common": {
+        "role": "value.power",
+        "name": "Device Charging power active ac l3",
+        "type": "number",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {
+        "en": "Device Charging power active ac l3",
+        "de": "Gerät Ladeleistung aktiv ac l3",
+        "ru": "Устройство зарядки активный ac l3",
+        "pt": "Poder de carregamento do dispositivo ativo ac l3",
+        "nl": "Vernietigingskracht actief",
+        "fr": "Puissance de charge de l'appareil actif ac l3",
+        "it": "Potenza di carica del dispositivo attivo ac l3",
+        "es": "Potencia de carga de dispositivo activo ac l3",
+        "pl": "Siła Zbrojenia Device’a aktywuje acl3",
+        "uk": "Зарядна потужність пристрою активна ac l3",
+        "zh-cn": "B. 行使停机权 3"
+      }
+    }
+  ]
 }
