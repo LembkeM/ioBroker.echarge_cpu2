@@ -145,6 +145,11 @@ export interface Metering {
 }
 
 export interface Meter {
+    serialnumber: string;
+    type: string;
+    name: string;
+    phase_count: number;
+    supported_measurands: string;
     available: boolean;
 }
 
@@ -243,6 +248,13 @@ export interface Availability {
 
 export interface Cp2 {
     pwm_state: PwmState;
+
+    // Zustand A (12V): Fahrzeug nicht angeschlossen und nicht ladebereit
+    // Zustand B (9V/-12V): Fahrzeug angeschlossen, aber nicht ladebereit
+    // Zustand C (6V/-12V): Fahrzeug angeschlossen und ladebereit
+    // Zustand D (3V/-12V): Lüftungsanforderung
+    // Zustand E (0V): Fehlerzustand “Kurzschluss” (CP-PE über Diode)
+    // Zustand F (-): Fehlerzustand “Wallbox-Ausfall, keine Verbindung”
     state: string;
     duty_cycle: string;
 }

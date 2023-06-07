@@ -22,52 +22,67 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var salia_helper_exports = {};
-__export(salia_helper_exports, {
-  SaliaHttpClient: () => SaliaHttpClient
+var saliahttpservice_exports = {};
+__export(saliahttpservice_exports, {
+  SaliaHttpService: () => SaliaHttpService
 });
-module.exports = __toCommonJS(salia_helper_exports);
+module.exports = __toCommonJS(saliahttpservice_exports);
 var import_tcp_ping = require("@network-utils/tcp-ping");
 var import_axios = __toESM(require("axios"));
 var import_https = __toESM(require("https"));
-class SaliaHttpClient {
+class SaliaHttpService {
   constructor(options) {
     this.getDeviceInfos = async () => {
-      try {
-        const { data } = await this.instance.get("/api/device");
-        this.eventEmitter.emit("onDeviceInformationRefreshed", data);
-      } catch (error) {
+      await this.instance.get("/api/device").then((resp) => {
+        this.eventEmitter.emit("onDeviceInformationRefreshed", resp.data);
+      }).catch((error) => {
         this.log.error(`[onReady] error: ${error.message}, stack: ${error.stack}`);
-      }
+        this.deviceStatus = false;
+      });
     };
     this.getDeviceCPInformation = async () => {
-      try {
-        const { data } = await this.instance.get("/api/secc/port0/cp");
-        this.eventEmitter.emit("onDeviceCPInformationRefreshed", data);
-      } catch (error) {
+      await this.instance.get("/api/secc/port0/cp").then((resp) => {
+        this.deviceCPState = resp.data.state;
+        this.eventEmitter.emit("onDeviceCPInformationRefreshed", resp.data);
+      }).catch((error) => {
         this.log.error(`[onReady] error: ${error.message}, stack: ${error.stack}`);
-      }
+        this.deviceStatus = false;
+      });
     };
     this.getDeviceChargeData = async () => {
       await this.instance.get("/api/secc/port0/salia").then((resp) => {
-        this.log.debug(JSON.stringify(resp.data));
         this.eventEmitter.emit("onDeviceChargeDataRefreshed", resp.data);
       }).catch((error) => {
         this.log.error(`[onReady] error: ${error.message}, stack: ${error.stack}`);
+        this.deviceStatus = false;
       });
+    };
+    this.getDeviceMeterData = async () => {
+      await this.instance.get("/api/secc/port0/metering/meter").then((resp) => {
+        this.log.debug(JSON.stringify(resp.data));
+        this.eventEmitter.emit("onDeviceMeterRefreshed", resp.data);
+        return resp.data.available;
+      }).catch((error) => {
+        this.log.error(`[onReady] error: ${error.message}, stack: ${error.stack}`);
+        this.deviceStatus = false;
+      });
+      return false;
     };
     this.getDeviceMetering = async () => {
       await this.instance.get("/api/secc/port0/metering").then((resp) => {
         this.log.debug(JSON.stringify(resp.data));
+        this.deviceMeterAvailable = resp.data.meter.available;
         this.eventEmitter.emit("onDeviceMeteringRefreshed", resp.data);
       }).catch((error) => {
         this.log.error(`[onReady] error: ${error.message}, stack: ${error.stack}`);
+        this.deviceStatus = false;
       });
     };
     this.log = options.log;
     this.eventEmitter = options.eventEmitter;
     this.deviceUrl = new URL(options.baseURL);
     this.deviceStatus = false;
+    this.deviceMeterAvailable = false;
     if (this.deviceUrl.port == "") {
       this.devicePort = 443;
     } else {
@@ -85,8 +100,8 @@ class SaliaHttpClient {
     });
   }
   async connect() {
-    while (true) {
-      try {
+    try {
+      setInterval(async () => {
         this.log.debug("Connection attempt");
         await this.onlineCheck();
         if (this.deviceStatus) {
@@ -95,14 +110,13 @@ class SaliaHttpClient {
           await this.getDeviceChargeData();
           await this.getDeviceMetering();
         }
-        return Promise.resolve();
-      } catch (e) {
-        if (e instanceof Error) {
-          this.log.error(e.message);
-        }
-        this.timeout = this.cancellableSleep(1e3);
-        await this.timeout.promise;
+      }, 1e4);
+    } catch (e) {
+      if (e instanceof Error) {
+        this.log.error(e.message);
       }
+      this.timeout = this.cancellableSleep(1e3);
+      await this.timeout.promise;
     }
   }
   stop() {
@@ -143,6 +157,6 @@ class SaliaHttpClient {
 }
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  SaliaHttpClient
+  SaliaHttpService
 });
-//# sourceMappingURL=salia-helper.js.map
+//# sourceMappingURL=saliahttpservice.js.map

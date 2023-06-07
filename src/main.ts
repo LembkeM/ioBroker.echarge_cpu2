@@ -6,17 +6,16 @@
 // you need to create an adapter
 import * as utils from "@iobroker/adapter-core";
 import EventEmitter from "events";
-import { SaliaHttpClient } from "./salia-helper";
-import { DeviceCPInformation } from "./types/DeviceCPInformation";
+import { SaliaHttpService } from "./saliahttpservice";
 import { DeviceInformation } from "./types/DeviceInformation";
-import { Metering, Salia } from "./types/Root";
+import { Cp2, Metering, Salia } from "./types/Root";
 
 class EchargeCpu2 extends utils.Adapter {
     isOnlineCheckTimeout: any;
     isCPStateCheckTimeout: any;
 
     eventEmitter: EventEmitter;
-    eChargeClient!: SaliaHttpClient;
+    saliaHttpService!: SaliaHttpService;
 
     public constructor(options: Partial<utils.AdapterOptions> = {}) {
         super({
@@ -44,7 +43,7 @@ class EchargeCpu2 extends utils.Adapter {
         }
 
         try {
-            this.eChargeClient = new SaliaHttpClient({
+            this.saliaHttpService = new SaliaHttpService({
                 baseURL: this.config.basicDeviceUrl,
                 log: this.log,
                 eventEmitter: this.eventEmitter,
@@ -53,21 +52,20 @@ class EchargeCpu2 extends utils.Adapter {
             // Handle Device changes to the connectionstate
             this.eventEmitter.on(
                 "onisOnlineChanged",
-                async (isOnline: boolean) => await this.connectionStateChanged(isOnline),
+                async (isOnline: boolean) => await this.connectionStateChanged({ isOnline }),
             );
 
             // Handle Device changes to the connectionstate
             this.eventEmitter.on(
                 "onDeviceInformationRefreshed",
                 async (deviceInformation: DeviceInformation) =>
-                    await this.DeviceInformationRefreshed(deviceInformation),
+                    await this.DeviceInformationRefreshed({ deviceInfo: deviceInformation }),
             );
 
             // Handle Device changes to the connectionstate
             this.eventEmitter.on(
                 "onDeviceCPInformationRefreshed",
-                async (deviceCPInformation: DeviceCPInformation) =>
-                    await this.deviceCPInformationCheck(deviceCPInformation),
+                async (deviceCPInformation: Cp2) => await this.deviceCPInformationCheck({ deviceCPInformation }),
             );
 
             this.eventEmitter.on(
@@ -78,7 +76,7 @@ class EchargeCpu2 extends utils.Adapter {
 
             this.eventEmitter.on(
                 "onDeviceMeteringRefreshed",
-                async (deviceMetering: Metering) => await this.deviceMeteringInformation(deviceMetering),
+                async (deviceMetering: Metering) => await this.deviceMeteringInformation({ deviceMetering }),
             );
 
             // Reset the Connectionstate
@@ -106,7 +104,7 @@ class EchargeCpu2 extends utils.Adapter {
             // await this.setStateAsync("testVariable", { val: true, ack: true, expire: 30 });
 
             // Start online check
-            this.eChargeClient
+            this.saliaHttpService
                 .connect()
                 .then(() => {
                     this.log.info("Connected");
@@ -137,7 +135,7 @@ class EchargeCpu2 extends utils.Adapter {
             // ...
             // clearInterval(interval1);
 
-            this.eChargeClient.stop();
+            this.saliaHttpService.stop();
 
             callback();
         } catch (error: any) {
@@ -195,15 +193,15 @@ class EchargeCpu2 extends utils.Adapter {
     // 	}
     // }
 
-    private async connectionStateChanged(isOnline: boolean): Promise<void> {
+    private async connectionStateChanged({ isOnline }: { isOnline: boolean }): Promise<void> {
         await this.setStateAsync("info.connection", isOnline, true);
     }
 
     private async DeviceChargeDataRefreshed({ chargeData }: { chargeData: Salia }): Promise<void> {
-        this.log.error(`${chargeData.chargedata}`);
+        this.log.info(`${chargeData.chargedata}`);
     }
 
-    private async DeviceInformationRefreshed(deviceInfo: DeviceInformation): Promise<void> {
+    private async DeviceInformationRefreshed({ deviceInfo }: { deviceInfo: DeviceInformation }): Promise<void> {
         // if ((deviceInfoResponse as DeviceInformation) != null) {
         //     const response = deviceInfoResponse as DeviceInformation;
         //     this.log.debug("deviceInfoResponse: " + response.hardware_version);
@@ -223,43 +221,56 @@ class EchargeCpu2 extends utils.Adapter {
         // }
     }
 
-    private async deviceCPInformationCheck(deviceCPInformation: DeviceCPInformation): Promise<void> {
+    private async deviceCPInformationCheck({ deviceCPInformation }: { deviceCPInformation: Cp2 }): Promise<void> {
         await this.setStateAsync("deviceSecc.scc_cp_state", deviceCPInformation.state, true);
     }
 
-    private async deviceMeteringInformation(deviceMetering: Metering): Promise<void> {
-        await this.setStateAsync("deviceSecc.metering.meter.available", deviceMetering.meter.available, true);
+    private async deviceMeteringInformation({ deviceMetering }: { deviceMetering: Metering }): Promise<void> {
+        await this.setStateAsync("deviceSecc.metering.meter.available", +deviceMetering.meter.available, true);
+
         await this.setStateAsync(
             "deviceSecc.metering.energy.active_total.actual",
-            deviceMetering.energy.active_total.actual,
+            +deviceMetering.energy.active_total.actual,
             true,
         );
 
         await this.setStateAsync(
             "deviceSecc.metering.power.active_total.actual",
-            deviceMetering.power.active_total.actual,
+            +deviceMetering.power.active_total.actual,
             true,
         );
 
         await this.setStateAsync(
             "deviceSecc.metering.power.active.ac.l1_actual",
-            deviceMetering.power.active.ac.l1.actual,
+            +deviceMetering.power.active.ac.l1.actual,
             true,
         );
         await this.setStateAsync(
             "deviceSecc.metering.power.active.ac.l2_actual",
-            deviceMetering.power.active.ac.l2.actual,
+            +deviceMetering.power.active.ac.l2.actual,
             true,
         );
         await this.setStateAsync(
             "deviceSecc.metering.power.active.ac.l3_actual",
-            deviceMetering.power.active.ac.l3.actual,
+            +deviceMetering.power.active.ac.l3.actual,
             true,
         );
 
-        await this.setStateAsync("deviceSecc.metering.current.ac.l1_actual", deviceMetering.current.ac.l1.actual, true);
-        await this.setStateAsync("deviceSecc.metering.current.ac.l2_actual", deviceMetering.current.ac.l2.actual, true);
-        await this.setStateAsync("deviceSecc.metering.current.ac.l3_actual", deviceMetering.current.ac.l3.actual, true);
+        await this.setStateAsync(
+            "deviceSecc.metering.current.ac.l1_actual",
+            +deviceMetering.current.ac.l1.actual,
+            true,
+        );
+        await this.setStateAsync(
+            "deviceSecc.metering.current.ac.l2_actual",
+            +deviceMetering.current.ac.l2.actual,
+            true,
+        );
+        await this.setStateAsync(
+            "deviceSecc.metering.current.ac.l3_actual",
+            +deviceMetering.current.ac.l3.actual,
+            true,
+        );
     }
 }
 

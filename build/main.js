@@ -19,7 +19,7 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 ));
 var utils = __toESM(require("@iobroker/adapter-core"));
 var import_events = __toESM(require("events"));
-var import_salia_helper = require("./salia-helper");
+var import_saliahttpservice = require("./saliahttpservice");
 class EchargeCpu2 extends utils.Adapter {
   constructor(options = {}) {
     super({
@@ -36,22 +36,22 @@ class EchargeCpu2 extends utils.Adapter {
       return;
     }
     try {
-      this.eChargeClient = new import_salia_helper.SaliaHttpClient({
+      this.saliaHttpService = new import_saliahttpservice.SaliaHttpService({
         baseURL: this.config.basicDeviceUrl,
         log: this.log,
         eventEmitter: this.eventEmitter
       });
       this.eventEmitter.on(
         "onisOnlineChanged",
-        async (isOnline) => await this.connectionStateChanged(isOnline)
+        async (isOnline) => await this.connectionStateChanged({ isOnline })
       );
       this.eventEmitter.on(
         "onDeviceInformationRefreshed",
-        async (deviceInformation) => await this.DeviceInformationRefreshed(deviceInformation)
+        async (deviceInformation) => await this.DeviceInformationRefreshed({ deviceInfo: deviceInformation })
       );
       this.eventEmitter.on(
         "onDeviceCPInformationRefreshed",
-        async (deviceCPInformation) => await this.deviceCPInformationCheck(deviceCPInformation)
+        async (deviceCPInformation) => await this.deviceCPInformationCheck({ deviceCPInformation })
       );
       this.eventEmitter.on(
         "onDeviceChargeDataRefreshed",
@@ -59,10 +59,10 @@ class EchargeCpu2 extends utils.Adapter {
       );
       this.eventEmitter.on(
         "onDeviceMeteringRefreshed",
-        async (deviceMetering) => await this.deviceMeteringInformation(deviceMetering)
+        async (deviceMetering) => await this.deviceMeteringInformation({ deviceMetering })
       );
       await this.setStateAsync("info.connection", false, true);
-      this.eChargeClient.connect().then(() => {
+      this.saliaHttpService.connect().then(() => {
         this.log.info("Connected");
       }).catch((reason) => {
         this.log.error(`Connection failure: ${reason}`);
@@ -73,20 +73,20 @@ class EchargeCpu2 extends utils.Adapter {
   }
   onUnload(callback) {
     try {
-      this.eChargeClient.stop();
+      this.saliaHttpService.stop();
       callback();
     } catch (error) {
       this.log.error(`[onReady] error: ${error.message}, stack: ${error.stack}`);
       callback();
     }
   }
-  async connectionStateChanged(isOnline) {
+  async connectionStateChanged({ isOnline }) {
     await this.setStateAsync("info.connection", isOnline, true);
   }
   async DeviceChargeDataRefreshed({ chargeData }) {
-    this.log.error(`${chargeData.chargedata}`);
+    this.log.info(`${chargeData.chargedata}`);
   }
-  async DeviceInformationRefreshed(deviceInfo) {
+  async DeviceInformationRefreshed({ deviceInfo }) {
     await this.setStateAsync("deviceInfo.hardware_version", deviceInfo.hardware_version, true);
     await this.setStateAsync("deviceInfo.hostname", deviceInfo.hostname, true);
     await this.setStateAsync("deviceInfo.internal_id", deviceInfo.internal_id, true);
@@ -96,39 +96,51 @@ class EchargeCpu2 extends utils.Adapter {
     await this.setStateAsync("deviceInfo.software_version", deviceInfo.software_version, true);
     await this.setStateAsync("deviceInfo.vcs_version", deviceInfo.vcs_version, true);
   }
-  async deviceCPInformationCheck(deviceCPInformation) {
+  async deviceCPInformationCheck({ deviceCPInformation }) {
     await this.setStateAsync("deviceSecc.scc_cp_state", deviceCPInformation.state, true);
   }
-  async deviceMeteringInformation(deviceMetering) {
-    await this.setStateAsync("deviceSecc.metering.meter.available", deviceMetering.meter.available, true);
+  async deviceMeteringInformation({ deviceMetering }) {
+    await this.setStateAsync("deviceSecc.metering.meter.available", +deviceMetering.meter.available, true);
     await this.setStateAsync(
       "deviceSecc.metering.energy.active_total.actual",
-      deviceMetering.energy.active_total.actual,
+      +deviceMetering.energy.active_total.actual,
       true
     );
     await this.setStateAsync(
       "deviceSecc.metering.power.active_total.actual",
-      deviceMetering.power.active_total.actual,
+      +deviceMetering.power.active_total.actual,
       true
     );
     await this.setStateAsync(
       "deviceSecc.metering.power.active.ac.l1_actual",
-      deviceMetering.power.active.ac.l1.actual,
+      +deviceMetering.power.active.ac.l1.actual,
       true
     );
     await this.setStateAsync(
       "deviceSecc.metering.power.active.ac.l2_actual",
-      deviceMetering.power.active.ac.l2.actual,
+      +deviceMetering.power.active.ac.l2.actual,
       true
     );
     await this.setStateAsync(
       "deviceSecc.metering.power.active.ac.l3_actual",
-      deviceMetering.power.active.ac.l3.actual,
+      +deviceMetering.power.active.ac.l3.actual,
       true
     );
-    await this.setStateAsync("deviceSecc.metering.current.ac.l1_actual", deviceMetering.current.ac.l1.actual, true);
-    await this.setStateAsync("deviceSecc.metering.current.ac.l2_actual", deviceMetering.current.ac.l2.actual, true);
-    await this.setStateAsync("deviceSecc.metering.current.ac.l3_actual", deviceMetering.current.ac.l3.actual, true);
+    await this.setStateAsync(
+      "deviceSecc.metering.current.ac.l1_actual",
+      +deviceMetering.current.ac.l1.actual,
+      true
+    );
+    await this.setStateAsync(
+      "deviceSecc.metering.current.ac.l2_actual",
+      +deviceMetering.current.ac.l2.actual,
+      true
+    );
+    await this.setStateAsync(
+      "deviceSecc.metering.current.ac.l3_actual",
+      +deviceMetering.current.ac.l3.actual,
+      true
+    );
   }
 }
 if (require.main !== module) {

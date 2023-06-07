@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/types/DeviceCPInformation.ts"],
-  "sourcesContent": ["export interface DeviceCPInformation {\n    pwm_state_actual: number;\n    state: string;\n    duty_cycle: string;\n    charging: string;\n}\n"],
-  "mappings": ";;;;;;;;;;;;;;AAAA;AAAA;",
-  "names": []
-}

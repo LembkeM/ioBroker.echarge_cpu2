@@ -515,7 +515,7 @@
                 "type": "number",
                 "read": true,
                 "write": false,
-                "def": ""
+                "def": 0
             },
             "native": {
                 "en": "Device Control Meter available",
@@ -575,12 +575,12 @@
             "_id": "deviceSecc.metering.energy.active_total.actual",
             "type": "state",
             "common": {
-                "role": "value",
+                "role": "value.power",
                 "name": "Device Control Meter actual active total",
                 "type": "number",
                 "read": true,
                 "write": false,
-                "def": ""
+                "def": 0
             },
             "native": {
                 "en": "Device Control Meter actual active total",
@@ -645,7 +645,7 @@
                 "type": "number",
                 "read": true,
                 "write": false,
-                "def": ""
+                "def": 0
             },
             "native": {
                 "en": "Device Charging power actual active total",
@@ -710,7 +710,7 @@
                 "type": "number",
                 "read": true,
                 "write": false,
-                "def": ""
+                "def": 0
             },
             "native": {
                 "en": "Device Charging power active ac l1",
@@ -735,7 +735,7 @@
                 "type": "number",
                 "read": true,
                 "write": false,
-                "def": ""
+                "def": 0
             },
             "native": {
                 "en": "Device Charging power active ac l2",
@@ -760,7 +760,7 @@
                 "type": "number",
                 "read": true,
                 "write": false,
-                "def": ""
+                "def": 0
             },
             "native": {
                 "en": "Device Charging power active ac l3",
@@ -805,7 +805,7 @@
                 "type": "number",
                 "read": true,
                 "write": false,
-                "def": ""
+                "def": 0
             },
             "native": {
                 "en": "Device Charging power active ac l1",
@@ -830,7 +830,7 @@
                 "type": "number",
                 "read": true,
                 "write": false,
-                "def": ""
+                "def": 0
             },
             "native": {
                 "en": "Device Charging power active ac l2",
@@ -855,7 +855,7 @@
                 "type": "number",
                 "read": true,
                 "write": false,
-                "def": ""
+                "def": 0
             },
             "native": {
                 "en": "Device Charging power active ac l3",
