@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "echarge_cpu2",
-    "version": "0.0.11",
+    "version": "0.0.12",
     "news": {
+      "0.0.12": {
+        "en": "Correction of deviceSecc.metering.energy.active_total.actual. Now correct in W.",
+        "de": "Korrektur von deviceSecc.metering.energy.active_total.actual Jetzt korrekt in W.",
+        "ru": "Исправление устройстваSecc.metering.energy.active_total.actual Теперь правильно в W.",
+        "pt": "Correção de dispositivoSecc.metering.energy.active_total.actual Correto em W.",
+        "nl": "Correctie van apparatuur van de begraafplaats. Correct in W.",
+        "fr": "Correction du dispositifSecc.metering.energy.active_total.actual Maintenant correct dans W.",
+        "it": "Correzione del dispositivoSecc.metering.energy.active_total.actual Ora corretto in W.",
+        "es": "Corrección del dispositivoSecc.metering.energy.active_total.actual Ahora correcto en W.",
+        "pl": "Reklasyfikacja urządzeniaSecc.metering. energy.active_total.actual. W: W.",
+        "uk": "Корекція пристроюSecc.metering.energy.active_total.actual Тепер виправити в W.",
+        "zh-cn": "装置Secc. 参数的纠正 W. 现在是正确的。."
+      },
       "0.0.11": {
         "en": "Correction of deviceSecc.metering.energy.active_total.actual and deviceSecc.metering.power.active_total.actual",
         "de": "Korrektur von deviceSecc.metering.energy.active_total.actual und deviceSecc.metering.power.active_total.actual",
@@ -80,19 +93,6 @@
         "pl": "Umożliwiło to zaplanowane sprawdzenie stanu internetowego.\nUlepszając dezinformację urządzenia, jeśli stan online zmienia się w prawdziwość.\nUmożliwiło to zaplanowane sprawdzenie stanu CP, jeżeli stan online jest prawdziwy.\nWykłaniane zostały jako ioBroker. Członek repozytorium.",
         "uk": "Впровадження запланованої перевірки онлайн стану.\nОновлення інформації про пристрій, якщо зміни онлайн-держави до true.\nВпровадження запланованої перевірки стану CP, якщо реальна онлайндержава.\nКорекції, зроблені, щоб стати ioBroker. репозиторій.",
         "zh-cn": "执行一个预定的网上国家检查。.\n如果网上国家对真实情况作出修改,则更新装置信息。.\n如果网上国家确实存在,则按计划对《和平协议》国家进行检查。.\n更正为零星。 存放成员。."
-      },
-      "0.0.5": {
-        "en": "README Text changed. Logo added.",
-        "de": "BEGRÜNDUNG Text geändert. Logo hinzugefügt.",
-        "ru": "Читать Текст изменен. Логотип добавлен.",
-        "pt": "REALIZAÇÃO O texto mudou. Logo adicionado.",
-        "nl": "Vertaling: Sms veranderd. Logo toegevoegd.",
-        "fr": "README Le texte a changé. Logo ajouté.",
-        "it": "READEM Il testo è cambiato. Logo aggiunto.",
-        "es": "README El texto cambió. Logo añadido.",
-        "pl": "README Tekst zmienił. Logo dodał.",
-        "uk": "ЗАМОВИТИ Змінено текст. Додано логотип.",
-        "zh-cn": "建 议 案文修改。 增加。."
       }
     },
     "titleLang": {
