@@ -115,13 +115,6 @@ class EchargeCpu2 extends utils.Adapter {
         } catch (error: any) {
             this.log.error(`[onReady] error: ${error.message}, stack: ${error.stack}`);
         }
-
-        // examples for the checkPassword/checkGroup functions
-        // let result = await this.checkPasswordAsync("admin", "iobroker");
-        // this.log.info("check user admin pw iobroker: " + result);
-
-        // result = await this.checkGroupAsync("admin", "admin");
-        // this.log.info("check group user admin group admin: " + result);
     }
 
     /**
@@ -129,12 +122,6 @@ class EchargeCpu2 extends utils.Adapter {
      */
     private onUnload(callback: () => void): void {
         try {
-            // Here you must clear all timeouts or intervals that may still be active
-            // clearTimeout(timeout1);
-            // clearTimeout(timeout2);
-            // ...
-            // clearInterval(interval1);
-
             this.saliaHttpService.stop();
 
             callback();
@@ -152,10 +139,10 @@ class EchargeCpu2 extends utils.Adapter {
     // private onObjectChange(id: string, obj: ioBroker.Object | null | undefined): void {
     // 	if (obj) {
     // 		// The object was changed
-    // 		this.log.info(`object ${id} changed: ${JSON.stringify(obj)}`);
+    // 		this.log.debug(`object ${id} changed: ${JSON.stringify(obj)}`);
     // 	} else {
     // 		// The object was deleted
-    // 		this.log.info(`object ${id} deleted`);
+    // 		this.log.debug(`object ${id} deleted`);
     // 	}
     // }
 
@@ -167,12 +154,12 @@ class EchargeCpu2 extends utils.Adapter {
     //         const stateId = id.replace(this.namespace + ".", "");
 
     //         // The state was changed
-    //         this.log.info(`state ${stateId} changed: ${state.val} (ack = ${state.ack})`);
+    //         this.log.debug(`state ${stateId} changed: ${state.val} (ack = ${state.ack})`);
 
     //         await this.setStateAsync(stateId, state.val, true);
     //     } else {
     //         // The state was deleted
-    //         this.log.info(`state ${id} deleted`);
+    //         this.log.debug(`state ${id} deleted`);
     //     }
     // }
 
@@ -185,7 +172,7 @@ class EchargeCpu2 extends utils.Adapter {
     // 	if (typeof obj === "object" && obj.message) {
     // 		if (obj.command === "send") {
     // 			// e.g. send email or pushover or whatever
-    // 			this.log.info("send command");
+    // 			this.log.debug("send command");
 
     // 			// Send response in callback if required
     // 			if (obj.callback) this.sendTo(obj.from, obj.command, "Message received", obj.callback);
@@ -198,7 +185,7 @@ class EchargeCpu2 extends utils.Adapter {
     }
 
     private async DeviceChargeDataRefreshed({ chargeData }: { chargeData: Salia }): Promise<void> {
-        this.log.info(`${chargeData.chargedata}`);
+        this.log.debug(`${chargeData.chargedata}`);
     }
 
     private async DeviceInformationRefreshed({ deviceInfo }: { deviceInfo: DeviceInformation }): Promise<void> {
